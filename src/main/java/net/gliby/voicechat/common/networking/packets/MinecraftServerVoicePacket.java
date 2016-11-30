@@ -21,17 +21,20 @@ public class MinecraftServerVoicePacket extends MinecraftPacket implements IMess
         this.data = data;
     }
 
+    @Override
     public void fromBytes(ByteBuf buf) {
         this.divider = buf.readByte();
         this.data = new byte[buf.readableBytes()];
         buf.readBytes(this.data);
     }
 
+    @Override
     public IMessage onMessage(MinecraftServerVoicePacket packet, MessageContext ctx) {
         VoiceChat.getServerInstance().getVoiceServer().handleVoiceData(ctx.getServerHandler().playerEntity, packet.data, packet.divider, ctx.getServerHandler().playerEntity.getEntityId(), false);
         return null;
     }
 
+    @Override
     public void toBytes(ByteBuf buf) {
         buf.writeByte(this.divider);
         buf.writeBytes(this.data);

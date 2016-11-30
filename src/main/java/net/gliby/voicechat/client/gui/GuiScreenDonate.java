@@ -36,6 +36,7 @@ public class GuiScreenDonate extends GuiScreen {
         this.modMetadata = modMetadata;
     }
 
+    @Override
     public void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 0:
@@ -47,6 +48,7 @@ public class GuiScreenDonate extends GuiScreen {
 
     }
 
+    @Override
     public void drawScreen(int x, int y, float tick) {
         this.renderModLogo(this.info.modId, this.modMetadata, false);
         this.drawBackground(0);
@@ -61,6 +63,7 @@ public class GuiScreenDonate extends GuiScreen {
         super.drawScreen(x, y, tick);
     }
 
+    @Override
     public void initGui() {
         this.buttonList.add(new GuiButton(0, this.width / 2 - 50, this.height - 34, 100, 20, I18n.format("gui.back")));
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2, I18n.format("menu.gman.donate")));

@@ -23,6 +23,7 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
         this.parent = parent;
     }
 
+    @Override
     protected void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 0:
@@ -64,6 +65,7 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
 
     }
 
+    @Override
     public void drawScreen(int x, int y, float time) {
         this.drawDefaultBackground();
         GL11.glPushMatrix();
@@ -82,6 +84,7 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
         super.drawScreen(x, y, time);
     }
 
+    @Override
     public void initGui() {
         this.buttonList.add(new GuiButton(0, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("gui.back")));
         this.buttonList.add(new GuiButton(1, this.width / 2 + 77, this.height - 34, 75, 20, I18n.format("controls.reset")));
@@ -97,6 +100,7 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
         this.encodingMode.enabled = false;
     }
 
+    @Override
     public void onGuiClosed() {
         super.onGuiClosed();
         this.voiceChat.getSettings().getConfiguration().save();
@@ -117,6 +121,7 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
         this.volumeControlButton.displayString = I18n.format("menu.volumeControl") + ": " + (this.voiceChat.getSettings().isVolumeControlled() ? I18n.format("options.on") : I18n.format("options.off"));
     }
 
+    @Override
     public void updateScreen() {
         this.voiceChat.getSettings().setEncodingQuality(this.qualitySlider.sliderValue);
         this.qualitySlider.setDisplayString(I18n.format("menu.encodingQuality") + ": " + (this.voiceChat.getSettings().getEncodingQuality() == 0.0F ? "0" : String.valueOf((int) (this.voiceChat.getSettings().getEncodingQuality() * 10.0F))));

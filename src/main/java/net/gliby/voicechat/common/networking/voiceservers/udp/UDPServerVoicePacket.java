@@ -15,10 +15,12 @@ public class UDPServerVoicePacket extends UDPPacket {
         this.direct = global;
     }
 
+    @Override
     public byte id() {
         return (byte) 1;
     }
 
+    @Override
     public void write(ByteArrayDataOutput in) {
         in.writeInt(this.entityID);
         in.writeBoolean(this.direct);

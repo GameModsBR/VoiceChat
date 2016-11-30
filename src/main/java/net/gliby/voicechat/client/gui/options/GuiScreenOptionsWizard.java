@@ -48,6 +48,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         this.tester = new MicrophoneTester(voiceChat);
     }
 
+    @Override
     public void actionPerformed(GuiButton button) {
         if ((button == this.nextButton || button == this.previousButton || this.doneButton == button || this.buttonMap.get(button) != null && this.buttonMap.get(button) == this.currentPage) && !this.dropDown.dropDownMenu) {
             switch (button.id) {
@@ -128,6 +129,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         this.lastPage = this.currentPage;
     }
 
+    @Override
     public void drawScreen(int x, int y, float tick) {
         this.drawDefaultBackground();
         IndependentGUITexture.GUI_WIZARD.bindTexture(this.mc);
@@ -169,6 +171,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         tessellator.draw();
     }
 
+    @Override
     public void initGui() {
         String[] array = new String[this.voiceChat.getSettings().getDeviceHandler().getDevices().size()];
 
@@ -190,6 +193,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         this.textBatch = new String[]{I18n.format("menu.setupWizardPageOne", new Object[0]).replaceAll(Pattern.quote("$n"), "\n").replaceAll(Pattern.quote("$a"), this.voiceChat.keyManager.getKeyName(EnumBinding.OPEN_GUI_OPTIONS)), I18n.format("menu.setupWizardPageTwo", new Object[0]).replaceAll(Pattern.quote("$n"), "\n"), I18n.format("menu.setupWizardPageThree", new Object[0]).replaceAll(Pattern.quote("$n"), "\n"), I18n.format("menu.setupWizardPageFour", new Object[0]).replaceAll(Pattern.quote("$n"), "\n").replaceAll(Pattern.quote("$a"), this.voiceChat.keyManager.getKeyName(EnumBinding.OPEN_GUI_OPTIONS)).replaceAll(Pattern.quote("$b"), this.voiceChat.keyManager.getKeyName(EnumBinding.SPEAK))};
     }
 
+    @Override
     public void mouseClicked(int x, int y, int b) {
         if (this.currentPage == 2) {
             if (this.dropDown.getMouseOverInteger() != -1 && this.dropDown.dropDownMenu && !this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
@@ -221,6 +225,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
 
     }
 
+    @Override
     public void onGuiClosed() {
         if (this.tester.recording) {
             this.tester.stop();
@@ -229,6 +234,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         this.voiceChat.getSettings().getConfiguration().save();
     }
 
+    @Override
     public void updateScreen() {
         this.boostSlider.setDisplayString(I18n.format("menu.boost") + ": " + ((int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0 ? I18n.format("options.off") : "" + (int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"));
         this.voiceChat.getSettings().setInputBoost(this.boostSlider.sliderValue);

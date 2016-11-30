@@ -25,6 +25,7 @@ public class MinecraftClientEntityPositionPacket extends MinecraftPacket impleme
         this.z = z;
     }
 
+    @Override
     public void fromBytes(ByteBuf buf) {
         this.entityID = buf.readInt();
         this.x = buf.readDouble();
@@ -32,6 +33,7 @@ public class MinecraftClientEntityPositionPacket extends MinecraftPacket impleme
         this.z = buf.readDouble();
     }
 
+    @Override
     public IMessage onMessage(MinecraftClientEntityPositionPacket packet, MessageContext ctx) {
         if (VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
             VoiceChat.getProxyInstance().getClientNetwork().getVoiceClient().handleEntityPosition(packet.entityID, packet.x, packet.y, packet.z);
@@ -40,6 +42,7 @@ public class MinecraftClientEntityPositionPacket extends MinecraftPacket impleme
         return null;
     }
 
+    @Override
     public void toBytes(ByteBuf buf) {
         buf.writeInt(this.entityID);
         buf.writeDouble(this.x);

@@ -57,14 +57,17 @@ public class SbCodec extends NbCodec {
         this.g1_mem = new float[64];
     }
 
+    @Override
     public int getFrameSize() {
         return this.fullFrameSize;
     }
 
+    @Override
     public boolean getDtx() {
         return this.dtx_enabled != 0;
     }
 
+    @Override
     public float[] getExc() {
         float[] var2 = new float[this.fullFrameSize];
 
@@ -75,6 +78,7 @@ public class SbCodec extends NbCodec {
         return var2;
     }
 
+    @Override
     public float[] getInnov() {
         return this.getExc();
     }

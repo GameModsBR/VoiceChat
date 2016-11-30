@@ -14,14 +14,17 @@ public class SpeexAudioFileWriter extends AudioFileWriter {
     public static final Type[] SPEEX_FORMAT = new Type[]{SpeexFileFormatType.SPEEX};
 
 
+    @Override
     public Type[] getAudioFileTypes() {
         return SPEEX_FORMAT;
     }
 
+    @Override
     public Type[] getAudioFileTypes(AudioInputStream var1) {
         return var1.getFormat().getEncoding() instanceof SpeexEncoding ? SPEEX_FORMAT : NO_FORMAT;
     }
 
+    @Override
     public int write(AudioInputStream var1, Type var2, OutputStream var3) throws IOException {
         Type[] var4 = this.getAudioFileTypes(var1);
         if (var4 != null && var4.length > 0) {
@@ -31,6 +34,7 @@ public class SpeexAudioFileWriter extends AudioFileWriter {
         }
     }
 
+    @Override
     public int write(AudioInputStream var1, Type var2, File var3) throws IOException {
         Type[] var4 = this.getAudioFileTypes(var1);
         if (var4 != null && var4.length > 0) {

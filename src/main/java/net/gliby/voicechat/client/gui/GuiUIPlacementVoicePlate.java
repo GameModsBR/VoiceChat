@@ -25,6 +25,7 @@ public class GuiUIPlacementVoicePlate extends GuiPlaceableInterface {
         this.shuffleArray(this.players);
     }
 
+    @Override
     public void draw(Minecraft mc, GuiScreen gui, int x, int y, float tick) {
         for (int i = 0; i < this.players.length; ++i) {
             String stream = this.players[i];

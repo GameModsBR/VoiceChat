@@ -20,6 +20,7 @@ public class ThreadUpdateStream implements Runnable {
         this.voiceChat = voiceChatClient;
     }
 
+    @Override
     public void run() {
         while (true) {
             if (VoiceChatClient.getSoundManager().currentStreams.isEmpty()) {

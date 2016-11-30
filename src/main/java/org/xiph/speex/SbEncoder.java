@@ -38,6 +38,7 @@ public class SbEncoder extends SbCodec implements Encoder {
     private float[] mem_sw;
     private boolean uwb;
 
+    @Override
     public void wbinit() {
         this.lowenc = new NbEncoder();
         ((NbEncoder) this.lowenc).nbinit();
@@ -48,6 +49,7 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.sampling_rate = 16000;
     }
 
+    @Override
     public void uwbinit() {
         this.lowenc = new SbEncoder();
         ((SbEncoder) this.lowenc).wbinit();
@@ -58,6 +60,7 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.sampling_rate = 32000;
     }
 
+    @Override
     public void init(int var1, int var2, int var3, int var4, float var5) {
         super.init(var1, var2, var3, var4, var5);
         this.complexity = 3;
@@ -87,6 +90,7 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.abr_count = 0.0F;
     }
 
+    @Override
     public int encode(Bits var1, float[] var2) {
         Filters.qmf_decomp(var2, Codebook.h0, this.x0d, this.x1d, this.fullFrameSize, 64, this.h0_mem);
         this.lowenc.encode(var1, this.x0d);
@@ -469,12 +473,14 @@ public class SbEncoder extends SbCodec implements Encoder {
         }
     }
 
+    @Override
     public int getEncodedFrameSize() {
         int var1 = SB_FRAME_SIZE[this.submodeID];
         var1 += this.lowenc.getEncodedFrameSize();
         return var1;
     }
 
+    @Override
     public void setQuality(int var1) {
         if (var1 < 0) {
             var1 = 0;
@@ -494,10 +500,12 @@ public class SbEncoder extends SbCodec implements Encoder {
 
     }
 
+    @Override
     public int getBitRate() {
         return this.submodes[this.submodeID] != null ? this.lowenc.getBitRate() + this.sampling_rate * this.submodes[this.submodeID].bits_per_frame / this.frameSize : this.lowenc.getBitRate() + this.sampling_rate * 4 / this.frameSize;
     }
 
+    @Override
     public void setBitRate(int var1) {
         for (int var2 = 10; var2 >= 0; --var2) {
             this.setQuality(var2);
@@ -508,14 +516,17 @@ public class SbEncoder extends SbCodec implements Encoder {
 
     }
 
+    @Override
     public int getLookAhead() {
         return 2 * this.lowenc.getLookAhead() + 64 - 1;
     }
 
+    @Override
     public int getMode() {
         return this.submodeID;
     }
 
+    @Override
     public void setMode(int var1) {
         if (var1 < 0) {
             var1 = 0;
@@ -524,31 +535,38 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.submodeID = this.submodeSelect = var1;
     }
 
+    @Override
     public boolean getVbr() {
         return this.vbr_enabled != 0;
     }
 
+    @Override
     public void setVbr(boolean var1) {
         this.vbr_enabled = var1 ? 1 : 0;
         this.lowenc.setVbr(var1);
     }
 
+    @Override
     public boolean getVad() {
         return this.vad_enabled != 0;
     }
 
+    @Override
     public void setVad(boolean var1) {
         this.vad_enabled = var1 ? 1 : 0;
     }
 
+    @Override
     public void setDtx(boolean var1) {
         this.dtx_enabled = var1 ? 1 : 0;
     }
 
+    @Override
     public int getAbr() {
         return this.abr_enabled;
     }
 
+    @Override
     public void setAbr(int var1) {
         this.lowenc.setVbr(true);
         this.abr_enabled = var1 != 0 ? 1 : 0;
@@ -574,10 +592,12 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.abr_drift2 = 0.0F;
     }
 
+    @Override
     public float getVbrQuality() {
         return this.vbr_quality;
     }
 
+    @Override
     public void setVbrQuality(float var1) {
         this.vbr_quality = var1;
         float var2 = var1 + 0.6F;
@@ -594,10 +614,12 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.setQuality(var3);
     }
 
+    @Override
     public int getComplexity() {
         return this.complexity;
     }
 
+    @Override
     public void setComplexity(int var1) {
         if (var1 < 0) {
             var1 = 0;
@@ -610,15 +632,18 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.complexity = var1;
     }
 
+    @Override
     public int getSamplingRate() {
         return this.sampling_rate;
     }
 
+    @Override
     public void setSamplingRate(int var1) {
         this.sampling_rate = var1;
         this.lowenc.setSamplingRate(var1);
     }
 
+    @Override
     public float getRelativeQuality() {
         return this.relative_quality;
     }

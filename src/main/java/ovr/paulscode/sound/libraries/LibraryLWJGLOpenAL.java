@@ -118,6 +118,7 @@ public class LibraryLWJGLOpenAL
         return true;
     }
 
+    @Override
     public void cleanup() {
         super.cleanup();
         Set<String> keys = this.bufferMap.keySet();
@@ -136,6 +137,7 @@ public class LibraryLWJGLOpenAL
         this.listenerVelocity = null;
     }
 
+    @Override
     public void copySources(HashMap<String, Source> srcMap) {
         if (srcMap == null) {
             return;
@@ -165,6 +167,7 @@ public class LibraryLWJGLOpenAL
         }
     }
 
+    @Override
     protected Channel createChannel(int type) {
         IntBuffer ALSource = BufferUtils.createIntBuffer(1);
         try {
@@ -180,6 +183,7 @@ public class LibraryLWJGLOpenAL
         return channel;
     }
 
+    @Override
     public void dopplerChanged() {
         super.dopplerChanged();
         AL10.alDopplerFactor(SoundSystemConfig.getDopplerFactor());
@@ -188,10 +192,12 @@ public class LibraryLWJGLOpenAL
         this.checkALError();
     }
 
+    @Override
     public String getClassName() {
         return "LibraryLWJGLOpenAL";
     }
 
+    @Override
     public void init() throws SoundSystemException {
         boolean errors = false;
         try {
@@ -246,6 +252,7 @@ public class LibraryLWJGLOpenAL
     /*
      * Enabled aggressive block sorting
      */
+    @Override
     public boolean loadSound(FilenameURL filenameURL) {
         if (this.bufferMap == null) {
             this.bufferMap = new HashMap<String, SoundBuffer>();
@@ -321,6 +328,7 @@ public class LibraryLWJGLOpenAL
     /*
      * Enabled aggressive block sorting
      */
+    @Override
     public boolean loadSound(SoundBuffer buffer, String identifier) {
         if (this.bufferMap == null) {
             this.bufferMap = new HashMap<String, SoundBuffer>();
@@ -380,6 +388,7 @@ public class LibraryLWJGLOpenAL
         return true;
     }
 
+    @Override
     public void newSource(boolean priority, boolean toStream, boolean toLoop, String sourcename, FilenameURL filenameURL, float x, float y, float z, int attModel, float distOrRoll) {
         IntBuffer myBuffer = null;
         if (!toStream) {
@@ -410,6 +419,7 @@ public class LibraryLWJGLOpenAL
         this.sourceMap.put(sourcename, new SourceLWJGLOpenAL(this.listenerPositionAL, myBuffer, priority, toStream, toLoop, sourcename, filenameURL, buffer, x, y, z, attModel, distOrRoll, false));
     }
 
+    @Override
     public void quickPlay(boolean priority, boolean toStream, boolean toLoop, String sourcename, FilenameURL filenameURL, float x, float y, float z, int attModel, float distOrRoll, boolean temporary) {
         IntBuffer myBuffer = null;
         if (!toStream) {
@@ -443,10 +453,12 @@ public class LibraryLWJGLOpenAL
         }
     }
 
+    @Override
     public void rawDataStream(AudioFormat audioFormat, boolean priority, String sourcename, float x, float y, float z, int attModel, float distOrRoll) {
         this.sourceMap.put(sourcename, new SourceLWJGLOpenAL(this.listenerPositionAL, audioFormat, priority, sourcename, x, y, z, attModel, distOrRoll));
     }
 
+    @Override
     public void setListenerAngle(float angle) {
         super.setListenerAngle(angle);
         this.listenerOrientation.put(0, this.listener.lookAt.x);
@@ -455,6 +467,7 @@ public class LibraryLWJGLOpenAL
         this.checkALError();
     }
 
+    @Override
     public void setListenerData(ListenerData l) {
         super.setListenerData(l);
         this.listenerPositionAL.put(0, l.position.x);
@@ -477,6 +490,7 @@ public class LibraryLWJGLOpenAL
         this.checkALError();
     }
 
+    @Override
     public void setListenerOrientation(float lookX, float lookY, float lookZ, float upX, float upY, float upZ) {
         super.setListenerOrientation(lookX, lookY, lookZ, upX, upY, upZ);
         this.listenerOrientation.put(0, lookX);
@@ -489,6 +503,7 @@ public class LibraryLWJGLOpenAL
         this.checkALError();
     }
 
+    @Override
     public void setListenerPosition(float x, float y, float z) {
         super.setListenerPosition(x, y, z);
         this.listenerPositionAL.put(0, x);
@@ -498,6 +513,7 @@ public class LibraryLWJGLOpenAL
         this.checkALError();
     }
 
+    @Override
     public void setListenerVelocity(float x, float y, float z) {
         super.setListenerVelocity(x, y, z);
         this.listenerVelocity.put(0, this.listener.velocity.x);
@@ -506,12 +522,14 @@ public class LibraryLWJGLOpenAL
         AL10.alListener(4102, this.listenerVelocity);
     }
 
+    @Override
     public void setMasterVolume(float value) {
         super.setMasterVolume(value);
         AL10.alListenerf(4106, value);
         this.checkALError();
     }
 
+    @Override
     public void unloadSound(String filename) {
         this.ALBufferMap.remove(filename);
         super.unloadSound(filename);

@@ -35,6 +35,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         this.tester = new MicrophoneTester(voiceChat);
     }
 
+    @Override
     protected void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 0:
@@ -91,6 +92,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
 
     }
 
+    @Override
     public void drawScreen(int x, int y, float tick) {
         this.drawDefaultBackground();
         GL11.glPushMatrix();
@@ -112,6 +114,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         return x >= posX && y >= posY && x < posX + width && y < posY + height;
     }
 
+    @Override
     public void initGui() {
         String[] array = new String[this.voiceChat.getSettings().getDeviceHandler().getDevices().size()];
 
@@ -170,6 +173,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
 
     }
 
+    @Override
     public void keyTyped(char c, int key) {
         if (key == 1) {
             this.voiceChat.getSettings().getConfiguration().save();
@@ -179,6 +183,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
 
     }
 
+    @Override
     public void mouseClicked(int x, int y, int b) {
         if (b == 0) {
             if (!this.voiceChat.getModInfo().updateNeeded()) {
@@ -214,6 +219,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
 
     }
 
+    @Override
     public void onGuiClosed() {
         if (this.tester.recording) {
             this.tester.stop();
@@ -232,6 +238,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
 
     }
 
+    @Override
     public void updateScreen() {
         this.voiceChat.getSettings().setWorldVolume(this.voiceVolume.sliderValue);
         this.voiceChat.getSettings().setInputBoost(this.boostSlider.sliderValue);

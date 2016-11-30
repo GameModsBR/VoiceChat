@@ -21,6 +21,7 @@ public abstract class VoiceClient implements Runnable {
 
     public abstract void handlePacket(int var1, byte[] var2, int var3, boolean var4);
 
+    @Override
     public final void run() {
         this.start();
     }

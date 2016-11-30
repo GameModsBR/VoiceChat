@@ -57,21 +57,25 @@ public class OggSpeexWriter extends AudioFileWriter {
         this.streamSerialNumber = var1;
     }
 
+    @Override
     public void close() throws IOException {
         this.flush(true);
         this.out.close();
     }
 
+    @Override
     public void open(File var1) throws IOException {
         var1.delete();
         this.out = new FileOutputStream(var1);
         this.size = 0;
     }
 
+    @Override
     public void open(String var1) throws IOException {
         this.open(new File(var1));
     }
 
+    @Override
     public void writeHeader(String var1) throws IOException {
         byte[] var3 = buildOggPageHeader(2, 0L, this.streamSerialNumber, this.pageCount++, 1, new byte[]{(byte) 80});
         byte[] var4 = buildSpeexHeader(this.sampleRate, this.mode, this.channels, this.vbr, this.nframes);
@@ -89,6 +93,7 @@ public class OggSpeexWriter extends AudioFileWriter {
         this.out.write(var4);
     }
 
+    @Override
     public void writePacket(byte[] var1, int var2, int var3) throws IOException {
         if (var3 > 0) {
             if (this.packetCount > 250) {

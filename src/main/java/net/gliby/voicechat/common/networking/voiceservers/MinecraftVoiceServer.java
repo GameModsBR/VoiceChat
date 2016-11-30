@@ -16,35 +16,43 @@ public class MinecraftVoiceServer extends VoiceServer {
         this.voiceChat = voiceChat;
     }
 
+    @Override
     public EnumVoiceNetworkType getType() {
         return EnumVoiceNetworkType.MINECRAFT;
     }
 
+    @Override
     public void handleVoiceData(EntityPlayerMP player, byte[] data, byte divider, int id, boolean end) {
         this.voiceChat.getServerNetwork().getDataManager().addQueue(player, data, divider, id, end);
     }
 
+    @Override
     public void sendChunkVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples, byte chunkSize) {
         VoiceChat.getDispatcher().sendTo(new MinecraftClientVoicePacket(chunkSize, samples, entityID, direct), player);
     }
 
+    @Override
     public void sendEntityPosition(EntityPlayerMP player, int entityID, double x, double y, double z) {
         VoiceChat.getDispatcher().sendTo(new MinecraftClientEntityPositionPacket(entityID, x, y, z), player);
     }
 
+    @Override
     public void sendVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples) {
         VoiceChat.getDispatcher().sendTo(new MinecraftClientVoicePacket((byte) samples.length, samples, entityID, direct), player);
     }
 
+    @Override
     public void sendVoiceEnd(EntityPlayerMP player, int id) {
         VoiceChat.getDispatcher().sendTo(new MinecraftClientVoiceEndPacket(id), player);
     }
 
+    @Override
     public boolean start() {
         VoiceChatServer.getLogger().warn("Minecraft Networking is not recommended and is consider very slow, please setup UDP.");
         return true;
     }
 
+    @Override
     public void stop() {
     }
 }

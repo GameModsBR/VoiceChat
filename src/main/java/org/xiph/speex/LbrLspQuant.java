@@ -2,6 +2,7 @@ package org.xiph.speex;
 
 public class LbrLspQuant extends LspQuant {
 
+    @Override
     public final void quant(float[] var1, float[] var2, int var3, Bits var4) {
         float[] var9 = new float[20];
 
@@ -49,6 +50,7 @@ public class LbrLspQuant extends LspQuant {
 
     }
 
+    @Override
     public final void unquant(float[] var1, int var2, Bits var3) {
         for (int var4 = 0; var4 < var2; ++var4) {
             var1[var4] = 0.25F * (float) var4 + 0.25F;

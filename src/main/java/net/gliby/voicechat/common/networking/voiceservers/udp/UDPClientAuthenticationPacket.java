@@ -13,10 +13,12 @@ public class UDPClientAuthenticationPacket extends UDPPacket {
         this.hash = hash;
     }
 
+    @Override
     public byte id() {
         return (byte) 0;
     }
 
+    @Override
     public void write(ByteArrayDataOutput out) {
         try {
             UDPByteUtilities.writeBytes(this.hash.getBytes("UTF-8"), out);

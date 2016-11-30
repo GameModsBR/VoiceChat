@@ -9,6 +9,7 @@ public abstract class VoiceServer implements Runnable {
 
     public abstract void handleVoiceData(EntityPlayerMP var1, byte[] var2, byte var3, int var4, boolean var5);
 
+    @Override
     public final void run() {
         VoiceChat.getLogger().info(this.start() ? "Started [" + this.getType().name + "] Server." : "Failed to start [" + this.getType().name + "] Server.");
     }

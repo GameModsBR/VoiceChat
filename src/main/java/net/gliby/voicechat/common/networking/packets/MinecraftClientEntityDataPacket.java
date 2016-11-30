@@ -28,6 +28,7 @@ public class MinecraftClientEntityDataPacket extends MinecraftPacket implements 
         this.z = z;
     }
 
+    @Override
     public void fromBytes(ByteBuf buf) {
         this.entityID = buf.readInt();
         this.x = buf.readDouble();
@@ -36,6 +37,7 @@ public class MinecraftClientEntityDataPacket extends MinecraftPacket implements 
         this.username = ByteBufUtils.readUTF8String(buf);
     }
 
+    @Override
     public IMessage onMessage(MinecraftClientEntityDataPacket packet, MessageContext ctx) {
         if (VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
             VoiceChat.getProxyInstance().getClientNetwork().handleEntityData(packet.entityID, packet.username, packet.x, packet.y, packet.z);
@@ -44,6 +46,7 @@ public class MinecraftClientEntityDataPacket extends MinecraftPacket implements 
         return null;
     }
 
+    @Override
     public void toBytes(ByteBuf buf) {
         buf.writeInt(this.entityID);
         buf.writeDouble(this.x);

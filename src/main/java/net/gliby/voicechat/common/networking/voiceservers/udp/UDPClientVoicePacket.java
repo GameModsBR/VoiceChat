@@ -13,10 +13,12 @@ public class UDPClientVoicePacket extends UDPPacket {
         this.divider = divider;
     }
 
+    @Override
     public byte id() {
         return (byte) 1;
     }
 
+    @Override
     public void write(ByteArrayDataOutput out) {
         UDPByteUtilities.writeBytes(this.samples, out);
         out.writeByte(this.divider);

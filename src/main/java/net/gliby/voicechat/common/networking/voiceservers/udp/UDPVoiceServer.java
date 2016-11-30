@@ -30,6 +30,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
         this.manager = voiceChat.getServerNetwork().getDataManager();
     }
 
+    @Override
     public void closeConnection(int id) {
         UDPClient client = this.clientMap.get(id);
         if (client != null) {
@@ -39,14 +40,17 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
         this.clientMap.remove(id);
     }
 
+    @Override
     public EnumVoiceNetworkType getType() {
         return EnumVoiceNetworkType.UDP;
     }
 
+    @Override
     public void handleVoiceData(EntityPlayerMP player, byte[] data, byte divider, int id, boolean end) {
         this.manager.addQueue(player, data, divider, id, end);
     }
 
+    @Override
     public void sendChunkVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples, byte chunkSize) {
         UDPClient client = this.clientMap.get(player.getEntityId());
         if (client != null) {
@@ -55,6 +59,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
 
     }
 
+    @Override
     public void sendEntityPosition(EntityPlayerMP player, int entityID, double x, double y, double z) {
         UDPClient client = this.clientMap.get(player.getEntityId());
         if (client != null) {
@@ -79,6 +84,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
 
     }
 
+    @Override
     public void sendVoiceData(EntityPlayerMP player, int entityID, boolean global, byte[] samples) {
         UDPClient client = this.clientMap.get(player.getEntityId());
         if (client != null) {
@@ -87,6 +93,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
 
     }
 
+    @Override
     public void sendVoiceEnd(EntityPlayerMP player, int entityID) {
         UDPClient client = this.clientMap.get(player.getEntityId());
         if (client != null) {
@@ -95,6 +102,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
 
     }
 
+    @Override
     public boolean start() {
         this.clientMap = new HashMap<Integer, UDPClient>();
         this.handler = new UDPVoiceServerHandler(this);
@@ -106,6 +114,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
 
         this.server = new UdpServer(VoiceChatServer.getLogger(), hostname, this.voiceChat.getServerSettings().getUDPPort());
         this.server.addUdpServerListener(new UdpServer.Listener() {
+            @Override
             public void packetReceived(UdpServer.Event evt) {
                 try {
                     UDPVoiceServer.this.handler.read(evt.getPacketAsBytes(), evt.getPacket());
@@ -119,6 +128,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
         return true;
     }
 
+    @Override
     public void stop() {
         running = false;
         this.handler.close();

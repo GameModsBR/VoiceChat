@@ -46,6 +46,7 @@ public class GuiScreenLocalMute
         this.parent = par1GuiScreen;
     }
 
+    @Override
     protected void actionPerformed(GuiButton button) {
         this.actionPerformed(button.id);
     }
@@ -72,6 +73,7 @@ public class GuiScreenLocalMute
         }
     }
 
+    @Override
     public void drawScreen(int par1, int par2, float par3) {
         this.listPlayers.drawScreen(par1, par2, par3);
         this.drawCenteredString(this.fontRendererObj, I18n.format("menu.mutedPlayers", (Object[]) new Object[0]), this.width / 2, 16, -1);
@@ -82,6 +84,7 @@ public class GuiScreenLocalMute
         super.drawScreen(par1, par2, par3);
     }
 
+    @Override
     public void initGui() {
         Keyboard.enableRepeatEvents(true);
         this.autoCompletionNames = new ArrayList<String>();
@@ -96,6 +99,7 @@ public class GuiScreenLocalMute
         this.listPlayers.registerScrollButtons(7, 8);
     }
 
+    @Override
     protected void keyTyped(char par1, int par2) {
         this.playerNotFound = false;
         this.playerTextField.textboxKeyTyped(par1, par2);
@@ -130,6 +134,7 @@ public class GuiScreenLocalMute
         }
     }
 
+    @Override
     public void onGuiClosed() {
         super.onGuiClosed();
         Keyboard.enableRepeatEvents(false);
@@ -144,11 +149,13 @@ public class GuiScreenLocalMute
         }
     }
 
+    @Override
     public void handleMouseInput() throws IOException {
         super.handleMouseInput();
         this.listPlayers.handleMouseInput();
     }
 
+    @Override
     public void updateScreen() {
         this.playerTextField.updateCursorCounter();
     }
@@ -163,16 +170,19 @@ public class GuiScreenLocalMute
             this.buttonCross = new Rectangle(0, 0, 20, 20);
         }
 
+        @Override
         protected void drawBackground() {
             GuiScreenLocalMute.this.drawDefaultBackground();
         }
 
+        @Override
         protected void drawSlot(int entryID, int p_180791_2_, int par2, int p_180791_4_, int p_180791_5_, int p_180791_6_) {
             VoiceChatClient.getSoundManager();
             GuiScreenLocalMute.this.drawCenteredString(GuiScreenLocalMute.this.fontRendererObj, ClientStreamManager.playerMutedData.get(VoiceChatClient.getSoundManager().playersMuted.get(entryID)), this.width / 2, par2 + 1, 16777215);
             GuiScreenLocalMute.this.drawCenteredString(GuiScreenLocalMute.this.fontRendererObj, "\u00a7lX", this.width / 2 + 88, par2 + 3, 16711680);
         }
 
+        @Override
         protected void elementClicked(int slotIndex, boolean isDoubleClick, int mouseX, int mouseY) {
             if (isDoubleClick) {
                 VoiceChatClient.getSoundManager().playersMuted.remove(slotIndex);
@@ -181,14 +191,17 @@ public class GuiScreenLocalMute
             }
         }
 
+        @Override
         protected int getContentHeight() {
             return this.getSize() * 18;
         }
 
+        @Override
         protected int getSize() {
             return VoiceChatClient.getSoundManager().playersMuted.size();
         }
 
+        @Override
         protected boolean isSelected(int slotIndex) {
             return true;
         }

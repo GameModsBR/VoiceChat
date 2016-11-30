@@ -15,6 +15,7 @@ public class GuiCustomButton extends GuiButton {
         super(par1, par2, par3, par4, par5, par6Str);
     }
 
+    @Override
     public void drawButton(Minecraft p_146112_1_, int p_146112_2_, int p_146112_3_) {
         if (this.visible) {
             FontRenderer fontrenderer = p_146112_1_.fontRendererObj;
@@ -42,6 +43,7 @@ public class GuiCustomButton extends GuiButton {
 
     }
 
+    @Override
     public int getHoverState(boolean par1) {
         byte b0 = 1;
         if (!this.enabled) {
@@ -61,6 +63,7 @@ public class GuiCustomButton extends GuiButton {
         this.height = height;
     }
 
+    @Override
     public void setWidth(int width) {
         this.width = width;
     }

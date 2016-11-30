@@ -41,6 +41,7 @@ public class UDPVoiceClient extends VoiceAuthenticatedClient {
         this.key = (int) (new BigInteger(hash.replaceAll("[^0-9.]", ""))).longValue();
     }
 
+    @Override
     public void autheticate() {
         this.sendPacket(new UDPClientAuthenticationPacket(this.hash));
     }
@@ -50,11 +51,13 @@ public class UDPVoiceClient extends VoiceAuthenticatedClient {
         this.setAuthed(true);
     }
 
+    @Override
     public void handleEnd(int id) {
         VoiceChat.getSynchronizedProxyInstance();
         VoiceChatClient.getSoundManager().alertEnd(id);
     }
 
+    @Override
     public void handleEntityPosition(int entityID, double x, double y, double z) {
         PlayerProxy proxy = this.soundManager.playerData.get(entityID);
         if (proxy != null) {
@@ -63,6 +66,7 @@ public class UDPVoiceClient extends VoiceAuthenticatedClient {
 
     }
 
+    @Override
     public void handlePacket(int entityID, byte[] data, int chunkSize, boolean direct) {
         VoiceChat.getSynchronizedProxyInstance();
         VoiceChatClient.getSoundManager().getSoundPreProcessor().process(entityID, data, chunkSize, direct);
@@ -86,6 +90,7 @@ public class UDPVoiceClient extends VoiceAuthenticatedClient {
 
     }
 
+    @Override
     public void sendVoiceData(byte divider, byte[] samples, boolean end) {
         if (this.authed) {
             if (end) {
@@ -97,6 +102,7 @@ public class UDPVoiceClient extends VoiceAuthenticatedClient {
 
     }
 
+    @Override
     public void start() {
         running = true;
         this.address = new InetSocketAddress(this.host, this.port);
@@ -132,6 +138,7 @@ public class UDPVoiceClient extends VoiceAuthenticatedClient {
 
     }
 
+    @Override
     public void stop() {
         running = false;
         if (this.datagramSocket != null) {

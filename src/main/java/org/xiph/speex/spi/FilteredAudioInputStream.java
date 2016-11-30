@@ -95,10 +95,12 @@ public abstract class FilteredAudioInputStream extends AudioInputStream {
         this.count = this.pos;
     }
 
+    @Override
     public synchronized int read() throws IOException {
         return this.read(this.single, 0, 1) == -1 ? -1 : this.single[0] & 255;
     }
 
+    @Override
     public synchronized int read(byte[] var1, int var2, int var3) throws IOException {
         this.checkIfStillOpen();
         if (var2 >= 0 && var2 <= var1.length && var3 >= 0 && var2 + var3 <= var1.length && var2 + var3 >= 0) {
@@ -124,6 +126,7 @@ public abstract class FilteredAudioInputStream extends AudioInputStream {
         }
     }
 
+    @Override
     public synchronized long skip(long var1) throws IOException {
         this.checkIfStillOpen();
         if (var1 <= 0L) {
@@ -153,11 +156,13 @@ public abstract class FilteredAudioInputStream extends AudioInputStream {
         }
     }
 
+    @Override
     public synchronized int available() throws IOException {
         this.checkIfStillOpen();
         return this.count - this.pos;
     }
 
+    @Override
     public synchronized void mark(int var1) {
         if (var1 > this.buf.length - this.pos) {
             byte[] var2;
@@ -178,6 +183,7 @@ public abstract class FilteredAudioInputStream extends AudioInputStream {
         this.marklimit = var1;
     }
 
+    @Override
     public synchronized void reset() throws IOException {
         this.checkIfStillOpen();
         if (this.markpos < 0) {
@@ -187,10 +193,12 @@ public abstract class FilteredAudioInputStream extends AudioInputStream {
         }
     }
 
+    @Override
     public boolean markSupported() {
         return true;
     }
 
+    @Override
     public synchronized void close() throws IOException {
         if (this.in != null) {
             this.in.close();

@@ -117,6 +117,7 @@ public class Speex2PcmAudioInputStream extends FilteredAudioInputStream {
 
     }
 
+    @Override
     protected void fill() throws IOException {
         this.makeSpace();
 
@@ -218,6 +219,7 @@ public class Speex2PcmAudioInputStream extends FilteredAudioInputStream {
 
     }
 
+    @Override
     public synchronized long skip(long var1) throws IOException {
         while (!this.initialised) {
             this.initialise(true);
@@ -270,6 +272,7 @@ public class Speex2PcmAudioInputStream extends FilteredAudioInputStream {
         }
     }
 
+    @Override
     public synchronized int available() throws IOException {
         if (!this.initialised) {
             this.initialise(false);

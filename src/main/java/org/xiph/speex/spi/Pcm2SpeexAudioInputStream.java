@@ -148,6 +148,7 @@ public class Pcm2SpeexAudioInputStream extends FilteredAudioInputStream {
         return this.encoder.getEncoder();
     }
 
+    @Override
     protected void fill() throws IOException {
         this.makeSpace();
         if (this.first) {
@@ -270,6 +271,7 @@ public class Pcm2SpeexAudioInputStream extends FilteredAudioInputStream {
         }
     }
 
+    @Override
     public synchronized int available() throws IOException {
         int var1 = super.available();
         int var2 = this.precount - this.prepos + this.in.available();

@@ -16,6 +16,7 @@ public class Ltp3Tap extends Ltp {
         this.e = new float[3][128];
     }
 
+    @Override
     public final int quant(float[] var1, float[] var2, int var3, float[] var4, float[] var5, float[] var6, float[] var7, int var8, int var9, int var10, float var11, int var12, int var13, Bits var14, float[] var15, int var16, float[] var17, int var18) {
         int[] var21 = new int[1];
         int var22 = 0;
@@ -78,6 +79,7 @@ public class Ltp3Tap extends Ltp {
         }
     }
 
+    @Override
     public final int unquant(float[] var1, int var2, int var3, float var4, int var5, float[] var6, Bits var7, int var8, int var9, float var10) {
         int var12 = var7.unpack(this.pitch_bits);
         var12 += var3;

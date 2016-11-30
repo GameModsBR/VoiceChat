@@ -17,10 +17,12 @@ public class UDPServerChunkVoicePacket extends UDPPacket {
         this.chunkSize = chunkSize;
     }
 
+    @Override
     public byte id() {
         return (byte) 5;
     }
 
+    @Override
     public void write(ByteArrayDataOutput out) {
         out.writeInt(this.entityId);
         out.writeByte(this.chunkSize);

@@ -40,6 +40,7 @@ public class MicrophoneTester implements Runnable {
         return this.thread;
     }
 
+    @Override
     public void run() {
         this.voiceChat.setRecorderActive(false);
         this.voiceChat.recorder.stop();

@@ -15,14 +15,17 @@ import java.util.List;
 
 public class CommandVoiceMute extends CommandBase {
 
+    @Override
     public List addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
         return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getPlayers()) : null;
     }
 
+    @Override
     public String getCommandName() {
         return "vmute";
     }
 
+    @Override
     public String getCommandUsage(ICommandSender par1ICommandSender) {
         return "Usage: /vmute <player>";
     }
@@ -31,6 +34,7 @@ public class CommandVoiceMute extends CommandBase {
         return MinecraftServer.getServer().getAllUsernames();
     }
 
+    @Override
     public int getRequiredPermissionLevel() {
         return 3;
     }
@@ -39,6 +43,7 @@ public class CommandVoiceMute extends CommandBase {
         return par1 == 0;
     }
 
+    @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if (args.length == 1 && args[0].length() > 0) {
             ServerNetwork network = VoiceChat.getServerInstance().getServerNetwork();

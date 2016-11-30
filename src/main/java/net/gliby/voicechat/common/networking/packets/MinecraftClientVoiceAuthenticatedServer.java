@@ -38,6 +38,7 @@ public class MinecraftClientVoiceAuthenticatedServer extends MinecraftPacket imp
         this.ip = ip;
     }
 
+    @Override
     public void fromBytes(ByteBuf buf) {
         this.showVoicePlates = buf.readBoolean();
         this.showVoiceIcons = buf.readBoolean();
@@ -51,11 +52,13 @@ public class MinecraftClientVoiceAuthenticatedServer extends MinecraftPacket imp
         this.ip = ByteBufUtils.readUTF8String(buf);
     }
 
+    @Override
     public IMessage onMessage(MinecraftClientVoiceAuthenticatedServer packet, MessageContext ctx) {
         VoiceChat.getProxyInstance().getClientNetwork().handleVoiceAuthenticatedServer(packet.showVoicePlates, packet.showVoiceIcons, packet.minQuality, packet.maxQuality, packet.bufferSize, packet.soundDistance, packet.voiceServerType, packet.udpPort, packet.hash, packet.ip);
         return null;
     }
 
+    @Override
     public void toBytes(ByteBuf buf) {
         buf.writeBoolean(this.showVoicePlates);
         buf.writeBoolean(this.showVoiceIcons);

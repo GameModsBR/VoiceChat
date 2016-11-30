@@ -23,6 +23,7 @@ public class NbDecoder extends NbCodec implements Decoder {
         this.enhanced = true;
     }
 
+    @Override
     public void init(int var1, int var2, int var3, int var4) {
         super.init(var1, var2, var3, var4);
         this.filters.init();
@@ -35,6 +36,7 @@ public class NbDecoder extends NbCodec implements Decoder {
         this.last_ol_gain = 0.0F;
     }
 
+    @Override
     public int decode(Bits var1, float[] var2) throws StreamCorruptedException {
         int var6 = 0;
         float[] var8 = new float[3];
@@ -470,14 +472,17 @@ public class NbDecoder extends NbCodec implements Decoder {
         return 0;
     }
 
+    @Override
     public void decodeStereo(float[] var1, int var2) {
         this.stereo.decode(var1, var2);
     }
 
+    @Override
     public boolean getPerceptualEnhancement() {
         return this.enhanced;
     }
 
+    @Override
     public void setPerceptualEnhancement(boolean var1) {
         this.enhanced = var1;
     }

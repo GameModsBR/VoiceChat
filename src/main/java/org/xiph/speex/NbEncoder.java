@@ -39,6 +39,7 @@ public class NbEncoder extends NbCodec implements Encoder {
     private int dtx_count;
     private float[] innov2;
 
+    @Override
     public void init(int var1, int var2, int var3, int var4) {
         super.init(var1, var2, var3, var4);
         this.complexity = 3;
@@ -84,6 +85,7 @@ public class NbEncoder extends NbCodec implements Encoder {
         this.pitch = new int[this.nbSubframes];
     }
 
+    @Override
     public int encode(Bits var1, float[] var2) {
         System.arraycopy(this.frmBuf, this.frameSize, this.frmBuf, 0, this.bufSize - this.frameSize);
         this.frmBuf[this.bufSize - this.frameSize] = var2[0] - this.preemph * this.pre_mem;
@@ -608,10 +610,12 @@ public class NbEncoder extends NbCodec implements Encoder {
         }
     }
 
+    @Override
     public int getEncodedFrameSize() {
         return NB_FRAME_SIZE[this.submodeID];
     }
 
+    @Override
     public void setQuality(int var1) {
         if (var1 < 0) {
             var1 = 0;
@@ -624,10 +628,12 @@ public class NbEncoder extends NbCodec implements Encoder {
         this.submodeID = this.submodeSelect = NB_QUALITY_MAP[var1];
     }
 
+    @Override
     public int getBitRate() {
         return this.submodes[this.submodeID] != null ? this.sampling_rate * this.submodes[this.submodeID].bits_per_frame / this.frameSize : this.sampling_rate * 5 / this.frameSize;
     }
 
+    @Override
     public void setBitRate(int var1) {
         for (int var2 = 10; var2 >= 0; --var2) {
             this.setQuality(var2);
@@ -638,10 +644,12 @@ public class NbEncoder extends NbCodec implements Encoder {
 
     }
 
+    @Override
     public int getMode() {
         return this.submodeID;
     }
 
+    @Override
     public void setMode(int var1) {
         if (var1 < 0) {
             var1 = 0;
@@ -650,30 +658,37 @@ public class NbEncoder extends NbCodec implements Encoder {
         this.submodeID = this.submodeSelect = var1;
     }
 
+    @Override
     public boolean getVbr() {
         return this.vbr_enabled != 0;
     }
 
+    @Override
     public void setVbr(boolean var1) {
         this.vbr_enabled = var1 ? 1 : 0;
     }
 
+    @Override
     public boolean getVad() {
         return this.vad_enabled != 0;
     }
 
+    @Override
     public void setVad(boolean var1) {
         this.vad_enabled = var1 ? 1 : 0;
     }
 
+    @Override
     public void setDtx(boolean var1) {
         this.dtx_enabled = var1 ? 1 : 0;
     }
 
+    @Override
     public int getAbr() {
         return this.abr_enabled;
     }
 
+    @Override
     public void setAbr(int var1) {
         this.abr_enabled = var1 != 0 ? 1 : 0;
         this.vbr_enabled = 1;
@@ -698,10 +713,12 @@ public class NbEncoder extends NbCodec implements Encoder {
         this.abr_drift2 = 0.0F;
     }
 
+    @Override
     public float getVbrQuality() {
         return this.vbr_quality;
     }
 
+    @Override
     public void setVbrQuality(float var1) {
         if (var1 < 0.0F) {
             var1 = 0.0F;
@@ -714,10 +731,12 @@ public class NbEncoder extends NbCodec implements Encoder {
         this.vbr_quality = var1;
     }
 
+    @Override
     public int getComplexity() {
         return this.complexity;
     }
 
+    @Override
     public void setComplexity(int var1) {
         if (var1 < 0) {
             var1 = 0;
@@ -730,18 +749,22 @@ public class NbEncoder extends NbCodec implements Encoder {
         this.complexity = var1;
     }
 
+    @Override
     public int getSamplingRate() {
         return this.sampling_rate;
     }
 
+    @Override
     public void setSamplingRate(int var1) {
         this.sampling_rate = var1;
     }
 
+    @Override
     public int getLookAhead() {
         return this.windowSize - this.frameSize;
     }
 
+    @Override
     public float getRelativeQuality() {
         return this.relative_quality;
     }

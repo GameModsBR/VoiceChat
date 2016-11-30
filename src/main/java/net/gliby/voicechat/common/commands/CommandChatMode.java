@@ -15,6 +15,7 @@ import java.util.List;
 
 public class CommandChatMode extends CommandBase {
 
+    @Override
     public List addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
         return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, "distance", "global", "world") : (par2ArrayOfStr.length == 2 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames()) : null);
     }
@@ -27,10 +28,12 @@ public class CommandChatMode extends CommandBase {
         return !par2Str.equalsIgnoreCase("distance") && !par2Str.startsWith("d") && !par2Str.equalsIgnoreCase("0") ? (!par2Str.equalsIgnoreCase("world") && !par2Str.startsWith("w") && !par2Str.equalsIgnoreCase("1") ? (!par2Str.equalsIgnoreCase("global") && !par2Str.startsWith("g") && !par2Str.equalsIgnoreCase("2") ? 0 : 2) : 1) : 0;
     }
 
+    @Override
     public String getCommandName() {
         return "vchatmode";
     }
 
+    @Override
     public String getCommandUsage(ICommandSender par1ICommandSender) {
         return "/vchatmode <mode> or /vchatmode <mode> [player]";
     }
@@ -39,14 +42,17 @@ public class CommandChatMode extends CommandBase {
         return MinecraftServer.getServer().getAllUsernames();
     }
 
+    @Override
     public int getRequiredPermissionLevel() {
         return 3;
     }
 
+    @Override
     public boolean isUsernameIndex(String[] par1ArrayOfStr, int par2) {
         return par2 == 1;
     }
 
+    @Override
     public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
         if (par2ArrayOfStr.length > 0) {
             int chatMode = this.getChatModeFromCommand(par1ICommandSender, par2ArrayOfStr[0]);

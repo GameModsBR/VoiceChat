@@ -17,10 +17,12 @@ public class UDPServerEntityPositionPacket extends UDPPacket {
         this.z = z;
     }
 
+    @Override
     public byte id() {
         return (byte) 4;
     }
 
+    @Override
     public void write(ByteArrayDataOutput out) {
         out.writeInt(this.entityId);
         out.writeDouble(this.x);

@@ -100,11 +100,13 @@ public class ServerSettings {
     public void preInit(File file) {
         this.configuration = new ServerConfiguration(this, file);
         (new Thread(new Runnable() {
+            @Override
             public void run() {
                 ServerSettings.this.configuration.init();
             }
         }, "Configuration Process")).start();
         (new Thread(new Runnable() {
+            @Override
             public void run() {
                 ModPackSettings settings = new ModPackSettings();
 

@@ -66,6 +66,7 @@ public class GuiUIPlacement extends GuiScreen {
         GL11.glDisable(3042);
     }
 
+    @Override
     public void actionPerformed(GuiButton button) {
         if (button.id == 0 && this.lastSelected != null) {
             if (this.lastSelected.positionType >= 1) {
@@ -91,6 +92,7 @@ public class GuiUIPlacement extends GuiScreen {
         drawRect(x, y, width + x, height + y, color);
     }
 
+    @Override
     public void drawScreen(int x, int y, float tick) {
         this.drawDefaultBackground();
         this.drawCenteredString(this.fontRendererObj, I18n.format("menu.pressESCtoReturn"), this.width / 2, 2, -1);
@@ -141,6 +143,7 @@ public class GuiUIPlacement extends GuiScreen {
         return mouseX >= x && mouseY >= y && mouseX < x + width && mouseY < y + height;
     }
 
+    @Override
     public void initGui() {
         this.positionTypes[0] = I18n.format("menu.positionAutomatic");
         this.positionTypes[1] = I18n.format("menu.positionAbsolute");
@@ -162,6 +165,7 @@ public class GuiUIPlacement extends GuiScreen {
 
     }
 
+    @Override
     public void keyTyped(char par1, int par2) {
         if (this.lastSelected != null) {
             if (par2 == 200) {
@@ -187,6 +191,7 @@ public class GuiUIPlacement extends GuiScreen {
 
     }
 
+    @Override
     public void mouseClicked(int x, int y, int b) {
         if (b == 0) {
             if (this.selectedUIPlaceable == null) {
@@ -212,6 +217,7 @@ public class GuiUIPlacement extends GuiScreen {
 
     }
 
+    @Override
     public void onGuiClosed() {
         super.onGuiClosed();
         this.save();
@@ -241,6 +247,7 @@ public class GuiUIPlacement extends GuiScreen {
         settings.getConfiguration().save();
     }
 
+    @Override
     public void updateScreen() {
     }
 }

@@ -19,10 +19,12 @@ public class MinecraftVoiceClient extends VoiceClient {
         this.soundManager = VoiceChatClient.getSoundManager();
     }
 
+    @Override
     public void handleEnd(int id) {
         this.soundManager.alertEnd(id);
     }
 
+    @Override
     public void handleEntityPosition(int entityID, double x, double y, double z) {
         PlayerProxy proxy = this.soundManager.playerData.get(entityID);
         if (proxy != null) {
@@ -31,10 +33,12 @@ public class MinecraftVoiceClient extends VoiceClient {
 
     }
 
+    @Override
     public void handlePacket(int entityID, byte[] data, int chunkSize, boolean direct) {
         this.soundManager.getSoundPreProcessor().process(entityID, data, chunkSize, direct);
     }
 
+    @Override
     public void sendVoiceData(byte division, byte[] samples, boolean end) {
         if (end) {
             VoiceChat.getDispatcher().sendToServer(new MinecraftServerVoiceEndPacket());
@@ -44,9 +48,11 @@ public class MinecraftVoiceClient extends VoiceClient {
 
     }
 
+    @Override
     public void start() {
     }
 
+    @Override
     public void stop() {
     }
 }

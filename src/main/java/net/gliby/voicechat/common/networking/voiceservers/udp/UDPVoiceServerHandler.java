@@ -73,6 +73,7 @@ public class UDPVoiceServerHandler {
         final ByteArrayDataInput in = ByteStreams.newDataInput(data);
         final byte id = in.readByte();
         this.threadService.execute(new Runnable() {
+            @Override
             public void run() {
                 if (id == 0) {
                     UDPVoiceServerHandler.this.handleAuthetication(address, packet, in);

@@ -59,6 +59,7 @@ public class PcmWaveWriter extends AudioFileWriter {
         this.isPCM = false;
     }
 
+    @Override
     public void close() throws IOException {
         this.raf.seek(4L);
         int var1 = (int) this.raf.length() - 8;
@@ -68,16 +69,19 @@ public class PcmWaveWriter extends AudioFileWriter {
         this.raf.close();
     }
 
+    @Override
     public void open(File var1) throws IOException {
         var1.delete();
         this.raf = new RandomAccessFile(var1, "rw");
         this.size = 0;
     }
 
+    @Override
     public void open(String var1) throws IOException {
         this.open(new File(var1));
     }
 
+    @Override
     public void writeHeader(String var1) throws IOException {
         byte[] var2 = "RIFF".getBytes();
         this.raf.write(var2, 0, var2.length);
@@ -115,6 +119,7 @@ public class PcmWaveWriter extends AudioFileWriter {
         writeInt(this.raf, 0);
     }
 
+    @Override
     public void writePacket(byte[] var1, int var2, int var3) throws IOException {
         this.raf.write(var1, var2, var3);
         this.size += var3;

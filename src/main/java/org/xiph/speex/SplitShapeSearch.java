@@ -42,6 +42,7 @@ public class SplitShapeSearch extends CbSearch {
         this.E = new float[this.shape_cb_size];
     }
 
+    @Override
     public final void quant(float[] var1, float[] var2, float[] var3, float[] var4, int var5, int var6, float[] var7, int var8, float[] var9, Bits var10, int var11) {
         int var23 = var11;
         if (var11 > 10) {
@@ -244,6 +245,7 @@ public class SplitShapeSearch extends CbSearch {
 
     }
 
+    @Override
     public final void unquant(float[] var1, int var2, int var3, Bits var4) {
         int var5;
         for (var5 = 0; var5 < this.nb_subvect; ++var5) {

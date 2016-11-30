@@ -37,6 +37,7 @@ public class Recorder implements Runnable {
         return newBuf.array();
     }
 
+    @Override
     public void run() {
         AudioFormat format = ClientStreamManager.getUniversalAudioFormat();
         TargetDataLine recordingLine = this.voiceChat.getSettings().getInputDevice().getLine();

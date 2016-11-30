@@ -14,16 +14,19 @@ public class SpeexFormatConvertionProvider extends FormatConversionProvider {
     public static final AudioFormat[] NO_FORMAT = new AudioFormat[0];
 
 
+    @Override
     public Encoding[] getSourceEncodings() {
         Encoding[] var1 = new Encoding[]{SpeexEncoding.SPEEX, Encoding.PCM_SIGNED};
         return var1;
     }
 
+    @Override
     public Encoding[] getTargetEncodings() {
         Encoding[] var1 = new Encoding[]{SpeexEncoding.SPEEX_Q0, SpeexEncoding.SPEEX_Q1, SpeexEncoding.SPEEX_Q2, SpeexEncoding.SPEEX_Q3, SpeexEncoding.SPEEX_Q4, SpeexEncoding.SPEEX_Q5, SpeexEncoding.SPEEX_Q6, SpeexEncoding.SPEEX_Q7, SpeexEncoding.SPEEX_Q8, SpeexEncoding.SPEEX_Q9, SpeexEncoding.SPEEX_Q10, SpeexEncoding.SPEEX_VBR0, SpeexEncoding.SPEEX_VBR1, SpeexEncoding.SPEEX_VBR2, SpeexEncoding.SPEEX_VBR3, SpeexEncoding.SPEEX_VBR4, SpeexEncoding.SPEEX_VBR5, SpeexEncoding.SPEEX_VBR6, SpeexEncoding.SPEEX_VBR7, SpeexEncoding.SPEEX_VBR8, SpeexEncoding.SPEEX_VBR9, SpeexEncoding.SPEEX_VBR10, Encoding.PCM_SIGNED};
         return var1;
     }
 
+    @Override
     public Encoding[] getTargetEncodings(AudioFormat var1) {
         Encoding[] var2;
         if (var1.getEncoding().equals(Encoding.PCM_SIGNED)) {
@@ -38,6 +41,7 @@ public class SpeexFormatConvertionProvider extends FormatConversionProvider {
         }
     }
 
+    @Override
     public AudioFormat[] getTargetFormats(Encoding var1, AudioFormat var2) {
         AudioFormat[] var3;
         if (var2.getEncoding().equals(Encoding.PCM_SIGNED) && var1 instanceof SpeexEncoding) {
@@ -57,6 +61,7 @@ public class SpeexFormatConvertionProvider extends FormatConversionProvider {
         }
     }
 
+    @Override
     public AudioInputStream getAudioInputStream(Encoding var1, AudioInputStream var2) {
         if (this.isConversionSupported(var1, var2.getFormat())) {
             AudioFormat[] var3 = this.getTargetFormats(var1, var2.getFormat());
@@ -80,6 +85,7 @@ public class SpeexFormatConvertionProvider extends FormatConversionProvider {
         }
     }
 
+    @Override
     public AudioInputStream getAudioInputStream(AudioFormat var1, AudioInputStream var2) {
         if (this.isConversionSupported(var1, var2.getFormat())) {
             AudioFormat[] var3 = this.getTargetFormats(var1.getEncoding(), var2.getFormat());

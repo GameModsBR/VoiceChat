@@ -4,10 +4,12 @@ import com.google.common.io.ByteArrayDataOutput;
 
 public class UDPClientVoiceEnd extends UDPPacket {
 
+    @Override
     public byte id() {
         return (byte) 2;
     }
 
+    @Override
     public void write(ByteArrayDataOutput out) {
     }
 }

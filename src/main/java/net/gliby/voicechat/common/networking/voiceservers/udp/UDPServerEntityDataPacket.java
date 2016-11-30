@@ -19,10 +19,12 @@ public class UDPServerEntityDataPacket extends UDPPacket {
         this.z = z;
     }
 
+    @Override
     public byte id() {
         return (byte) 3;
     }
 
+    @Override
     public void write(ByteArrayDataOutput out) {
         out.writeInt(this.entityId);
         out.writeUTF(this.name);

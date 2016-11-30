@@ -177,6 +177,7 @@ public class Settings {
 
     public void init() {
         (new Thread(new Runnable() {
+            @Override
             public void run() {
                 Settings.this.deviceHandler.loadDevices();
                 Settings.this.configuration.init(Settings.this.deviceHandler);

@@ -11,10 +11,12 @@ public class UDPServerVoiceEndPacket extends UDPPacket {
         this.entityID = entityID;
     }
 
+    @Override
     public byte id() {
         return (byte) 2;
     }
 
+    @Override
     public void write(ByteArrayDataOutput out) {
         out.writeInt(this.entityID);
     }

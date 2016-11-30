@@ -19,10 +19,12 @@ public class MinecraftClientVoiceEndPacket extends MinecraftPacket implements IM
         this.entityID = entityID;
     }
 
+    @Override
     public void fromBytes(ByteBuf buf) {
         this.entityID = buf.readInt();
     }
 
+    @Override
     public IMessage onMessage(MinecraftClientVoiceEndPacket packet, MessageContext ctx) {
         if (VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
             VoiceChat.getProxyInstance().getClientNetwork().getVoiceClient().handleEnd(packet.entityID);
@@ -31,6 +33,7 @@ public class MinecraftClientVoiceEndPacket extends MinecraftPacket implements IM
         return null;
     }
 
+    @Override
     public void toBytes(ByteBuf buf) {
         buf.writeInt(this.entityID);
     }

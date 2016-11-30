@@ -15,6 +15,7 @@ public class KeyGuiOptionsEvent extends KeyEvent {
         this.voiceChat = voiceChat;
     }
 
+    @Override
     public void keyDown(KeyBinding kb, boolean tickEnd, boolean isRepeat) {
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null && mc.currentScreen == null && mc.theWorld != null && tickEnd) {
@@ -23,6 +24,7 @@ public class KeyGuiOptionsEvent extends KeyEvent {
 
     }
 
+    @Override
     public void keyUp(KeyBinding kb, boolean tickEnd) {
     }
 }

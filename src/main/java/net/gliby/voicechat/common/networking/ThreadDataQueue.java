@@ -9,6 +9,7 @@ public class ThreadDataQueue implements Runnable {
         this.manager = manager;
     }
 
+    @Override
     public void run() {
         while (this.manager.running) {
             if (!this.manager.dataQueue.isEmpty()) {

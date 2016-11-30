@@ -36,6 +36,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         }
     }
 
+    @Override
     public int buffersProcessed() {
         if (this.channelType != 1) {
             return 0;
@@ -69,6 +70,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         }
     }
 
+    @Override
     public void cleanup() {
         if (this.ALSource != null) {
             try {
@@ -90,6 +92,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         super.cleanup();
     }
 
+    @Override
     public void close() {
         try {
             AL10.alSourceStop(this.ALSource.get(0));
@@ -103,6 +106,7 @@ public class ChannelLWJGLOpenAL extends Channel {
 
     }
 
+    @Override
     public int feedRawAudioData(byte[] buffer) {
         if (this.errorCheck(this.channelType != 1, "Raw audio data can only be fed to streaming sources.")) {
             return -1;
@@ -160,6 +164,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         }
     }
 
+    @Override
     public void flush() {
         int queued = AL10.alGetSourcei(this.ALSource.get(0), 4117);
 
@@ -178,6 +183,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         this.millisPreviouslyPlayed = 0.0F;
     }
 
+    @Override
     public float millisecondsPlayed() {
         float offset = (float) AL10.alGetSourcei(this.ALSource.get(0), 4134);
         float bytesPerFrame = 1.0F;
@@ -207,21 +213,25 @@ public class ChannelLWJGLOpenAL extends Channel {
         return (float) AL10.alGetBufferi(alBufferi, 8196) / (float) AL10.alGetBufferi(alBufferi, 8195) / ((float) AL10.alGetBufferi(alBufferi, 8194) / 8.0F) / (float) this.sampleRate * 1000.0F;
     }
 
+    @Override
     public void pause() {
         AL10.alSourcePause(this.ALSource.get(0));
         this.checkALError();
     }
 
+    @Override
     public void play() {
         AL10.alSourcePlay(this.ALSource.get(0));
         this.checkALError();
     }
 
+    @Override
     public boolean playing() {
         int state = AL10.alGetSourcei(this.ALSource.get(0), 4112);
         return !this.checkALError() && state == 4114;
     }
 
+    @Override
     public boolean preLoadBuffers(LinkedList bufferList) {
         if (this.errorCheck(this.channelType != 1, "Buffers may only be queued for streaming sources.")) {
             return false;
@@ -295,6 +305,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         }
     }
 
+    @Override
     public boolean queueBuffer(byte[] buffer) {
         if (this.errorCheck(this.channelType != 1, "Buffers may only be queued for streaming sources.")) {
             return false;
@@ -321,6 +332,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         }
     }
 
+    @Override
     public void rewind() {
         if (this.channelType != 1) {
             AL10.alSourceRewind(this.ALSource.get(0));
@@ -331,6 +343,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         }
     }
 
+    @Override
     public void setAudioFormat(AudioFormat audioFormat) {
         boolean soundFormat = false;
         short soundFormat1;
@@ -372,6 +385,7 @@ public class ChannelLWJGLOpenAL extends Channel {
         this.sampleRate = rate;
     }
 
+    @Override
     public void stop() {
         AL10.alSourceStop(this.ALSource.get(0));
         if (!this.checkALError()) {

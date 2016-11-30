@@ -20,6 +20,7 @@ public class GuiScreenOptionsUI extends GuiScreen {
         this.parent = parent;
     }
 
+    @Override
     public void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 0:
@@ -35,6 +36,7 @@ public class GuiScreenOptionsUI extends GuiScreen {
 
     }
 
+    @Override
     public void drawScreen(int x, int y, float time) {
         this.drawDefaultBackground();
         GL11.glPushMatrix();
@@ -49,6 +51,7 @@ public class GuiScreenOptionsUI extends GuiScreen {
         super.drawScreen(x, y, time);
     }
 
+    @Override
     public void initGui() {
         this.buttonList.add(new GuiButton(0, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("gui.back")));
         this.buttonList.add(new GuiButton(1, this.width / 2 - 75, 73, 150, 20, I18n.format("menu.resetAll")));
@@ -57,11 +60,13 @@ public class GuiScreenOptionsUI extends GuiScreen {
         this.opacity.sliderValue = this.voiceChat.getSettings().getUIOpacity();
     }
 
+    @Override
     public void onGuiClosed() {
         super.onGuiClosed();
         this.voiceChat.getSettings().getConfiguration().save();
     }
 
+    @Override
     public void updateScreen() {
         super.onGuiClosed();
         this.voiceChat.getSettings().setUIOpacity(this.opacity.sliderValue);

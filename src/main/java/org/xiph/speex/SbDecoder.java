@@ -10,6 +10,7 @@ public class SbDecoder extends SbCodec implements Decoder {
     private float[] innov2;
 
 
+    @Override
     public void wbinit() {
         this.lowdec = new NbDecoder();
         ((NbDecoder) this.lowdec).nbinit();
@@ -18,6 +19,7 @@ public class SbDecoder extends SbCodec implements Decoder {
         this.init(160, 40, 8, 640, 0.7F);
     }
 
+    @Override
     public void uwbinit() {
         this.lowdec = new SbDecoder();
         ((SbDecoder) this.lowdec).wbinit();
@@ -26,12 +28,14 @@ public class SbDecoder extends SbCodec implements Decoder {
         this.init(320, 80, 8, 1280, 0.5F);
     }
 
+    @Override
     public void init(int var1, int var2, int var3, int var4, float var5) {
         super.init(var1, var2, var3, var4, var5);
         this.excIdx = 0;
         this.innov2 = new float[var2];
     }
 
+    @Override
     public int decode(Bits var1, float[] var2) throws StreamCorruptedException {
         int var6 = this.lowdec.decode(var1, this.x0d);
         if (var6 != 0) {
@@ -273,14 +277,17 @@ public class SbDecoder extends SbCodec implements Decoder {
         return 0;
     }
 
+    @Override
     public void decodeStereo(float[] var1, int var2) {
         this.stereo.decode(var1, var2);
     }
 
+    @Override
     public boolean getPerceptualEnhancement() {
         return this.enhanced;
     }
 
+    @Override
     public void setPerceptualEnhancement(boolean var1) {
         this.enhanced = var1;
     }

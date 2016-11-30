@@ -21,6 +21,7 @@ class KeySpeakEvent extends KeyEvent {
         this.canSpeak = voiceChat.getSettings().getInputDevice() != null;
     }
 
+    @Override
     public void keyDown(KeyBinding kb, boolean tickEnd, boolean isRepeat) {
         GuiScreen screen = Minecraft.getMinecraft().currentScreen;
         if (tickEnd && this.canSpeak && (screen == null || screen instanceof GuiInventory || screen instanceof GuiCrafting || screen instanceof GuiChest || screen instanceof GuiFurnace || screen.getClass().getSimpleName().startsWith("GuiDriveableController"))) {
@@ -30,6 +31,7 @@ class KeySpeakEvent extends KeyEvent {
 
     }
 
+    @Override
     public void keyUp(KeyBinding kb, boolean tickEnd) {
         if (tickEnd && this.voiceChat.getSettings().getSpeakMode() == 0) {
             this.voiceChat.setRecorderActive(false);

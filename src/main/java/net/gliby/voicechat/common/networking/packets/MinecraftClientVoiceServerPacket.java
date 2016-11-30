@@ -31,6 +31,7 @@ public class MinecraftClientVoiceServerPacket extends MinecraftPacket implements
         this.voiceServerType = voiceServerType;
     }
 
+    @Override
     public void fromBytes(ByteBuf buf) {
         this.showVoicePlates = buf.readBoolean();
         this.showVoiceIcons = buf.readBoolean();
@@ -41,11 +42,13 @@ public class MinecraftClientVoiceServerPacket extends MinecraftPacket implements
         this.voiceServerType = buf.readInt();
     }
 
+    @Override
     public IMessage onMessage(MinecraftClientVoiceServerPacket packet, MessageContext ctx) {
         VoiceChat.getProxyInstance().getClientNetwork().handleVoiceServer(packet.showVoicePlates, packet.showVoiceIcons, packet.minQuality, packet.maxQuality, packet.bufferSize, packet.soundDistance, packet.voiceServerType);
         return null;
     }
 
+    @Override
     public void toBytes(ByteBuf buf) {
         buf.writeBoolean(this.showVoicePlates);
         buf.writeBoolean(this.showVoiceIcons);

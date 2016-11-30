@@ -22,6 +22,7 @@ public class SpeexAudioFileReader extends AudioFileReader {
         return var0[var1] & 255 | (var0[var1 + 1] & 255) << 8 | (var0[var1 + 2] & 255) << 16 | var0[var1 + 3] << 24;
     }
 
+    @Override
     public AudioFileFormat getAudioFileFormat(File var1) throws UnsupportedAudioFileException, IOException {
         FileInputStream var2 = null;
 
@@ -36,6 +37,7 @@ public class SpeexAudioFileReader extends AudioFileReader {
         return var3;
     }
 
+    @Override
     public AudioFileFormat getAudioFileFormat(URL var1) throws UnsupportedAudioFileException, IOException {
         InputStream var2 = var1.openStream();
 
@@ -49,6 +51,7 @@ public class SpeexAudioFileReader extends AudioFileReader {
         return var3;
     }
 
+    @Override
     public AudioFileFormat getAudioFileFormat(InputStream var1) throws UnsupportedAudioFileException, IOException {
         return this.getAudioFileFormat(var1, -1);
     }
@@ -143,6 +146,7 @@ public class SpeexAudioFileReader extends AudioFileReader {
         return new AudioFileFormat(SpeexFileFormatType.SPEEX, var4, -1);
     }
 
+    @Override
     public AudioInputStream getAudioInputStream(File var1) throws UnsupportedAudioFileException, IOException {
         FileInputStream var2 = new FileInputStream(var1);
 
@@ -157,6 +161,7 @@ public class SpeexAudioFileReader extends AudioFileReader {
         }
     }
 
+    @Override
     public AudioInputStream getAudioInputStream(URL var1) throws UnsupportedAudioFileException, IOException {
         InputStream var2 = var1.openStream();
 
@@ -171,6 +176,7 @@ public class SpeexAudioFileReader extends AudioFileReader {
         }
     }
 
+    @Override
     public AudioInputStream getAudioInputStream(InputStream var1) throws UnsupportedAudioFileException, IOException {
         return this.getAudioInputStream(var1, -1);
     }

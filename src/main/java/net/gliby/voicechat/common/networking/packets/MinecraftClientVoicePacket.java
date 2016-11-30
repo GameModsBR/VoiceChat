@@ -25,6 +25,7 @@ public class MinecraftClientVoicePacket extends MinecraftPacket implements IMess
         this.direct = direct;
     }
 
+    @Override
     public void fromBytes(ByteBuf buf) {
         this.divider = buf.readByte();
         this.entityID = buf.readInt();
@@ -33,6 +34,7 @@ public class MinecraftClientVoicePacket extends MinecraftPacket implements IMess
         buf.readBytes(this.samples);
     }
 
+    @Override
     public IMessage onMessage(MinecraftClientVoicePacket packet, MessageContext ctx) {
         if (VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
             VoiceChat.getProxyInstance().getClientNetwork().getVoiceClient().handlePacket(packet.entityID, packet.samples, packet.divider, packet.direct);
@@ -41,6 +43,7 @@ public class MinecraftClientVoicePacket extends MinecraftPacket implements IMess
         return null;
     }
 
+    @Override
     public void toBytes(ByteBuf buf) {
         buf.writeByte(this.divider);
         buf.writeInt(this.entityID);
