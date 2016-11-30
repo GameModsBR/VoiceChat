@@ -123,8 +123,8 @@ public class GuiScreenDonate extends GuiScreen {
                     WorldRenderer renderer = tessellator.getWorldRenderer();
                     renderer.startDrawingQuads();
                     renderer.addVertexWithUV(0.0D, (double) this.cachedLogoDimensions.height, (double) this.zLevel, 0.0D, 1.0D);
-                    renderer.addVertexWithUV((double) (0 + this.cachedLogoDimensions.width), (double) (0 + this.cachedLogoDimensions.height), (double) this.zLevel, 1.0D, 1.0D);
-                    renderer.addVertexWithUV((double) (0 + this.cachedLogoDimensions.width), 0.0D, (double) this.zLevel, 1.0D, 0.0D);
+                    renderer.addVertexWithUV((double) (this.cachedLogoDimensions.width), (double) (this.cachedLogoDimensions.height), (double) this.zLevel, 1.0D, 1.0D);
+                    renderer.addVertexWithUV((double) (this.cachedLogoDimensions.width), 0.0D, (double) this.zLevel, 1.0D, 0.0D);
                     renderer.addVertexWithUV(0.0D, 0.0D, (double) this.zLevel, 0.0D, 0.0D);
                     tessellator.draw();
                 }
