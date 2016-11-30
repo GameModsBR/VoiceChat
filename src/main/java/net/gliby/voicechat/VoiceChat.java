@@ -14,10 +14,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.Logger;
 
 @Mod(
-        modid = "gvc",
+        modid = VoiceChat.MOD_ID,
         name = "Gliby\'s Voice Chat Mod",
-        version = "0.6.1",
-        acceptedMinecraftVersions = "[1.8]"
+        version = "@VERSION@",
+        acceptedMinecraftVersions = "[@MC_VERSION@]"
 )
 public class VoiceChat {
 
