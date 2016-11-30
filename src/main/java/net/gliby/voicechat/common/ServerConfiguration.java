@@ -1,10 +1,10 @@
 package net.gliby.voicechat.common;
 
-import java.io.File;
-import java.io.IOException;
 import net.gliby.gman.JINIFile;
 import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.common.ServerSettings;
+
+import java.io.File;
+import java.io.IOException;
 
 public class ServerConfiguration {
 

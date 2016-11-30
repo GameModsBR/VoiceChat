@@ -11,15 +11,14 @@
  */
 package net.gliby.voicechat.client.networking.game;
 
-import java.util.Map;
-
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.gliby.voicechat.client.sound.ClientStreamManager;
 import net.gliby.voicechat.common.PlayerProxy;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.Map;
 
 public class ClientEventHandler {
     VoiceChatClient voiceChat;

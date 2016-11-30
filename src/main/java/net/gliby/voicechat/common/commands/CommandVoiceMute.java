@@ -1,6 +1,5 @@
 package net.gliby.voicechat.common.commands;
 
-import java.util.List;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.common.networking.ServerNetwork;
 import net.minecraft.command.CommandBase;
@@ -11,6 +10,8 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
+
+import java.util.List;
 
 public class CommandVoiceMute extends CommandBase {
 

@@ -1,9 +1,5 @@
 package net.gliby.voicechat.client.gui.options;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Pattern;
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.gliby.voicechat.client.device.Device;
 import net.gliby.voicechat.client.gui.GuiBoostSlider;
@@ -19,6 +15,11 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 public class GuiScreenOptionsWizard extends GuiScreen {
 

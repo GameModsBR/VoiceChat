@@ -1,9 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-import org.xiph.speex.Codebook;
-import org.xiph.speex.LspQuant;
-
 public class LbrLspQuant extends LspQuant {
 
    public final void quant(float[] var1, float[] var2, int var3, Bits var4) {

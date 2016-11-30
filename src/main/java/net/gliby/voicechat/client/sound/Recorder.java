@@ -1,15 +1,15 @@
 package net.gliby.voicechat.client.sound;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import net.gliby.voicechat.VoiceChat;
+import net.gliby.voicechat.client.VoiceChatClient;
+import net.gliby.voicechat.common.MathUtility;
+import org.xiph.speex.SpeexEncoder;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
-import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.sound.ClientStreamManager;
-import net.gliby.voicechat.common.MathUtility;
-import org.xiph.speex.SpeexEncoder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class Recorder implements Runnable {
 

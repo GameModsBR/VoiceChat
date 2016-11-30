@@ -1,25 +1,19 @@
 package net.gliby.voicechat.client.gui.options;
 
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.gliby.voicechat.client.device.Device;
-import net.gliby.voicechat.client.gui.GuiBoostSlider;
-import net.gliby.voicechat.client.gui.GuiCustomButton;
-import net.gliby.voicechat.client.gui.GuiDropDownMenu;
-import net.gliby.voicechat.client.gui.GuiScreenDonate;
-import net.gliby.voicechat.client.gui.GuiScreenLocalMute;
-import net.gliby.voicechat.client.gui.options.GuiScreenOptionsUI;
-import net.gliby.voicechat.client.gui.options.GuiScreenOptionsWizard;
-import net.gliby.voicechat.client.gui.options.GuiScreenVoiceChatOptionsAdvanced;
+import net.gliby.voicechat.client.gui.*;
 import net.gliby.voicechat.client.sound.MicrophoneTester;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiScreenVoiceChatOptions extends GuiScreen {
 

@@ -2,6 +2,11 @@ package net.gliby.voicechat.common.networking.voiceservers.udp;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+import net.gliby.voicechat.VoiceChat;
+import net.gliby.voicechat.common.MathUtility;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
+
 import java.io.UnsupportedEncodingException;
 import java.net.DatagramPacket;
 import java.net.InetSocketAddress;
@@ -9,14 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.common.MathUtility;
-import net.gliby.voicechat.common.networking.voiceservers.udp.UDPByteUtilities;
-import net.gliby.voicechat.common.networking.voiceservers.udp.UDPClient;
-import net.gliby.voicechat.common.networking.voiceservers.udp.UDPServerAuthenticationCompletePacket;
-import net.gliby.voicechat.common.networking.voiceservers.udp.UDPVoiceServer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
 
 public class UDPVoiceServerHandler {
 

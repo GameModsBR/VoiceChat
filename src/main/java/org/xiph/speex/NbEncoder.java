@@ -1,17 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-import org.xiph.speex.Encoder;
-import org.xiph.speex.Filters;
-import org.xiph.speex.Lpc;
-import org.xiph.speex.Lsp;
-import org.xiph.speex.Ltp;
-import org.xiph.speex.Misc;
-import org.xiph.speex.NbCodec;
-import org.xiph.speex.NoiseSearch;
-import org.xiph.speex.VQ;
-import org.xiph.speex.Vbr;
-
 public class NbEncoder extends NbCodec implements Encoder {
 
    public static final int[] NB_QUALITY_MAP = new int[]{1, 8, 2, 3, 3, 4, 4, 5, 5, 6, 7};

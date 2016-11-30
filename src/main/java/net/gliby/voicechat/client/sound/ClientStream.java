@@ -1,10 +1,8 @@
 package net.gliby.voicechat.client.sound;
 
-import java.util.Comparator;
-import net.gliby.voicechat.client.sound.ClientStreamManager;
-import net.gliby.voicechat.client.sound.Datalet;
-import net.gliby.voicechat.client.sound.JitterBuffer;
 import net.gliby.voicechat.common.PlayerProxy;
+
+import java.util.Comparator;
 
 public class ClientStream {
 

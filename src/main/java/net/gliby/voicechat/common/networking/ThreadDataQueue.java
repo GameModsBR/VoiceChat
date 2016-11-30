@@ -1,9 +1,5 @@
 package net.gliby.voicechat.common.networking;
 
-import net.gliby.voicechat.common.networking.ServerDatalet;
-import net.gliby.voicechat.common.networking.ServerStream;
-import net.gliby.voicechat.common.networking.ServerStreamManager;
-
 public class ThreadDataQueue implements Runnable {
 
    private final ServerStreamManager manager;

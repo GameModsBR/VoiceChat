@@ -1,13 +1,6 @@
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import org.xiph.speex.AudioFileWriter;
-import org.xiph.speex.OggSpeexWriter;
-import org.xiph.speex.PcmWaveWriter;
-import org.xiph.speex.RawWriter;
-import org.xiph.speex.SpeexEncoder;
+import org.xiph.speex.*;
+
+import java.io.*;
 
 public class JSpeexEnc {
 

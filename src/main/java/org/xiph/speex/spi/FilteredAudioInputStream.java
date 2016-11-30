@@ -1,9 +1,9 @@
 package org.xiph.speex.spi;
 
-import java.io.IOException;
-import java.io.InputStream;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public abstract class FilteredAudioInputStream extends AudioInputStream {
 

@@ -1,13 +1,13 @@
 package ovr.paulscode.sound.libraries;
 
+import org.lwjgl.BufferUtils;
+import org.lwjgl.openal.AL10;
+import paulscode.sound.Channel;
+
+import javax.sound.sampled.AudioFormat;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.LinkedList;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.openal.AL10;
-import ovr.paulscode.sound.libraries.LibraryLWJGLOpenAL;
-import paulscode.sound.Channel;
 
 public class ChannelLWJGLOpenAL extends Channel {
 

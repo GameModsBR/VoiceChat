@@ -1,8 +1,9 @@
 package net.gliby.voicechat.common.networking;
 
+import net.minecraft.entity.player.EntityPlayerMP;
+
 import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.entity.player.EntityPlayerMP;
 
 public class ServerStream {
 

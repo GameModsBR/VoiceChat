@@ -1,11 +1,12 @@
 package net.gliby.voicechat.common.api.examples;
 
-import java.util.List;
 import net.gliby.voicechat.common.api.VoiceChatAPI;
 import net.gliby.voicechat.common.api.events.ServerStreamEvent;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.List;
 
 public class ExampleStreamHandlerOnlyOP {
 

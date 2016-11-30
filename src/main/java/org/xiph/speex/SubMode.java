@@ -1,9 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.CbSearch;
-import org.xiph.speex.LspQuant;
-import org.xiph.speex.Ltp;
-
 public class SubMode {
 
    public int lbr_pitch;

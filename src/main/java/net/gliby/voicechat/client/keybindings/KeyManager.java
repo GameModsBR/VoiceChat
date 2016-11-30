@@ -1,12 +1,6 @@
 package net.gliby.voicechat.client.keybindings;
 
-import java.util.ArrayList;
-import java.util.List;
 import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.keybindings.EnumBinding;
-import net.gliby.voicechat.client.keybindings.KeyEvent;
-import net.gliby.voicechat.client.keybindings.KeyGuiOptionsEvent;
-import net.gliby.voicechat.client.keybindings.KeySpeakEvent;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -16,6 +10,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class KeyManager {

@@ -2,7 +2,6 @@ package net.gliby.voicechat.client.networking.voiceclients;
 
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.networking.voiceclients.VoiceClient;
 import net.gliby.voicechat.client.sound.ClientStreamManager;
 import net.gliby.voicechat.common.PlayerProxy;
 import net.gliby.voicechat.common.networking.packets.MinecraftServerVoiceEndPacket;

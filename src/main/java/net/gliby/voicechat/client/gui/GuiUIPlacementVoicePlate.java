@@ -1,8 +1,5 @@
 package net.gliby.voicechat.client.gui;
 
-import java.util.Random;
-import net.gliby.voicechat.client.gui.GuiPlaceableInterface;
-import net.gliby.voicechat.client.gui.UIPosition;
 import net.gliby.voicechat.client.textures.IndependentGUITexture;
 import net.gliby.voicechat.common.MathUtility;
 import net.minecraft.client.Minecraft;
@@ -11,6 +8,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EnumPlayerModelParts;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+
+import java.util.Random;
 
 public class GuiUIPlacementVoicePlate extends GuiPlaceableInterface {
 

@@ -1,22 +1,14 @@
 package org.xiph.speex.spi;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.SequenceInputStream;
-import java.net.URL;
+import org.xiph.speex.OggCrc;
+
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.sound.sampled.spi.AudioFileReader;
-import org.xiph.speex.OggCrc;
-import org.xiph.speex.spi.SpeexEncoding;
-import org.xiph.speex.spi.SpeexFileFormatType;
+import java.io.*;
+import java.net.URL;
 
 public class SpeexAudioFileReader extends AudioFileReader {
 

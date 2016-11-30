@@ -1,14 +1,14 @@
 package net.gliby.voicechat.client.device;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.gliby.voicechat.client.sound.ClientStreamManager;
+
 import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine.Info;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.Mixer;
 import javax.sound.sampled.TargetDataLine;
-import javax.sound.sampled.DataLine.Info;
-import net.gliby.voicechat.client.device.Device;
-import net.gliby.voicechat.client.sound.ClientStreamManager;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeviceHandler {
 

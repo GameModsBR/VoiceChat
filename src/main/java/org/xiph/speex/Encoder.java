@@ -1,7 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-
 public interface Encoder {
 
    int encode(Bits var1, float[] var2);

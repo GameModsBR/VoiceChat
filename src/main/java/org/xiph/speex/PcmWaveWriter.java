@@ -3,7 +3,6 @@ package org.xiph.speex;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import org.xiph.speex.AudioFileWriter;
 
 public class PcmWaveWriter extends AudioFileWriter {
 

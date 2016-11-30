@@ -11,7 +11,6 @@
  */
 package net.gliby.voicechat.client.sound;
 
-import javax.sound.sampled.AudioFormat;
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.audio.SoundManager;
@@ -19,6 +18,8 @@ import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import paulscode.sound.SoundSystem;
+
+import javax.sound.sampled.AudioFormat;
 
 public class SoundSystemWrapper {
     public static volatile boolean running;

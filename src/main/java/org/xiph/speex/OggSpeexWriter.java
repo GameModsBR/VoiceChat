@@ -5,8 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Random;
-import org.xiph.speex.AudioFileWriter;
-import org.xiph.speex.OggCrc;
 
 public class OggSpeexWriter extends AudioFileWriter {
 

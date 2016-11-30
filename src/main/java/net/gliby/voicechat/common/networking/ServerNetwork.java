@@ -9,18 +9,17 @@
  */
 package net.gliby.voicechat.common.networking;
 
+import net.gliby.voicechat.VoiceChat;
+import net.gliby.voicechat.common.VoiceChatServer;
+import net.gliby.voicechat.common.networking.packets.MinecraftClientEntityDataPacket;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
-import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.common.VoiceChatServer;
-import net.gliby.voicechat.common.networking.ServerStreamManager;
-import net.gliby.voicechat.common.networking.packets.MinecraftClientEntityDataPacket;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class ServerNetwork {
     private final VoiceChatServer voiceChat;

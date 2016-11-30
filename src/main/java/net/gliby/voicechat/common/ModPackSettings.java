@@ -2,6 +2,7 @@ package net.gliby.voicechat.common;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 

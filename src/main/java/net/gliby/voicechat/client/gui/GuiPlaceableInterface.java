@@ -1,7 +1,5 @@
 package net.gliby.voicechat.client.gui;
 
-import net.gliby.voicechat.client.gui.EnumUIPlacement;
-import net.gliby.voicechat.client.gui.UIPosition;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 

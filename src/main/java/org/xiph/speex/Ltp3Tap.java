@@ -1,9 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-import org.xiph.speex.Filters;
-import org.xiph.speex.Ltp;
-
 public class Ltp3Tap extends Ltp {
 
    private float[] gain = new float[3];

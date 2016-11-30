@@ -2,9 +2,9 @@ package net.gliby.voicechat.client.networking.voiceclients;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
-import java.util.concurrent.LinkedBlockingQueue;
-import net.gliby.voicechat.client.networking.voiceclients.UDPVoiceClient;
 import net.gliby.voicechat.common.networking.voiceservers.udp.UDPByteUtilities;
+
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class UDPVoiceClientHandler implements Runnable {
 

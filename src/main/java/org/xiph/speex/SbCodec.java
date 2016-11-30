@@ -1,13 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.CbSearch;
-import org.xiph.speex.Codebook;
-import org.xiph.speex.HighLspQuant;
-import org.xiph.speex.Ltp;
-import org.xiph.speex.NbCodec;
-import org.xiph.speex.SplitShapeSearch;
-import org.xiph.speex.SubMode;
-
 public class SbCodec extends NbCodec {
 
    public static final int[] SB_FRAME_SIZE = new int[]{4, 36, 112, 192, 352, -1, -1, -1};

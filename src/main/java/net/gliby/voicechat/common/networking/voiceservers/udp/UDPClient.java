@@ -1,8 +1,9 @@
 package net.gliby.voicechat.common.networking.voiceservers.udp;
 
+import net.minecraft.entity.player.EntityPlayerMP;
+
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
-import net.minecraft.entity.player.EntityPlayerMP;
 
 public class UDPClient {
 

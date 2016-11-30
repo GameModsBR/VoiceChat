@@ -1,19 +1,7 @@
 package net.gliby.voicechat.client.sound;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.sound.ClientStream;
-import net.gliby.voicechat.client.sound.Datalet;
-import net.gliby.voicechat.client.sound.SoundPreProcessor;
 import net.gliby.voicechat.client.sound.thread.ThreadSoundQueue;
 import net.gliby.voicechat.client.sound.thread.ThreadUpdateStream;
 import net.gliby.voicechat.common.PlayerProxy;
@@ -22,6 +10,12 @@ import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.gui.GuiScreenOptionsSounds;
 import net.minecraft.entity.player.EntityPlayer;
 import org.lwjgl.util.vector.Vector3f;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ClientStreamManager {
 

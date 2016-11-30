@@ -1,14 +1,14 @@
 package org.xiph.speex.spi;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StreamCorruptedException;
-import javax.sound.sampled.AudioFormat;
 import org.xiph.speex.Bits;
 import org.xiph.speex.Decoder;
 import org.xiph.speex.NbDecoder;
 import org.xiph.speex.SbDecoder;
-import org.xiph.speex.spi.FilteredAudioInputStream;
+
+import javax.sound.sampled.AudioFormat;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StreamCorruptedException;
 
 public class Speex2PcmAudioInputStream extends FilteredAudioInputStream {
 

@@ -1,21 +1,18 @@
 package net.gliby.voicechat.common.networking;
 
+import net.gliby.voicechat.common.VoiceChatServer;
+import net.gliby.voicechat.common.api.VoiceChatAPI;
+import net.gliby.voicechat.common.api.events.ServerStreamEvent;
+import net.gliby.voicechat.common.networking.entityhandler.EntityHandler;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import net.gliby.voicechat.common.VoiceChatServer;
-import net.gliby.voicechat.common.api.VoiceChatAPI;
-import net.gliby.voicechat.common.api.events.ServerStreamEvent;
-import net.gliby.voicechat.common.networking.ServerDatalet;
-import net.gliby.voicechat.common.networking.ServerStream;
-import net.gliby.voicechat.common.networking.ThreadDataQueue;
-import net.gliby.voicechat.common.networking.ThreadDataUpdateStream;
-import net.gliby.voicechat.common.networking.entityhandler.EntityHandler;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
 
 public class ServerStreamManager {
 

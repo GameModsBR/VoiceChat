@@ -1,6 +1,5 @@
 package net.gliby.voicechat.common.api.examples;
 
-import java.util.List;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.common.api.events.ServerStreamEvent;
 import net.gliby.voicechat.common.networking.ServerDatalet;
@@ -9,6 +8,8 @@ import net.gliby.voicechat.common.networking.ServerStreamManager;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.List;
 
 public class ExampleStreamHandlerAroundPosition {
 

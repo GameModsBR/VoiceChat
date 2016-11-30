@@ -5,8 +5,6 @@ import net.gliby.voicechat.common.VoiceChatServer;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientEntityPositionPacket;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientVoiceEndPacket;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientVoicePacket;
-import net.gliby.voicechat.common.networking.voiceservers.EnumVoiceNetworkType;
-import net.gliby.voicechat.common.networking.voiceservers.VoiceServer;
 import net.minecraft.entity.player.EntityPlayerMP;
 
 public class MinecraftVoiceServer extends VoiceServer {

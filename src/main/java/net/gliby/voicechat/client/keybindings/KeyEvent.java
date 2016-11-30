@@ -1,6 +1,5 @@
 package net.gliby.voicechat.client.keybindings;
 
-import net.gliby.voicechat.client.keybindings.EnumBinding;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

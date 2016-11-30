@@ -1,8 +1,6 @@
 package net.gliby.voicechat.client.keybindings;
 
 import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.keybindings.EnumBinding;
-import net.gliby.voicechat.client.keybindings.KeyEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;

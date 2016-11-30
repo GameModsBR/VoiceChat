@@ -1,11 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-import org.xiph.speex.Encoder;
-import org.xiph.speex.NbEncoder;
-import org.xiph.speex.SbEncoder;
-import org.xiph.speex.Stereo;
-
 public class SpeexEncoder {
 
    public static final String VERSION = "Java Speex Encoder v0.9.7 ($Revision: 1.6 $)";

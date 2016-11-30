@@ -15,21 +15,20 @@
  */
 package net.gliby.voicechat.common.networking.voiceservers;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.common.VoiceChatServer;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientVoiceAuthenticatedServer;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientVoiceServerPacket;
-import net.gliby.voicechat.common.networking.voiceservers.VoiceAuthenticatedServer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import org.apache.commons.lang3.RandomStringUtils;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class ServerConnectionHandler {
     VoiceChatServer voiceChat;

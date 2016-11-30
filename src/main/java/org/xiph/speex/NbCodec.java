@@ -1,16 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Codebook;
-import org.xiph.speex.Filters;
-import org.xiph.speex.LbrLspQuant;
-import org.xiph.speex.Lsp;
-import org.xiph.speex.Ltp3Tap;
-import org.xiph.speex.LtpForcedPitch;
-import org.xiph.speex.NbLspQuant;
-import org.xiph.speex.NoiseSearch;
-import org.xiph.speex.SplitShapeSearch;
-import org.xiph.speex.SubMode;
-
 public class NbCodec implements Codebook {
 
    public static final float VERY_SMALL = 0.0F;

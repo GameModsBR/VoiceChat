@@ -1,14 +1,7 @@
 package net.gliby.voicechat.client.gui;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.client.Settings;
-import net.gliby.voicechat.client.gui.GuiBoostSlider;
-import net.gliby.voicechat.client.gui.GuiPlaceableInterface;
-import net.gliby.voicechat.client.gui.GuiUIPlacementSpeak;
-import net.gliby.voicechat.client.gui.GuiUIPlacementVoicePlate;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
@@ -16,6 +9,10 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiUIPlacement extends GuiScreen {
 

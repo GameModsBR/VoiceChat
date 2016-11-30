@@ -1,13 +1,13 @@
 package net.gliby.voicechat.client.sound;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import net.gliby.voicechat.client.VoiceChatClient;
+
 import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine.Info;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.TargetDataLine;
-import javax.sound.sampled.DataLine.Info;
-import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.sound.ClientStreamManager;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class MicrophoneTester implements Runnable {
 

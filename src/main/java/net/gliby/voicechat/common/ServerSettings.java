@@ -1,11 +1,9 @@
 package net.gliby.voicechat.common;
 
+import net.gliby.voicechat.VoiceChat;
+
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.common.ModPackSettings;
-import net.gliby.voicechat.common.ServerConfiguration;
-import net.gliby.voicechat.common.VoiceChatServer;
 
 public class ServerSettings {
 

@@ -1,7 +1,7 @@
 package net.gliby.voicechat.client.device;
 
-import javax.sound.sampled.TargetDataLine;
 import javax.sound.sampled.Mixer.Info;
+import javax.sound.sampled.TargetDataLine;
 
 public class Device {
 

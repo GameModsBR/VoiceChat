@@ -1,12 +1,9 @@
 package org.xiph.speex.spi;
 
 import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioFormat.Encoding;
+import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.spi.FormatConversionProvider;
-import org.xiph.speex.spi.Pcm2SpeexAudioInputStream;
-import org.xiph.speex.spi.Speex2PcmAudioInputStream;
-import org.xiph.speex.spi.SpeexEncoding;
 
 public class SpeexFormatConvertionProvider extends FormatConversionProvider {
 

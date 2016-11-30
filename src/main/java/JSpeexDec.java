@@ -1,16 +1,7 @@
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import org.xiph.speex.*;
+
+import java.io.*;
 import java.util.Random;
-import org.xiph.speex.AudioFileWriter;
-import org.xiph.speex.NbEncoder;
-import org.xiph.speex.OggCrc;
-import org.xiph.speex.PcmWaveWriter;
-import org.xiph.speex.RawWriter;
-import org.xiph.speex.SbEncoder;
-import org.xiph.speex.SpeexDecoder;
 
 public class JSpeexDec {
 

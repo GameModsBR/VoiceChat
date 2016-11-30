@@ -20,16 +20,9 @@
  */
 package net.gliby.voicechat.common;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.DatagramSocket;
-import java.net.ServerSocket;
-import java.util.Random;
-import java.util.concurrent.Executors;
 import net.gliby.gman.GMan;
 import net.gliby.gman.ModInfo;
 import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.common.ServerSettings;
 import net.gliby.voicechat.common.api.VoiceChatAPI;
 import net.gliby.voicechat.common.commands.CommandChatMode;
 import net.gliby.voicechat.common.commands.CommandVoiceMute;
@@ -39,18 +32,19 @@ import net.gliby.voicechat.common.networking.voiceservers.ServerConnectionHandle
 import net.gliby.voicechat.common.networking.voiceservers.VoiceAuthenticatedServer;
 import net.gliby.voicechat.common.networking.voiceservers.VoiceServer;
 import net.gliby.voicechat.common.networking.voiceservers.udp.UDPVoiceServer;
-import net.minecraft.command.ICommand;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.ServerSocket;
+import java.util.Random;
+import java.util.concurrent.Executors;
 
 public class VoiceChatServer {
     public static final String VERSION = "0.6.1";

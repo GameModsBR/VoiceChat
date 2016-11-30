@@ -1,7 +1,6 @@
 package net.gliby.voicechat.common.networking.voiceservers;
 
 import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.common.networking.voiceservers.EnumVoiceNetworkType;
 import net.minecraft.entity.player.EntityPlayerMP;
 
 public abstract class VoiceServer implements Runnable {

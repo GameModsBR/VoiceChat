@@ -1,7 +1,5 @@
 package net.gliby.voicechat.client.gui;
 
-import net.gliby.voicechat.client.gui.EnumUIPlacement;
-
 public class UIPosition {
 
    public int type;

@@ -1,17 +1,16 @@
 package org.xiph.speex.spi;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StreamCorruptedException;
-import java.util.Random;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
 import org.xiph.speex.AudioFileWriter;
 import org.xiph.speex.Encoder;
 import org.xiph.speex.OggCrc;
 import org.xiph.speex.SpeexEncoder;
-import org.xiph.speex.spi.FilteredAudioInputStream;
-import org.xiph.speex.spi.SpeexEncoding;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StreamCorruptedException;
+import java.util.Random;
 
 public class Pcm2SpeexAudioInputStream extends FilteredAudioInputStream {
 

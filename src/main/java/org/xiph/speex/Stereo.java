@@ -1,8 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-import org.xiph.speex.VQ;
-
 public class Stereo {
 
    public static final int SPEEX_INBAND_STEREO = 9;

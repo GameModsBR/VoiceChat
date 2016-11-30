@@ -1,10 +1,6 @@
 package org.xiph.speex;
 
 import java.io.StreamCorruptedException;
-import org.xiph.speex.Bits;
-import org.xiph.speex.Decoder;
-import org.xiph.speex.NbDecoder;
-import org.xiph.speex.SbDecoder;
 
 public class SpeexDecoder {
 

@@ -1,14 +1,6 @@
 package org.xiph.speex;
 
 import java.io.StreamCorruptedException;
-import org.xiph.speex.Bits;
-import org.xiph.speex.Codebook;
-import org.xiph.speex.Decoder;
-import org.xiph.speex.Filters;
-import org.xiph.speex.Lsp;
-import org.xiph.speex.NbDecoder;
-import org.xiph.speex.SbCodec;
-import org.xiph.speex.Stereo;
 
 public class SbDecoder extends SbCodec implements Decoder {
 

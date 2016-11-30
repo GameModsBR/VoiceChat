@@ -1,7 +1,6 @@
 package org.xiph.speex;
 
 import java.io.StreamCorruptedException;
-import org.xiph.speex.Bits;
 
 public interface Decoder {
 

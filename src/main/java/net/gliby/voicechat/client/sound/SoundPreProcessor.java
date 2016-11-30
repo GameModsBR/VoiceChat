@@ -1,14 +1,14 @@
 package net.gliby.voicechat.client.sound;
 
+import net.gliby.voicechat.client.VoiceChatClient;
+import net.gliby.voicechat.client.debug.Statistics;
+import net.minecraft.client.Minecraft;
+import org.xiph.speex.SpeexDecoder;
+
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.debug.Statistics;
-import net.gliby.voicechat.client.sound.ClientStreamManager;
-import net.minecraft.client.Minecraft;
-import org.xiph.speex.SpeexDecoder;
 
 public class SoundPreProcessor {
 

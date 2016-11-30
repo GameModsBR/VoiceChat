@@ -1,12 +1,6 @@
 package net.gliby.voicechat.client;
 
-import java.io.File;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.client.Settings;
-import net.gliby.voicechat.client.UpdatedSoundManager;
 import net.gliby.voicechat.client.debug.Statistics;
 import net.gliby.voicechat.client.gui.GuiInGameHandlerVoiceChat;
 import net.gliby.voicechat.client.keybindings.KeyManager;
@@ -30,6 +24,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.Logger;
+
+import java.io.File;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VoiceChatClient extends VoiceChatServer {
 

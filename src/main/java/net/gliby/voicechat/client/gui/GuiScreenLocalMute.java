@@ -19,23 +19,19 @@
  */
 package net.gliby.voicechat.client.gui;
 
-import java.awt.Rectangle;
-import java.io.IOException;
-import java.util.ArrayList;
-
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.gliby.voicechat.client.sound.ClientStreamManager;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiOptionButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiSlot;
-import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.gui.*;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
+
+import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class GuiScreenLocalMute
         extends GuiScreen {

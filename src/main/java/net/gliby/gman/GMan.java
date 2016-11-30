@@ -1,12 +1,12 @@
 package net.gliby.gman;
 
 import com.google.gson.Gson;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import net.gliby.gman.ModInfo;
-import org.apache.logging.log4j.Logger;
 
 public class GMan {
 

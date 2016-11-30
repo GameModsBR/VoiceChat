@@ -1,14 +1,12 @@
 package org.xiph.speex.spi;
 
+import javax.sound.sampled.AudioFileFormat.Type;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.spi.AudioFileWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioFileFormat.Type;
-import javax.sound.sampled.spi.AudioFileWriter;
-import org.xiph.speex.spi.SpeexEncoding;
-import org.xiph.speex.spi.SpeexFileFormatType;
 
 public class SpeexAudioFileWriter extends AudioFileWriter {
 

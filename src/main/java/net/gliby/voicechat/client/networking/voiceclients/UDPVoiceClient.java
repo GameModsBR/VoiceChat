@@ -2,16 +2,8 @@ package net.gliby.voicechat.client.networking.voiceclients;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
-import java.net.SocketException;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.client.VoiceChatClient;
-import net.gliby.voicechat.client.networking.voiceclients.UDPVoiceClientHandler;
-import net.gliby.voicechat.client.networking.voiceclients.VoiceAuthenticatedClient;
 import net.gliby.voicechat.client.sound.ClientStreamManager;
 import net.gliby.voicechat.common.PlayerProxy;
 import net.gliby.voicechat.common.networking.voiceservers.EnumVoiceNetworkType;
@@ -19,6 +11,13 @@ import net.gliby.voicechat.common.networking.voiceservers.udp.UDPClientAuthentic
 import net.gliby.voicechat.common.networking.voiceservers.udp.UDPClientVoiceEnd;
 import net.gliby.voicechat.common.networking.voiceservers.udp.UDPClientVoicePacket;
 import net.gliby.voicechat.common.networking.voiceservers.udp.UDPPacket;
+
+import java.io.IOException;
+import java.math.BigInteger;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetSocketAddress;
+import java.net.SocketException;
 
 public class UDPVoiceClient extends VoiceAuthenticatedClient {
 

@@ -1,8 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-import org.xiph.speex.Codebook;
-
 public abstract class LspQuant implements Codebook {
 
    public static final int MAX_LSP_SIZE = 20;

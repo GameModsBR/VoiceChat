@@ -1,10 +1,5 @@
 package org.xiph.speex;
 
-import org.xiph.speex.Bits;
-import org.xiph.speex.CbSearch;
-import org.xiph.speex.Filters;
-import org.xiph.speex.VQ;
-
 public class SplitShapeSearch extends CbSearch {
 
    public static final int MAX_COMPLEXITY = 10;

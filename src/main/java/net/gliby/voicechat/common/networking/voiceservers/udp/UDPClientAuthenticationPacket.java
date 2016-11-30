@@ -1,9 +1,8 @@
 package net.gliby.voicechat.common.networking.voiceservers.udp;
 
 import com.google.common.io.ByteArrayDataOutput;
+
 import java.io.UnsupportedEncodingException;
-import net.gliby.voicechat.common.networking.voiceservers.udp.UDPByteUtilities;
-import net.gliby.voicechat.common.networking.voiceservers.udp.UDPPacket;
 
 public class UDPClientAuthenticationPacket extends UDPPacket {
 

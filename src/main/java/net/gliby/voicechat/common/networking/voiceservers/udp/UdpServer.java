@@ -7,22 +7,19 @@
  */
 package net.gliby.voicechat.common.networking.voiceservers.udp;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.MulticastSocket;
-import java.net.SocketException;
+import java.net.*;
 import java.util.Collection;
 import java.util.EventListener;
 import java.util.EventObject;
 import java.util.LinkedList;
 import java.util.concurrent.ThreadFactory;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger;
 
 public class UdpServer {
     private static Logger LOGGER;

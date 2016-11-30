@@ -1,6 +1,5 @@
 package net.gliby.voicechat.client.networking.voiceclients;
 
-import net.gliby.voicechat.client.networking.voiceclients.VoiceClient;
 import net.gliby.voicechat.common.networking.voiceservers.EnumVoiceNetworkType;
 
 public abstract class VoiceAuthenticatedClient extends VoiceClient {
