@@ -48,9 +48,9 @@ public class ServerConfiguration {
                 this.settings.setCanShowVoiceIcons(this.init.ReadBool("Game", "ShowPlayerIcons", true));
                 this.settings.setCanShowVoicePlates(this.init.ReadBool("Game", "ShowVoicePlates", true));
                 this.settings.setAdvancedNetworkType(this.init.ReadInteger("Network", "NetworkType", 1));
-                this.settings.setUDPPort(this.init.ReadInteger("Network", "UDPPort", Integer.valueOf(this.settings.getUDPPort())));
-                this.settings.setQuality(this.init.ReadInteger("Network", "MinimumQuality", Integer.valueOf(this.settings.getMinimumSoundQuality())), this.init.ReadInteger("Network", "MaximumQuality", Integer.valueOf(this.settings.getMaximumSoundQuality())));
-                this.settings.setBufferSize(this.init.ReadInteger("Network", "BufferSize", Integer.valueOf(this.settings.getBufferSize())));
+                this.settings.setUDPPort(this.init.ReadInteger("Network", "UDPPort", this.settings.getUDPPort()));
+                this.settings.setQuality(this.init.ReadInteger("Network", "MinimumQuality", this.settings.getMinimumSoundQuality()), this.init.ReadInteger("Network", "MaximumQuality", this.settings.getMaximumSoundQuality()));
+                this.settings.setBufferSize(this.init.ReadInteger("Network", "BufferSize", this.settings.getBufferSize()));
                 this.settings.setUsingProxy(this.init.ReadBool("Network", "ServerBehindProxy", false));
                 this.settings.setModPackID(this.init.ReadInteger("Miscellaneous", "ModPackID", 1));
                 return true;

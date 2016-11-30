@@ -28,10 +28,8 @@ public class ModInfo {
     }
 
     public void determineUpdate(String currentModVersion, String currentMinecraftVersion) {
-        Iterator<String> i$ = this.versions.iterator();
 
-        while (i$.hasNext()) {
-            String s = i$.next();
+        for (String s : this.versions) {
             if (s.startsWith(currentMinecraftVersion)) {
                 this.updated = s.split(":")[1].trim().equals(currentModVersion);
                 break;
