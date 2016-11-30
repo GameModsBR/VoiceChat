@@ -15,7 +15,7 @@ public class Filters {
       this.smooth_gain = 1.0F;
    }
 
-   public static final void bw_lpc(float var0, float[] var1, float[] var2, int var3) {
+   public static void bw_lpc(float var0, float[] var1, float[] var2, int var3) {
       float var4 = 1.0F;
 
       for(int var5 = 0; var5 < var3 + 1; ++var5) {
@@ -25,7 +25,7 @@ public class Filters {
 
    }
 
-   public static final void filter_mem2(float[] var0, int var1, float[] var2, float[] var3, int var4, int var5, float[] var6, int var7) {
+   public static void filter_mem2(float[] var0, int var1, float[] var2, float[] var3, int var4, int var5, float[] var6, int var7) {
       for(int var8 = 0; var8 < var4; ++var8) {
          float var10 = var0[var1 + var8];
          var0[var1 + var8] = var2[0] * var10 + var6[var7 + 0];
@@ -40,7 +40,7 @@ public class Filters {
 
    }
 
-   public static final void filter_mem2(float[] var0, int var1, float[] var2, float[] var3, float[] var4, int var5, int var6, int var7, float[] var8, int var9) {
+   public static void filter_mem2(float[] var0, int var1, float[] var2, float[] var3, float[] var4, int var5, int var6, int var7, float[] var8, int var9) {
       for(int var10 = 0; var10 < var6; ++var10) {
          float var12 = var0[var1 + var10];
          var4[var5 + var10] = var2[0] * var12 + var8[0];
@@ -55,7 +55,7 @@ public class Filters {
 
    }
 
-   public static final void iir_mem2(float[] var0, int var1, float[] var2, float[] var3, int var4, int var5, int var6, float[] var7) {
+   public static void iir_mem2(float[] var0, int var1, float[] var2, float[] var3, int var4, int var5, int var6, float[] var7) {
       for(int var8 = 0; var8 < var5; ++var8) {
          var3[var4 + var8] = var0[var1 + var8] + var7[0];
 
@@ -68,7 +68,7 @@ public class Filters {
 
    }
 
-   public static final void fir_mem2(float[] var0, int var1, float[] var2, float[] var3, int var4, int var5, int var6, float[] var7) {
+   public static void fir_mem2(float[] var0, int var1, float[] var2, float[] var3, int var4, int var5, int var6, float[] var7) {
       for(int var8 = 0; var8 < var5; ++var8) {
          float var10 = var0[var1 + var8];
          var3[var4 + var8] = var2[0] * var10 + var7[0];
@@ -82,7 +82,7 @@ public class Filters {
 
    }
 
-   public static final void syn_percep_zero(float[] var0, int var1, float[] var2, float[] var3, float[] var4, float[] var5, int var6, int var7) {
+   public static void syn_percep_zero(float[] var0, int var1, float[] var2, float[] var3, float[] var4, float[] var5, int var6, int var7) {
       float[] var9 = new float[var7];
       filter_mem2(var0, var1, var3, var2, var5, 0, var6, var7, var9, 0);
 
@@ -93,7 +93,7 @@ public class Filters {
       iir_mem2(var5, 0, var4, var5, 0, var6, var7, var9);
    }
 
-   public static final void residue_percep_zero(float[] var0, int var1, float[] var2, float[] var3, float[] var4, float[] var5, int var6, int var7) {
+   public static void residue_percep_zero(float[] var0, int var1, float[] var2, float[] var3, float[] var4, float[] var5, int var6, int var7) {
       float[] var9 = new float[var7];
       filter_mem2(var0, var1, var2, var3, var5, 0, var6, var7, var9, 0);
 
@@ -204,7 +204,7 @@ public class Filters {
 
    }
 
-   public static final void qmf_decomp(float[] var0, float[] var1, float[] var2, float[] var3, int var4, int var5, float[] var6) {
+   public static void qmf_decomp(float[] var0, float[] var1, float[] var2, float[] var3, int var4, int var5, float[] var6) {
       float[] var11 = new float[var5];
       float[] var12 = new float[var4 + var5 - 1];
       int var13 = var5 - 1;

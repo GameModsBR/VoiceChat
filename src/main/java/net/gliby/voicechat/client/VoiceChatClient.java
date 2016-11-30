@@ -65,11 +65,11 @@ public class VoiceChatClient extends VoiceChatServer {
       return modMetadata;
    }
 
-   public static final ClientStreamManager getSoundManager() {
+   public static ClientStreamManager getSoundManager() {
       return soundManager;
    }
 
-   public static final Statistics getStatistics() {
+   public static Statistics getStatistics() {
       return stats;
    }
 

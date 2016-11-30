@@ -17,28 +17,18 @@ package net.gliby.voicechat.common.networking.voiceservers;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Map;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import net.gliby.voicechat.VoiceChat;
-import net.gliby.voicechat.common.ServerSettings;
 import net.gliby.voicechat.common.VoiceChatServer;
-import net.gliby.voicechat.common.networking.ServerNetwork;
-import net.gliby.voicechat.common.networking.ServerStreamManager;
-import net.gliby.voicechat.common.networking.entityhandler.EntityHandler;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientVoiceAuthenticatedServer;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientVoiceServerPacket;
-import net.gliby.voicechat.common.networking.voiceservers.EnumVoiceNetworkType;
 import net.gliby.voicechat.common.networking.voiceservers.VoiceAuthenticatedServer;
-import net.gliby.voicechat.common.networking.voiceservers.VoiceServer;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.relauncher.Side;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class ServerConnectionHandler {

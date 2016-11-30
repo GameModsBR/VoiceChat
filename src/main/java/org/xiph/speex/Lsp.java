@@ -6,7 +6,7 @@ public class Lsp {
    private float[] pw = new float[42];
 
 
-   public static final float cheb_poly_eva(float[] var0, float var1, int var2) {
+   public static float cheb_poly_eva(float[] var0, float var1, int var2) {
       int var6 = var2 >> 1;
       float[] var5 = new float[var6 + 1];
       var5[0] = 1.0F;

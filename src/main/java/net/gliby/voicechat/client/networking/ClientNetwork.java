@@ -9,21 +9,16 @@
  */
 package net.gliby.voicechat.client.networking;
 
-import java.util.concurrent.ConcurrentHashMap;
-import net.gliby.voicechat.client.Settings;
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.gliby.voicechat.client.networking.voiceclients.MinecraftVoiceClient;
 import net.gliby.voicechat.client.networking.voiceclients.UDPVoiceClient;
 import net.gliby.voicechat.client.networking.voiceclients.VoiceAuthenticatedClient;
 import net.gliby.voicechat.client.networking.voiceclients.VoiceClient;
-import net.gliby.voicechat.client.sound.ClientStreamManager;
-import net.gliby.voicechat.client.sound.SoundSystemWrapper;
 import net.gliby.voicechat.common.PlayerProxy;
 import net.gliby.voicechat.common.networking.voiceservers.EnumVoiceNetworkType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ServerAddress;
 import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.entity.player.EntityPlayer;
 
 public class ClientNetwork {
     private final VoiceChatClient voiceChat;

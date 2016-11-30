@@ -11,7 +11,6 @@
  */
 package net.gliby.voicechat.client.sound;
 
-import java.util.Random;
 import javax.sound.sampled.AudioFormat;
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.minecraft.client.audio.SoundHandler;

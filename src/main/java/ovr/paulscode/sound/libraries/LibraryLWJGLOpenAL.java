@@ -20,13 +20,11 @@
 package ovr.paulscode.sound.libraries;
 
 import java.net.URL;
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 import javax.sound.sampled.AudioFormat;
 import org.lwjgl.BufferUtils;
@@ -44,7 +42,6 @@ import paulscode.sound.SoundBuffer;
 import paulscode.sound.SoundSystemConfig;
 import paulscode.sound.SoundSystemException;
 import paulscode.sound.Source;
-import paulscode.sound.Vector3D;
 
 public class LibraryLWJGLOpenAL
         extends Library {

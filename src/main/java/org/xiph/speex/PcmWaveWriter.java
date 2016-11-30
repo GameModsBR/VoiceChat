@@ -113,11 +113,11 @@ public class PcmWaveWriter extends AudioFileWriter {
       this.size += var3;
    }
 
-   private static final int calculateEffectiveBitrate(int var0, int var1, int var2) {
+   private static int calculateEffectiveBitrate(int var0, int var1, int var2) {
       return (WAVE_FRAME_SIZES[var0 - 1][var1 - 1][var2] * WAVE_BITS_PER_FRAME[var0 - 1][var1 - 1][var2] + 7 >> 3) * 50 * 8 / WAVE_BITS_PER_FRAME[var0 - 1][var1 - 1][var2];
    }
 
-   private static final int calculateBlockSize(int var0, int var1, int var2) {
+   private static int calculateBlockSize(int var0, int var1, int var2) {
       return WAVE_FRAME_SIZES[var0 - 1][var1 - 1][var2] * WAVE_BITS_PER_FRAME[var0 - 1][var1 - 1][var2] + 7 >> 3;
    }
 

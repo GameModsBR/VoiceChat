@@ -15,7 +15,6 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
-import java.net.SocketAddress;
 import java.net.SocketException;
 import java.util.Collection;
 import java.util.EventListener;

@@ -98,11 +98,11 @@ public class ValueFormat {
       return sb.toString();
    }
 
-   public static final int PRECISION(int precision) {
+   public static int PRECISION(int precision) {
       return precision << 2;
    }
 
-   public static final int PREFIX(int prefix) {
+   public static int PREFIX(int prefix) {
       return prefix << 6;
    }
 

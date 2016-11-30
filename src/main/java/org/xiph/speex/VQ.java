@@ -3,7 +3,7 @@ package org.xiph.speex;
 
 public class VQ {
 
-   public static final int index(float var0, float[] var1, int var2) {
+   public static int index(float var0, float[] var1, int var2) {
       float var4 = 0.0F;
       int var5 = 0;
 
@@ -19,7 +19,7 @@ public class VQ {
       return var5;
    }
 
-   public static final int index(float[] var0, float[] var1, int var2, int var3) {
+   public static int index(float[] var0, float[] var1, int var2, int var3) {
       int var6 = 0;
       float var7 = 0.0F;
       int var8 = 0;
@@ -41,7 +41,7 @@ public class VQ {
       return var8;
    }
 
-   public static final void nbest(float[] var0, int var1, float[] var2, int var3, int var4, float[] var5, int var6, int[] var7, float[] var8) {
+   public static void nbest(float[] var0, int var1, float[] var2, int var3, int var4, float[] var5, int var6, int[] var7, float[] var8) {
       int var12 = 0;
       int var13 = 0;
 
@@ -67,7 +67,7 @@ public class VQ {
 
    }
 
-   public static final void nbest_sign(float[] var0, int var1, float[] var2, int var3, int var4, float[] var5, int var6, int[] var7, float[] var8) {
+   public static void nbest_sign(float[] var0, int var1, float[] var2, int var3, int var4, float[] var5, int var6, int[] var7, float[] var8) {
       int var12 = 0;
       int var14 = 0;
 

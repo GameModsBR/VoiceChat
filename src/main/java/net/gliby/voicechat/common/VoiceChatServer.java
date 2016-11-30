@@ -24,7 +24,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
-import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import net.gliby.gman.GMan;
@@ -41,18 +40,15 @@ import net.gliby.voicechat.common.networking.voiceservers.VoiceAuthenticatedServ
 import net.gliby.voicechat.common.networking.voiceservers.VoiceServer;
 import net.gliby.voicechat.common.networking.voiceservers.udp.UDPVoiceServer;
 import net.minecraft.command.ICommand;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.eventhandler.EventBus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
