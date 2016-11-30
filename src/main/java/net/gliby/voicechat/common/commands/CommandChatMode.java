@@ -8,16 +8,16 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.command.PlayerNotFoundException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 
 import java.util.List;
 
 public class CommandChatMode extends CommandBase {
 
     @Override
-    public List<String> addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
-        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, "distance", "global", "world") : (par2ArrayOfStr.length == 2 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames()) : null);
+    public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
+        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, "distance", "global", "world") : (par2ArrayOfStr.length == 2 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames(server)) : null);
     }
 
     public String getChatMode(int chatMode) {
@@ -38,8 +38,8 @@ public class CommandChatMode extends CommandBase {
         return "/vchatmode <mode> or /vchatmode <mode> [player]";
     }
 
-    protected String[] getListOfPlayerUsernames() {
-        return MinecraftServer.getServer().getAllUsernames();
+    protected String[] getListOfPlayerUsernames(MinecraftServer server) {
+        return server.getAllUsernames();
     }
 
     @Override
@@ -53,13 +53,13 @@ public class CommandChatMode extends CommandBase {
     }
 
     @Override
-    public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
+    public void execute(MinecraftServer server, ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
         if (par2ArrayOfStr.length > 0) {
             int chatMode = this.getChatModeFromCommand(par1ICommandSender, par2ArrayOfStr[0]);
             EntityPlayerMP player = null;
 
             try {
-                player = par2ArrayOfStr.length >= 2 ? getPlayer(par1ICommandSender, par2ArrayOfStr[1]) : getCommandSenderAsPlayer(par1ICommandSender);
+                player = par2ArrayOfStr.length >= 2 ? getPlayer(server, par1ICommandSender, par2ArrayOfStr[1]) : getCommandSenderAsPlayer(par1ICommandSender);
             } catch (PlayerNotFoundException var7) {
                 var7.printStackTrace();
             }
@@ -73,18 +73,18 @@ public class CommandChatMode extends CommandBase {
                 }
 
                 if (player != par1ICommandSender) {
-                    notifyOperators(par1ICommandSender, this, player.getName() + " set chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")", par2ArrayOfStr[0]);
+                    notifyCommandListener(par1ICommandSender, this, player.getName() + " set chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")", par2ArrayOfStr[0]);
                 } else {
-                    player.addChatMessage(new ChatComponentText("Set own chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")"));
+                    player.addChatMessage(new TextComponentString("Set own chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")"));
                     switch (chatMode) {
                         case 0:
-                            player.addChatMessage(new ChatComponentText("Only players near you can hear you."));
+                            player.addChatMessage(new TextComponentString("Only players near you can hear you."));
                             break;
                         case 1:
-                            player.addChatMessage(new ChatComponentText("Every player in this world can hear you"));
+                            player.addChatMessage(new TextComponentString("Every player in this world can hear you"));
                             break;
                         case 2:
-                            player.addChatMessage(new ChatComponentText("Every player can hear you."));
+                            player.addChatMessage(new TextComponentString("Every player can hear you."));
                     }
                 }
             }

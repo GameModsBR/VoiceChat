@@ -29,14 +29,14 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public void entityJoinWorld(final EntityJoinWorldEvent event) {
-        if (event.world.isRemote) {
+        if (event.getWorld().isRemote) {
             new Thread(new Runnable() {
 
                 @Override
                 public void run() {
-                    if (event.entity instanceof EntityOtherPlayerMP) {
+                    if (event.getEntity() instanceof EntityOtherPlayerMP) {
                         PlayerProxy proxy;
-                        EntityOtherPlayerMP player = (EntityOtherPlayerMP) event.entity;
+                        EntityOtherPlayerMP player = (EntityOtherPlayerMP) event.getEntity();
                         if (!VoiceChatClient.getSoundManager().playersMuted.contains(player.getEntityId())) {
                             VoiceChatClient.getSoundManager();
                             for (Map.Entry<Integer, String> entry : ClientStreamManager.playerMutedData.entrySet()) {

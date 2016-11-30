@@ -1,5 +1,6 @@
 package net.gliby.voicechat.client.gui.options;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.gliby.voicechat.client.device.Device;
 import net.gliby.voicechat.client.gui.GuiBoostSlider;
@@ -11,10 +12,9 @@ import net.gliby.voicechat.client.textures.IndependentGUITexture;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
@@ -141,11 +141,11 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         GL11.glPopMatrix();
         this.drawString(this.mc.fontRendererObj, this.currentPage + "/" + 4, this.width / 2 + 108, this.height / 2 + 67, -1);
         if (this.title != null) {
-            this.drawString(this.mc.fontRendererObj, EnumChatFormatting.BOLD + this.title, this.width / 2 - this.mc.fontRendererObj.getStringWidth(this.title) / 2 - 12, this.height / 2 - 80, -1);
+            this.drawString(this.mc.fontRendererObj, ChatFormatting.BOLD + this.title, this.width / 2 - this.mc.fontRendererObj.getStringWidth(this.title) / 2 - 12, this.height / 2 - 80, -1);
         }
 
         if (this.text != null) {
-            this.fontRendererObj.drawSplitString(EnumChatFormatting.getTextWithoutFormattingCodes(this.text), this.width / 2 - 107 - 1 + 1, this.height / 2 - 65 + 1, 230, 0);
+            this.fontRendererObj.drawSplitString(ChatFormatting.stripFormatting(this.text), this.width / 2 - 107 - 1 + 1, this.height / 2 - 65 + 1, 230, 0);
             this.fontRendererObj.drawSplitString(this.text, this.width / 2 - 107 - 1, this.height / 2 - 65, 230, -1);
         }
 
@@ -163,7 +163,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.getInstance();
-        WorldRenderer renderer = tessellator.getWorldRenderer();
+        VertexBuffer renderer = tessellator.getBuffer();
         renderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
         renderer.pos((double) (par1 + 0.0F), (double) (par2 + par6), (double) this.zLevel).tex((double) ((par3 + 0.0F) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F)).endVertex();
         renderer.pos((double) (par1 + par5), (double) (par2 + par6), (double) this.zLevel).tex((double) ((par3 + par5) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F)).endVertex();

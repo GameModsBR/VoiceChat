@@ -51,7 +51,7 @@ public class RenderPlayerVoiceIcon extends Gui {
             GL11.glDisable(2929);
             GL11.glEnable(3042);
             OpenGlHelper.glBlendFunc(770, 771, 1, 0);
-            this.translateWorld(this.mc, event.partialTicks);
+            this.translateWorld(this.mc, event.getPartialTicks());
 
             for (int i = 0; (float) i < MathUtility.clamp((float) VoiceChatClient.getSoundManager().currentStreams.size(), 0.0F, (float) this.voiceChat.getSettings().getMaximumRenderableVoiceIcons()); ++i) {
                 ClientStream stream = VoiceChatClient.getSoundManager().currentStreams.get(i);
@@ -59,10 +59,10 @@ public class RenderPlayerVoiceIcon extends Gui {
                     EntityLivingBase entity = (EntityLivingBase) stream.player.getPlayer();
                     if (!entity.isInvisible() && !this.mc.gameSettings.hideGUI) {
                         GL11.glPushMatrix();
-                        this.enableEntityLighting(entity, event.partialTicks);
+                        this.enableEntityLighting(entity, event.getPartialTicks());
                         GL11.glNormal3f(0.0F, 1.0F, 0.0F);
                         GL11.glDepthMask(false);
-                        this.translateEntity(entity, event.partialTicks);
+                        this.translateEntity(entity, event.getPartialTicks());
                         GL11.glRotatef(-Minecraft.getMinecraft().getRenderManager().playerViewY, 0.0F, 1.0F, 0.0F);
                         GL11.glTranslatef(-0.25F, entity.height + 0.7F, 0.0F);
                         GL11.glRotatef(Minecraft.getMinecraft().getRenderManager().playerViewX, 1.0F, 0.0F, 0.0F);

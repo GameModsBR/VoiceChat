@@ -1,5 +1,6 @@
 package net.gliby.voicechat.client.gui.options;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.gliby.voicechat.client.VoiceChatClient;
 import net.gliby.voicechat.client.device.Device;
 import net.gliby.voicechat.client.gui.*;
@@ -7,7 +8,6 @@ import net.gliby.voicechat.client.sound.MicrophoneTester;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
@@ -154,20 +154,20 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         super.initGui();
         this.warningMessages = new ArrayList<String>();
         if (this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
-            this.warningMessages.add(EnumChatFormatting.DARK_RED + "No input devices found, add input device and restart Minecraft.");
+            this.warningMessages.add(ChatFormatting.DARK_RED + "No input devices found, add input device and restart Minecraft.");
         }
 
         if (this.voiceChat.getModInfo().updateNeeded()) {
             this.warningMessages.add(this.updateMessage = I18n.format("menu.downloadLatest") + "§b " + this.voiceChat.getModInfo().updateURL);
-            this.warningMessages.add(EnumChatFormatting.RED + I18n.format("menu.modOutdated"));
+            this.warningMessages.add(ChatFormatting.RED + I18n.format("menu.modOutdated"));
         }
 
         if (this.mc.isSingleplayer() && !this.mc.getIntegratedServer().getPublic()) {
-            this.warningMessages.add(EnumChatFormatting.RED + I18n.format("menu.warningSingleplayer"));
+            this.warningMessages.add(ChatFormatting.RED + I18n.format("menu.warningSingleplayer"));
         }
 
         if (!this.voiceChat.getClientNetwork().isConnected() && !this.mc.isSingleplayer()) {
-            this.warningMessages.add(EnumChatFormatting.RED + I18n.format("Server doesn\'t support voice chat."));
+            this.warningMessages.add(ChatFormatting.RED + I18n.format("Server doesn\'t support voice chat."));
         }
 
     }

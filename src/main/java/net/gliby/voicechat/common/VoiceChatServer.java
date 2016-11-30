@@ -56,6 +56,7 @@ public class VoiceChatServer {
     private VoiceServer voiceServer;
     private Thread voiceServerThread;
     private File configurationDirectory;
+    private MinecraftServer minecraftServer;
 
     /*
      * WARNING - Removed try catching itself - possible behaviour change.
@@ -95,6 +96,10 @@ public class VoiceChatServer {
 
     public static String getMinecraftVersion() {
         return "1.8";
+    }
+
+    public MinecraftServer getMinecraftServer() {
+        return minecraftServer;
     }
 
     public static int randInt(int min, int max) {
@@ -148,8 +153,12 @@ public class VoiceChatServer {
     public void initMod(VoiceChat voiceChat, FMLInitializationEvent event) {
     }
 
+    public void serverAboutToStart(FMLServerAboutToStartEvent event) {
+        minecraftServer = event.getServer();
+    }
+
     public void initServer(FMLServerStartedEvent event) {
-        MinecraftServer server = MinecraftServer.getServer();
+        MinecraftServer server = minecraftServer;
         if (this.serverSettings.getUDPPort() == 0) {
             if (server.isDedicatedServer()) {
                 int queryPort = -1;

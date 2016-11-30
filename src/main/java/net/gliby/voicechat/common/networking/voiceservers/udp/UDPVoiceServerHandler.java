@@ -5,7 +5,6 @@ import com.google.common.io.ByteStreams;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.common.MathUtility;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
 
 import java.io.UnsupportedEncodingException;
 import java.net.DatagramPacket;
@@ -24,7 +23,7 @@ public class UDPVoiceServerHandler {
 
     public UDPVoiceServerHandler(UDPVoiceServer server) {
         this.server = server;
-        this.threadService = Executors.newFixedThreadPool((int) MathUtility.clamp((float) MinecraftServer.getServer().getMaxPlayers(), 1.0F, 10.0F));
+        this.threadService = Executors.newFixedThreadPool((int) MathUtility.clamp((float) server.getMinecraftServer().getMaxPlayers(), 1.0F, 10.0F));
         this.clientNetworkMap = new HashMap<InetSocketAddress, UDPClient>();
     }
 

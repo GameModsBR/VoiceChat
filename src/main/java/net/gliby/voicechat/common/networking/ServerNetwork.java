@@ -13,7 +13,6 @@ import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.common.VoiceChatServer;
 import net.gliby.voicechat.common.networking.packets.MinecraftClientEntityDataPacket;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,17 +39,17 @@ public class ServerNetwork {
     }
 
     public String[] getPlayerIPs() {
-        List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
+        List<EntityPlayerMP> players = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
         String[] ips = new String[players.size()];
         for (int i = 0; i < players.size(); ++i) {
-            EntityPlayerMP p = (EntityPlayerMP) players.get(i);
+            EntityPlayerMP p = players.get(i);
             ips[i] = p.getPlayerIP();
         }
         return ips;
     }
 
     public EntityPlayerMP[] getPlayers() {
-        List<EntityPlayerMP> pl = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
+        List<EntityPlayerMP> pl = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
         return pl.toArray(new EntityPlayerMP[pl.size()]);
     }
 

@@ -19,6 +19,8 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 
+import java.util.ArrayList;
+
 public class GuiInGameHandlerVoiceChat extends Gui {
 
     private final VoiceChatClient voiceChat;
@@ -60,7 +62,7 @@ public class GuiInGameHandlerVoiceChat extends Gui {
 
     @SubscribeEvent
     public void render(Text text) {
-        if (text.type == ElementType.DEBUG && VoiceChat.getProxyInstance().getSettings().isDebug()) {
+        if (text.getType() == ElementType.DEBUG && VoiceChat.getProxyInstance().getSettings().isDebug()) {
             VoiceChat.getProxyInstance();
             Statistics stats = VoiceChatClient.getStatistics();
             if (stats != null) {
@@ -69,11 +71,12 @@ public class GuiInGameHandlerVoiceChat extends Gui {
                 String decodedAvg = ValueFormat.format((long) stats.getDecodedAverageDataReceived(), settings);
                 String encodedData = ValueFormat.format((long) stats.getEncodedDataReceived(), settings);
                 String decodedData = ValueFormat.format((long) stats.getDecodedDataReceived(), settings);
-                text.right.add("Voice Chat Debug Info");
-                text.right.add("VC Data [ENC AVG]: " + encodedAvg + "");
-                text.right.add("VC Data [DEC AVG]: " + decodedAvg + "");
-                text.right.add("VC Data [ENC REC]: " + encodedData + "");
-                text.right.add("VC Data [DEC REC]: " + decodedData + "");
+                ArrayList<String> right = text.getRight();
+                right.add("Voice Chat Debug Info");
+                right.add("VC Data [ENC AVG]: " + encodedAvg + "");
+                right.add("VC Data [DEC AVG]: " + decodedAvg + "");
+                right.add("VC Data [ENC REC]: " + encodedData + "");
+                right.add("VC Data [DEC REC]: " + decodedData + "");
             }
         }
 
@@ -81,7 +84,7 @@ public class GuiInGameHandlerVoiceChat extends Gui {
 
     @SubscribeEvent
     public void renderInGameGui(Post event) {
-        if (event.type == ElementType.HOTBAR) {
+        if (event.getType() == ElementType.HOTBAR) {
             if (this.res == null) {
                 this.getDelta();
                 this.lastFPS = this.getTime();

@@ -45,6 +45,11 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
         return EnumVoiceNetworkType.UDP;
     }
 
+    public MinecraftServer getMinecraftServer()
+    {
+        return voiceChat.getMinecraftServer();
+    }
+
     @Override
     public void handleVoiceData(EntityPlayerMP player, byte[] data, byte divider, int id, boolean end) {
         this.manager.addQueue(player, data, divider, id, end);
@@ -107,7 +112,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
         this.clientMap = new HashMap<Integer, UDPClient>();
         this.handler = new UDPVoiceServerHandler(this);
         String hostname = "0.0.0.0";
-        MinecraftServer mc = MinecraftServer.getServer();
+        MinecraftServer mc = getMinecraftServer();
         if (mc.isDedicatedServer()) {
             hostname = mc.getServerHostname();
         }

@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
         modid = VoiceChat.MOD_ID,
         name = "Gliby\'s Voice Chat Mod",
         version = "@VERSION@",
-        acceptedMinecraftVersions = "1.8.9"
+        acceptedMinecraftVersions = "1.9"
 )
 public class VoiceChat {
 
@@ -67,6 +67,11 @@ public class VoiceChat {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.initMod(this, event);
+    }
+
+    @EventHandler
+    public void serverAboutToStart(FMLServerAboutToStartEvent event) {
+        proxy.serverAboutToStart(event);
     }
 
     @EventHandler

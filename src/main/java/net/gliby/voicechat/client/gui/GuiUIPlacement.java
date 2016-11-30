@@ -5,7 +5,7 @@ import net.gliby.voicechat.client.Settings;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.input.Mouse;
@@ -56,7 +56,7 @@ public class GuiUIPlacement extends GuiScreen {
         GL11.glBlendFunc(770, 771);
         GL11.glColor4f(f1, f2, f3, f);
         Tessellator tessellator = Tessellator.getInstance();
-        WorldRenderer renderer = tessellator.getWorldRenderer();
+        VertexBuffer renderer = tessellator.getBuffer();
         renderer.begin(GL11.GL_LINE_LOOP, DefaultVertexFormats.POSITION);
         renderer.pos((double) par0, (double) par3, 0.0D).endVertex();
         renderer.pos((double) par2, (double) par3, 0.0D).endVertex();

@@ -5,7 +5,6 @@ import net.gliby.voicechat.common.api.VoiceChatAPI;
 import net.gliby.voicechat.common.api.events.ServerStreamEvent;
 import net.gliby.voicechat.common.networking.entityhandler.EntityHandler;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,7 +60,7 @@ public class ServerStreamManager {
 
     public void feedStreamToAllPlayers(ServerStream stream, ServerDatalet voiceData) {
         EntityPlayerMP speaker = voiceData.player;
-        List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
+        List players = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
         int i;
         EntityPlayerMP target;
         if (voiceData.end) {
