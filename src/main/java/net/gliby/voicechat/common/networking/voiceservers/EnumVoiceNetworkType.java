@@ -11,7 +11,7 @@ public enum EnumVoiceNetworkType {
    private static final EnumVoiceNetworkType[] $VALUES = new EnumVoiceNetworkType[]{MINECRAFT, UDP};
 
 
-   private EnumVoiceNetworkType(String var1, int var2, String name, boolean authRequired) {
+   EnumVoiceNetworkType(String var1, int var2, String name, boolean authRequired) {
       this.name = name;
       this.authRequired = authRequired;
    }

@@ -14,7 +14,7 @@ public enum EnumUIPlacement {
    private static final EnumUIPlacement[] $VALUES = new EnumUIPlacement[]{VOICE_PLATES, SPEAK};
 
 
-   private EnumUIPlacement(String var1, int var2, float x, float y, int offsetX, int offsetY, int positionType) {
+   EnumUIPlacement(String var1, int var2, float x, float y, int offsetX, int offsetY, int positionType) {
       this.x = x;
       this.y = y;
       this.offsetX = offsetX;

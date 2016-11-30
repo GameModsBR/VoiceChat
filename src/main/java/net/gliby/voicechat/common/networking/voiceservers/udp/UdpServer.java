@@ -322,14 +322,14 @@ public class UdpServer {
         }
     }
 
-    public static enum State {
+    public enum State {
         STARTING,
         STARTED,
         STOPPING,
         STOPPED;
 
 
-        private State() {
+        State() {
         }
     }
 

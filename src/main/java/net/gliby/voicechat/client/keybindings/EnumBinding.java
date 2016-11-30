@@ -10,7 +10,7 @@ public enum EnumBinding {
    private static final EnumBinding[] $VALUES = new EnumBinding[]{SPEAK, OPEN_GUI_OPTIONS};
 
 
-   private EnumBinding(String var1, int var2, String name) {
+   EnumBinding(String var1, int var2, String name) {
       this.name = name;
    }
 
