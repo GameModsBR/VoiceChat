@@ -187,7 +187,6 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
    public void mouseClicked(int x, int y, int b) {
       if(b == 0) {
          if(!this.voiceChat.getModInfo().updateNeeded()) {
-            ;
          }
 
          for(int e = 0; e < this.warningMessages.size(); ++e) {

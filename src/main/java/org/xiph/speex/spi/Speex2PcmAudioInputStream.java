@@ -53,7 +53,6 @@ public class Speex2PcmAudioInputStream extends FilteredAudioInputStream {
          }
 
          if(var4 == 0) {
-            ;
          }
 
          this.precount += var4;

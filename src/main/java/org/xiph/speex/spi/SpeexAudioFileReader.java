@@ -124,7 +124,6 @@ public class SpeexAudioFileReader extends AudioFileReader {
          }
 
          if(!var17) {
-            ;
          }
 
          if(var20 >= 0 && var20 <= 2 && var16 > 0) {

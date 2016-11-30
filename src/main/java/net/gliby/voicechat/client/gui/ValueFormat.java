@@ -81,7 +81,6 @@ public class ValueFormat {
          }
 
          for(end += negative; max > end && data[max - 1] == 48; --max) {
-            ;
          }
 
          if(max - end != 0) {

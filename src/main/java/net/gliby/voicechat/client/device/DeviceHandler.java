@@ -78,9 +78,7 @@ public class DeviceHandler {
                this.devices.add(new Device(tdl, info));
             }
          } catch (LineUnavailableException var9) {
-            ;
          } catch (IllegalArgumentException var10) {
-            ;
          }
       }
 

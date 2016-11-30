@@ -75,14 +75,12 @@ public class ChannelLWJGLOpenAL extends Channel {
             AL10.alSourceStop(this.ALSource);
             AL10.alGetError();
          } catch (Exception var3) {
-            ;
          }
 
          try {
             AL10.alDeleteSources(this.ALSource);
             AL10.alGetError();
          } catch (Exception var2) {
-            ;
          }
 
          this.ALSource.clear();
@@ -97,7 +95,6 @@ public class ChannelLWJGLOpenAL extends Channel {
          AL10.alSourceStop(this.ALSource.get(0));
          AL10.alGetError();
       } catch (Exception var2) {
-         ;
       }
 
       if(this.channelType == 1) {
