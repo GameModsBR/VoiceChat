@@ -13,9 +13,9 @@ version = "0.6.1"
 group= "net.gliby"
 
 minecraft {
-    version = "1.10.2-12.18.2.2166"
+    version = "1.11-13.19.0.2168"
     runDir = "run"
-    mappings = "stable_26"
+    mappings = 'snapshot_20161130'
 
     replace "@VERSION@", project.version
     replace "@MC_VERSION@", project.minecraft.version

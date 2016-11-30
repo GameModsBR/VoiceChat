@@ -50,10 +50,10 @@ public class ThreadUpdateStream implements Runnable {
                         Vector3f vector = stream.player.position();
                         this.voiceChat.sndSystem.setPosition(source, vector.x, vector.y, vector.z);
                     } else {
-                        this.voiceChat.sndSystem.setPosition(source, (float) this.mc.thePlayer.posX, (float) this.mc.thePlayer.posY, (float) this.mc.thePlayer.posZ);
+                        this.voiceChat.sndSystem.setPosition(source, (float) this.mc.player.posX, (float) this.mc.player.posY, (float) this.mc.player.posZ);
                     }
 
-                    stream.player.update(this.mc.theWorld);
+                    stream.player.update(this.mc.world);
                 }
 
                 try {

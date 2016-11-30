@@ -39,7 +39,7 @@ public class ServerNetwork {
     }
 
     public String[] getPlayerIPs() {
-        List<EntityPlayerMP> players = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
+        List<EntityPlayerMP> players = voiceChat.getMinecraftServer().getPlayerList().getPlayers();
         String[] ips = new String[players.size()];
         for (int i = 0; i < players.size(); ++i) {
             EntityPlayerMP p = players.get(i);
@@ -49,7 +49,7 @@ public class ServerNetwork {
     }
 
     public EntityPlayerMP[] getPlayers() {
-        List<EntityPlayerMP> pl = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
+        List<EntityPlayerMP> pl = voiceChat.getMinecraftServer().getPlayerList().getPlayers();
         return pl.toArray(new EntityPlayerMP[pl.size()]);
     }
 

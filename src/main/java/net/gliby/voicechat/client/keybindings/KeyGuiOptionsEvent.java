@@ -18,7 +18,7 @@ public class KeyGuiOptionsEvent extends KeyEvent {
     @Override
     public void keyDown(KeyBinding kb, boolean tickEnd, boolean isRepeat) {
         Minecraft mc = Minecraft.getMinecraft();
-        if (mc != null && mc.currentScreen == null && mc.theWorld != null && tickEnd) {
+        if (mc != null && mc.currentScreen == null && mc.world != null && tickEnd) {
             mc.displayGuiScreen(new GuiScreenVoiceChatOptions(this.voiceChat));
         }
 
