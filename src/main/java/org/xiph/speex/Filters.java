@@ -21,7 +21,7 @@ public class Filters {
     public static void filter_mem2(float[] var0, int var1, float[] var2, float[] var3, int var4, int var5, float[] var6, int var7) {
         for (int var8 = 0; var8 < var4; ++var8) {
             float var10 = var0[var1 + var8];
-            var0[var1 + var8] = var2[0] * var10 + var6[var7 + 0];
+            var0[var1 + var8] = var2[0] * var10 + var6[var7];
             float var11 = var0[var1 + var8];
 
             for (int var9 = 0; var9 < var5 - 1; ++var9) {

@@ -21,7 +21,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.util.List;
 
 public class GuiScreenDonate extends GuiScreen {
 
@@ -67,8 +66,6 @@ public class GuiScreenDonate extends GuiScreen {
 
     @Override
     public void initGui() {
-        @SuppressWarnings("unchecked")
-        List<GuiButton> buttonList = this.buttonList;
         buttonList.add(new GuiButton(0, this.width / 2 - 50, this.height - 34, 100, 20, I18n.format("gui.back")));
         buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2, I18n.format("menu.gman.donate")));
     }
@@ -124,8 +121,8 @@ public class GuiScreenDonate extends GuiScreen {
                     WorldRenderer renderer = tessellator.getWorldRenderer();
                     renderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
                     renderer.pos(0.0D, (double) this.cachedLogoDimensions.height, (double) this.zLevel).tex(0.0D, 1.0D).endVertex();
-                    renderer.pos((double) (0 + this.cachedLogoDimensions.width), (double) (0 + this.cachedLogoDimensions.height), (double) this.zLevel).tex(1.0D, 1.0D).endVertex();
-                    renderer.pos((double) (0 + this.cachedLogoDimensions.width), 0.0D, (double) this.zLevel).tex(1.0D, 0.0D).endVertex();
+                    renderer.pos((double) (this.cachedLogoDimensions.width), (double) (this.cachedLogoDimensions.height), (double) this.zLevel).tex(1.0D, 1.0D).endVertex();
+                    renderer.pos((double) (this.cachedLogoDimensions.width), 0.0D, (double) this.zLevel).tex(1.0D, 0.0D).endVertex();
                     renderer.pos(0.0D, 0.0D, (double) this.zLevel).tex(0.0D, 0.0D).endVertex();
                     tessellator.draw();
                 }

@@ -16,7 +16,7 @@ import java.util.List;
 public class CommandChatMode extends CommandBase {
 
     @Override
-    public List addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
+    public List<String> addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
         return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, "distance", "global", "world") : (par2ArrayOfStr.length == 2 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames()) : null);
     }
 

@@ -50,7 +50,6 @@ public class ServerNetwork {
     }
 
     public EntityPlayerMP[] getPlayers() {
-        @SuppressWarnings("unchecked")
         List<EntityPlayerMP> pl = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
         return pl.toArray(new EntityPlayerMP[pl.size()]);
     }

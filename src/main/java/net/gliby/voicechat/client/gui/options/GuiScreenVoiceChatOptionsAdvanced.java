@@ -7,8 +7,6 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.opengl.GL11;
 
-import java.util.List;
-
 public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
 
     private final VoiceChatClient voiceChat;
@@ -88,8 +86,6 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
 
     @Override
     public void initGui() {
-        @SuppressWarnings("unchecked")
-        List<GuiButton> buttonList = this.buttonList;
         buttonList.add(new GuiButton(0, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("gui.back")));
         buttonList.add(new GuiButton(1, this.width / 2 + 77, this.height - 34, 75, 20, I18n.format("controls.reset")));
         this.qualitySlider = new GuiBoostSlider(4, this.width / 2 + 2, 74, "", I18n.format("menu.encodingQuality") + ": " + (this.voiceChat.getSettings().getEncodingQuality() == 0.0F ? "0" : String.valueOf((int) (this.voiceChat.getSettings().getEncodingQuality() * 10.0F))), 0.0F);

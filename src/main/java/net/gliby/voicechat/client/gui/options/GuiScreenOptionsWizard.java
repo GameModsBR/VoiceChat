@@ -19,7 +19,6 @@ import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -151,7 +150,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         }
 
         for (int k = 0; k < this.buttonList.size(); ++k) {
-            GuiButton guibutton = (GuiButton) this.buttonList.get(k);
+            GuiButton guibutton = this.buttonList.get(k);
             if (guibutton == this.nextButton || guibutton == this.previousButton || guibutton == this.doneButton || this.buttonMap.get(guibutton) != null && this.buttonMap.get(guibutton) == this.currentPage) {
                 guibutton.drawButton(this.mc, x, y);
             }
@@ -182,8 +181,6 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         }
 
         this.dropDown = new GuiDropDownMenu(-1, this.width / 2 - 75, this.height / 2 - 55, 150, 20, this.voiceChat.getSettings().getInputDevice() != null ? this.voiceChat.getSettings().getInputDevice().getName() : "None", array);
-        @SuppressWarnings("unchecked")
-        List<GuiButton> buttonList = this.buttonList;
         buttonList.add(this.nextButton = new GuiCustomButton(0, this.width / 2 - 90, this.height / 2 + 60, 180, 20, I18n.format("menu.next") + " ->"));
         buttonList.add(this.previousButton = new GuiCustomButton(1, this.width / 2 - 90, this.height / 2, 180, 20, "<- " + I18n.format("menu.previous")));
         buttonList.add(this.doneButton = new GuiCustomButton(2, this.width / 2 - 90, this.height / 2, 180, 20, I18n.format("gui.done")));
@@ -216,7 +213,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
 
         if (b == 0) {
             for (int var8 = 0; var8 < this.buttonList.size(); ++var8) {
-                GuiButton guibutton = (GuiButton) this.buttonList.get(var8);
+                GuiButton guibutton = this.buttonList.get(var8);
                 if ((guibutton == this.nextButton || guibutton == this.previousButton || this.doneButton == guibutton || this.buttonMap.get(guibutton) != null && this.buttonMap.get(guibutton) == this.currentPage) && guibutton.mousePressed(this.mc, x, y)) {
                     try {
                         super.mouseClicked(x, y, b);

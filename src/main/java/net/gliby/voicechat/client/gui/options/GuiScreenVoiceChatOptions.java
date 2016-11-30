@@ -131,8 +131,6 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         this.boostSlider = new GuiBoostSlider(900, this.width / 2 + 2, this.height / 2 - 55, "", I18n.format("menu.boost") + ": " + ((int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0 ? I18n.format("options.off") : "" + (int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F);
         this.boostSlider.sliderValue = this.voiceChat.getSettings().getInputBoost();
         this.advancedOptions = new GuiCustomButton(899, this.width / 2 + 2, this.height / 2 + 49 - 55, 150, 20, I18n.format("menu.advancedOptions"));
-        @SuppressWarnings("unchecked")
-        List<GuiButton> buttonList = this.buttonList;
         buttonList.add(new GuiButton(1, this.width / 2 - 151, this.height - 34, 75, 20, I18n.format("menu.gman.supportGliby")));
         buttonList.add(new GuiButton(2, this.width / 2 - 152, this.height / 2 - 25 - 55, 150, 20, !this.tester.recording ? I18n.format("menu.microphoneTest") : I18n.format("menu.microphoneStopTest")));
         buttonList.add(new GuiButton(3, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("menu.returnToGame")));
@@ -145,8 +143,8 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         buttonList.add(this.mutePlayer = new GuiCustomButton(897, this.width / 2 - 152, this.height / 2 + 73 - 55, 304, 20, I18n.format("menu.mutePlayers")));
         buttonList.add(this.dropDown);
         if (this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
-            ((GuiButton) this.buttonList.get(0)).enabled = false;
-            ((GuiButton) this.buttonList.get(3)).enabled = false;
+            this.buttonList.get(0).enabled = false;
+            this.buttonList.get(3).enabled = false;
             this.boostSlider.enabled = false;
             this.mutePlayer.enabled = false;
             this.microphoneMode.enabled = false;

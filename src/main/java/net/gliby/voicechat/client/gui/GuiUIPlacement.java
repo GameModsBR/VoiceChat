@@ -153,8 +153,6 @@ public class GuiUIPlacement extends GuiScreen {
             this.placeables.add(new GuiUIPlacementVoicePlate(VoiceChat.getProxyInstance().getSettings().getUIPositionPlate(), this.width, this.height));
         }
 
-        @SuppressWarnings("unchecked")
-        List<GuiButton> buttonList = this.buttonList;
         buttonList.add(this.positionTypeButton = new GuiButton(0, 2, 2, 96, 20, "Position: Automatic"));
         buttonList.add(this.resetButton = new GuiButton(1, 2, 2, 96, 20, I18n.format("menu.resetLocation")));
         buttonList.add(this.scaleSlider = new GuiBoostSlider(2, 2, 2, "", "Scale: 100%", 0.0F));

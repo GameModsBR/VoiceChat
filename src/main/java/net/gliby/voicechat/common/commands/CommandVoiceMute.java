@@ -16,7 +16,7 @@ import java.util.List;
 public class CommandVoiceMute extends CommandBase {
 
     @Override
-    public List addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
+    public List<String> addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
         return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getPlayers()) : null;
     }
 
