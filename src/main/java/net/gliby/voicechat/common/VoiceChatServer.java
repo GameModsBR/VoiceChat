@@ -47,9 +47,9 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 
 public class VoiceChatServer {
-    public static final String VERSION = "0.6.1";
+    public static final String VERSION = "@VERSION@";
     protected static final Logger LOGGER = LogManager.getLogger((String) "Gliby's Voice Chat Mod");
-    private static final String MC_VERSION = "1.8";
+    private static final String MC_VERSION = "@MC_VERSION@";
     public ModInfo modInfo;
     public ServerNetwork serverNetwork;
     public ServerSettings serverSettings;
@@ -95,7 +95,7 @@ public class VoiceChatServer {
     }
 
     public static String getMinecraftVersion() {
-        return "1.8";
+        return MC_VERSION;
     }
 
     public MinecraftServer getMinecraftServer() {
@@ -143,7 +143,7 @@ public class VoiceChatServer {
     }
 
     public String getVersion() {
-        return "0.6.1";
+        return VERSION;
     }
 
     public VoiceServer getVoiceServer() {
