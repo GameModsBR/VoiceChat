@@ -16,7 +16,7 @@ version = "0.6.1"
 group= "net.gliby"
 
 minecraft {
-    version = "1.9.4-12.17.0.2051"
+    version = "1.10-12.18.0.2000-1.10.0"
     runDir = "run"
     mappings = "stable_26"
 
