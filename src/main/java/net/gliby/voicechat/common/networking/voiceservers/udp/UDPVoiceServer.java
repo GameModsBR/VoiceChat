@@ -38,12 +38,12 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
    }
 
    public void closeConnection(int id) {
-      UDPClient client = (UDPClient)this.clientMap.get(Integer.valueOf(id));
+      UDPClient client = (UDPClient)this.clientMap.get(id);
       if(client != null) {
          this.handler.closeConnection(client.socketAddress);
       }
 
-      this.clientMap.remove(Integer.valueOf(id));
+      this.clientMap.remove(id);
    }
 
    public EnumVoiceNetworkType getType() {
@@ -55,7 +55,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
    }
 
    public void sendChunkVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples, byte chunkSize) {
-      UDPClient client = (UDPClient)this.clientMap.get(Integer.valueOf(player.getEntityId()));
+      UDPClient client = (UDPClient)this.clientMap.get(player.getEntityId());
       if(client != null) {
          this.sendPacket(new UDPServerChunkVoicePacket(samples, entityID, direct, chunkSize), client);
       }
@@ -63,7 +63,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
    }
 
    public void sendEntityPosition(EntityPlayerMP player, int entityID, double x, double y, double z) {
-      UDPClient client = (UDPClient)this.clientMap.get(Integer.valueOf(player.getEntityId()));
+      UDPClient client = (UDPClient)this.clientMap.get(player.getEntityId());
       if(client != null) {
          this.sendPacket(new UDPServerEntityPositionPacket(entityID, x, y, z), client);
       }
@@ -87,7 +87,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
    }
 
    public void sendVoiceData(EntityPlayerMP player, int entityID, boolean global, byte[] samples) {
-      UDPClient client = (UDPClient)this.clientMap.get(Integer.valueOf(player.getEntityId()));
+      UDPClient client = (UDPClient)this.clientMap.get(player.getEntityId());
       if(client != null) {
          this.sendPacket(new UDPServerVoicePacket(samples, entityID, global), client);
       }
@@ -95,7 +95,7 @@ public class UDPVoiceServer extends VoiceAuthenticatedServer {
    }
 
    public void sendVoiceEnd(EntityPlayerMP player, int entityID) {
-      UDPClient client = (UDPClient)this.clientMap.get(Integer.valueOf(player.getEntityId()));
+      UDPClient client = (UDPClient)this.clientMap.get(player.getEntityId());
       if(client != null) {
          this.sendPacket(new UDPServerVoiceEndPacket(entityID), client);
       }

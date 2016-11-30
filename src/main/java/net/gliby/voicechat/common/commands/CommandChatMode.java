@@ -59,7 +59,7 @@ public class CommandChatMode extends CommandBase {
 
          if(player != null) {
             ServerStreamManager dataManager = VoiceChat.getServerInstance().getServerNetwork().getDataManager();
-            dataManager.chatModeMap.put(player.getPersistentID(), Integer.valueOf(chatMode));
+            dataManager.chatModeMap.put(player.getPersistentID(), chatMode);
             ServerStream stream = dataManager.getStream(player.getEntityId());
             if(stream != null) {
                stream.dirty = true;

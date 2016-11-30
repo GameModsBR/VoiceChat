@@ -183,8 +183,8 @@ public class GuiScreenOptionsWizard extends GuiScreen {
       this.buttonList.add(this.boostSlider = new GuiBoostSlider(900, this.width / 2 - 75, this.height / 2 - 15, "", I18n.format("menu.boost", new Object[0]) + ": " + ((int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0?I18n.format("options.off", new Object[0]):"" + (int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F));
       this.boostSlider.sliderValue = this.voiceChat.getSettings().getInputBoost();
       this.doneButton.visible = false;
-      this.buttonMap.put(this.backButton, Integer.valueOf(1));
-      this.buttonMap.put(this.boostSlider, Integer.valueOf(3));
+      this.buttonMap.put(this.backButton, 1);
+      this.buttonMap.put(this.boostSlider, 3);
       this.dirty = true;
       this.textBatch = new String[]{I18n.format("menu.setupWizardPageOne", new Object[0]).replaceAll(Pattern.quote("$n"), "\n").replaceAll(Pattern.quote("$a"), this.voiceChat.keyManager.getKeyName(EnumBinding.OPEN_GUI_OPTIONS)), I18n.format("menu.setupWizardPageTwo", new Object[0]).replaceAll(Pattern.quote("$n"), "\n"), I18n.format("menu.setupWizardPageThree", new Object[0]).replaceAll(Pattern.quote("$n"), "\n"), I18n.format("menu.setupWizardPageFour", new Object[0]).replaceAll(Pattern.quote("$n"), "\n").replaceAll(Pattern.quote("$a"), this.voiceChat.keyManager.getKeyName(EnumBinding.OPEN_GUI_OPTIONS)).replaceAll(Pattern.quote("$b"), this.voiceChat.keyManager.getKeyName(EnumBinding.SPEAK))};
    }

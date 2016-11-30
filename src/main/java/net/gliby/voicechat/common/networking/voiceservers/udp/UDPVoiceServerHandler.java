@@ -54,7 +54,7 @@ public class UDPVoiceServerHandler {
       if(player != null) {
          UDPClient client = new UDPClient(player, address, hash);
          this.clientNetworkMap.put(client.socketAddress, client);
-         this.server.clientMap.put(Integer.valueOf(player.getEntityId()), client);
+         this.server.clientMap.put(player.getEntityId(), client);
          this.server.waitingAuth.remove(hash);
          VoiceChat.getLogger().info(client + " has been authenticated by server.");
          this.server.sendPacket(new UDPServerAuthenticationCompletePacket(), client);

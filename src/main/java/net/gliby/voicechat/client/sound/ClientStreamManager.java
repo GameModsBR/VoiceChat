@@ -57,7 +57,7 @@ public class ClientStreamManager {
    }
 
    public void addQueue(byte[] decoded_data, boolean global, int id) {
-      if(!this.playersMuted.contains(Integer.valueOf(id))) {
+      if(!this.playersMuted.contains(id)) {
          this.queue.offer(new Datalet(global, id, decoded_data));
          ThreadSoundQueue var4 = this.threadQueue;
          synchronized(this.threadQueue) {
@@ -68,7 +68,7 @@ public class ClientStreamManager {
    }
 
    private void addStreamSafe(ClientStream stream) {
-      this.streaming.put(Integer.valueOf(stream.id), stream);
+      this.streaming.put(stream.id, stream);
       Thread entityName = this.threadUpdate;
       synchronized(this.threadUpdate) {
          this.threadUpdate.notify();
@@ -98,7 +98,7 @@ public class ClientStreamManager {
    }
 
    public void alertEnd(int id) {
-      if(!this.playersMuted.contains(Integer.valueOf(id))) {
+      if(!this.playersMuted.contains(id)) {
          this.queue.offer(new Datalet(false, id, (byte[])null));
          ThreadSoundQueue var2 = this.threadQueue;
          synchronized(this.threadQueue) {
@@ -109,7 +109,7 @@ public class ClientStreamManager {
    }
 
    public boolean containsStream(int id) {
-      ClientStream currentStream = (ClientStream)this.streaming.get(Integer.valueOf(id));
+      ClientStream currentStream = (ClientStream)this.streaming.get(id);
 
       for(int i = 0; i < this.currentStreams.size(); ++i) {
          ClientStream stream = (ClientStream)this.currentStreams.get(i);
@@ -148,7 +148,7 @@ public class ClientStreamManager {
    }
 
    private PlayerProxy getPlayerData(int entityId) {
-      PlayerProxy proxy = (PlayerProxy)this.playerData.get(Integer.valueOf(entityId));
+      PlayerProxy proxy = (PlayerProxy)this.playerData.get(entityId);
       EntityPlayer entity = (EntityPlayer)this.mc.theWorld.getEntityByID(entityId);
       if(proxy == null) {
          if(entity != null) {
@@ -158,7 +158,7 @@ public class ClientStreamManager {
             proxy = new PlayerProxy((EntityPlayer)null, entityId, "" + entityId, 0.0D, 0.0D, 0.0D);
          }
 
-         this.playerData.put(Integer.valueOf(entityId), proxy);
+         this.playerData.put(entityId, proxy);
       } else if(entity != null) {
          proxy.setPlayer(entity);
          proxy.setName(entity.getName());
@@ -172,7 +172,7 @@ public class ClientStreamManager {
    }
 
    public void giveEnd(int id) {
-      ClientStream stream = (ClientStream)this.streaming.get(Integer.valueOf(id));
+      ClientStream stream = (ClientStream)this.streaming.get(id);
       if(stream != null) {
          stream.needsEnd = true;
       }
@@ -180,7 +180,7 @@ public class ClientStreamManager {
    }
 
    public void giveStream(Datalet data) {
-      ClientStream stream = (ClientStream)this.streaming.get(Integer.valueOf(data.id));
+      ClientStream stream = (ClientStream)this.streaming.get(data.id);
       if(stream != null) {
          String identifier = this.generateSource(data.id);
          stream.update(data, (int)(System.currentTimeMillis() - stream.lastUpdated));
@@ -213,13 +213,13 @@ public class ClientStreamManager {
          this.currentStreams.addAll(streams);
          this.currentStreams.remove(stream);
          Collections.sort(this.currentStreams, new ClientStream.PlayableStreamComparator());
-         this.streaming.remove(Integer.valueOf(stream.id));
+         this.streaming.remove(stream.id);
       }
 
    }
 
    public boolean newDatalet(Datalet let) {
-      return !this.streaming.containsKey(Integer.valueOf(let.id));
+      return !this.streaming.containsKey(let.id);
    }
 
    public void reload() {

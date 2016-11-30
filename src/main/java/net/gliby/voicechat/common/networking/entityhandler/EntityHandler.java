@@ -21,7 +21,7 @@ public class EntityHandler {
    public void connected(EntityPlayerMP speaker) {}
 
    public void disconnected(int id) {
-      ServerStream stream = (ServerStream)this.dataManager.streaming.get(Integer.valueOf(id));
+      ServerStream stream = (ServerStream)this.dataManager.streaming.get(id);
       if(stream != null) {
          this.dataManager.killStream(stream);
       }
@@ -34,9 +34,9 @@ public class EntityHandler {
    }
 
    public void whileSpeaking(ServerStream stream, EntityPlayerMP speaker, EntityPlayerMP receiver) {
-      if(!stream.entities.contains(Integer.valueOf(receiver.getEntityId()))) {
+      if(!stream.entities.contains(receiver.getEntityId())) {
          this.dataManager.giveEntity(receiver, speaker);
-         stream.entities.add(Integer.valueOf(receiver.getEntityId()));
+         stream.entities.add(receiver.getEntityId());
       }
 
    }

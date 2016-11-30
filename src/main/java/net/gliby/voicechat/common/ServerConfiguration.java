@@ -43,7 +43,7 @@ public class ServerConfiguration {
       if(this.location.exists()) {
          try {
             this.init = new JINIFile(this.location);
-            this.settings.setSoundDistance(this.init.ReadFloat("Game", "SoundDistance", Float.valueOf(64.0F)).intValue());
+            this.settings.setSoundDistance(this.init.ReadFloat("Game", "SoundDistance", 64.0F).intValue());
             this.settings.setDefaultChatMode(this.init.ReadInteger("Game", "DefaultChatMode", 0));
             this.settings.setCanShowVoiceIcons(this.init.ReadBool("Game", "ShowPlayerIcons", true));
             this.settings.setCanShowVoicePlates(this.init.ReadBool("Game", "ShowVoicePlates", true));

@@ -46,7 +46,7 @@ public class ServerStreamManager {
    }
 
    private void addStreamSafe(ServerStream stream) {
-      this.streaming.put(Integer.valueOf(stream.id), stream);
+      this.streaming.put(stream.id, stream);
       this.currentStreams.add(stream);
       Thread var2 = this.threadUpdate;
       synchronized(this.threadUpdate) {
@@ -174,7 +174,7 @@ public class ServerStreamManager {
    }
 
    public ServerStream getStream(int entityId) {
-      return (ServerStream)this.streaming.get(Integer.valueOf(entityId));
+      return (ServerStream)this.streaming.get(entityId);
    }
 
    public void giveEntity(EntityPlayerMP receiver, EntityPlayerMP speaker) {
@@ -207,12 +207,12 @@ public class ServerStreamManager {
 
    public void killStream(ServerStream stream) {
       this.currentStreams.remove(stream);
-      this.streaming.remove(Integer.valueOf(stream.id));
+      this.streaming.remove(stream.id);
       VoiceChatAPI.instance().bus().post(new ServerStreamEvent.StreamDestroyed(this, stream));
    }
 
    public ServerStream newDatalet(ServerDatalet let) {
-      return (ServerStream)this.streaming.get(Integer.valueOf(let.id));
+      return (ServerStream)this.streaming.get(let.id);
    }
 
    public void reset() {
