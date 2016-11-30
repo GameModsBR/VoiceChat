@@ -56,8 +56,7 @@ public class ClientStream {
 
         @Override
         public int compare(ClientStream a, ClientStream b) {
-            int f = a.id > b.id ? 1 : (a.id < b.id ? -1 : 0);
-            return f;
+            return a.id > b.id ? 1 : (a.id < b.id ? -1 : 0);
         }
     }
 }

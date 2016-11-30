@@ -78,8 +78,7 @@ public class JINIFile extends ArrayList {
     public boolean ReadBool(String Section, String key, boolean defaultValue) throws JINIFile.JINIReadException {
         String s = this.get(this.ValuePosition(Section, key)).toString().substring(key.length() + 1, this.get(this.ValuePosition(Section, key)).toString().length());
         if (this.ValuePosition(Section, key) > 0) {
-            boolean value = Boolean.parseBoolean(s);
-            return value;
+           return Boolean.parseBoolean(s);
         } else {
             throw new JINIFile.JINIReadException("ReadBool operation failed: " + s);
         }
@@ -89,8 +88,7 @@ public class JINIFile extends ArrayList {
         new Float(0.0F);
         if (this.ValuePosition(Section, key) > 0) {
             int strLen = key.length() + 1;
-            Float value = Float.valueOf(this.get(this.ValuePosition(Section, key)).toString().substring(strLen, this.get(this.ValuePosition(Section, key)).toString().length()));
-            return value;
+           return Float.valueOf(this.get(this.ValuePosition(Section, key)).toString().substring(strLen, this.get(this.ValuePosition(Section, key)).toString().length()));
         } else {
             throw new JINIFile.JINIReadException("ReadFloat operation failed.");
         }
@@ -99,8 +97,7 @@ public class JINIFile extends ArrayList {
     public int ReadInteger(String Section, String key, int defaultValue) throws JINIFile.JINIReadException {
         if (this.ValuePosition(Section, key) > 0) {
             int strLen = key.length() + 1;
-            int value = Integer.parseInt(this.get(this.ValuePosition(Section, key)).toString().substring(strLen, this.get(this.ValuePosition(Section, key)).toString().length()));
-            return value;
+           return Integer.parseInt(this.get(this.ValuePosition(Section, key)).toString().substring(strLen, this.get(this.ValuePosition(Section, key)).toString().length()));
         } else {
             throw new JINIFile.JINIReadException("ReadInteger operation failed.");
         }

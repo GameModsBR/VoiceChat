@@ -71,8 +71,7 @@ public class VoiceChatServer {
             ss.setReuseAddress(true);
             ds = new DatagramSocket(port);
             ds.setReuseAddress(true);
-            boolean bl = true;
-            return bl;
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -100,8 +99,7 @@ public class VoiceChatServer {
 
     public static int randInt(int min, int max) {
         Random rand = new Random();
-        int randomNum = rand.nextInt(max - min + 1) + min;
-        return randomNum;
+        return rand.nextInt(max - min + 1) + min;
     }
 
     public void commonInit(final FMLPreInitializationEvent event) {

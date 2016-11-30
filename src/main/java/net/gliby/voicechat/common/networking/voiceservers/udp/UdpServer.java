@@ -247,8 +247,7 @@ public class UdpServer {
             this.setState(State.STARTED);
             LOGGER.info("UDP Server listening...");
             while (!this.mSocket.isClosed()) {
-                UdpServer proposed = this.This;
-                synchronized (proposed) {
+                synchronized (this.This) {
                     if (this.currentState == State.STOPPING) {
                         LOGGER.info("Stopping UDP Server by request.");
                         this.mSocket.close();
@@ -259,8 +258,7 @@ public class UdpServer {
                 this.fireUdpServerPacketReceived();
             }
         } catch (Exception exc) {
-            UdpServer gg = this.This;
-            synchronized (gg) {
+            synchronized (this.This) {
                 if (this.currentState == State.STOPPING) {
                     this.mSocket.close();
                     LOGGER.info("Udp Server closed normally.");
@@ -356,8 +354,7 @@ public class UdpServer {
             if (packet == null) {
                 return null;
             }
-            String s = new String(packet.getData(), packet.getOffset(), packet.getLength());
-            return s;
+            return new String(packet.getData(), packet.getOffset(), packet.getLength());
         }
 
         public State getState() {

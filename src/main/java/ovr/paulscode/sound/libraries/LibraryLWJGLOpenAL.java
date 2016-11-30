@@ -179,8 +179,7 @@ public class LibraryLWJGLOpenAL
         if (AL10.alGetError() != 0) {
             return null;
         }
-        ChannelLWJGLOpenAL channel = new ChannelLWJGLOpenAL(type, ALSource);
-        return channel;
+        return new ChannelLWJGLOpenAL(type, ALSource);
     }
 
     @Override

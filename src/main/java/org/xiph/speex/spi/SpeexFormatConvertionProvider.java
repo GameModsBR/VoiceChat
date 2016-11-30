@@ -16,14 +16,12 @@ public class SpeexFormatConvertionProvider extends FormatConversionProvider {
 
     @Override
     public Encoding[] getSourceEncodings() {
-        Encoding[] var1 = new Encoding[]{SpeexEncoding.SPEEX, Encoding.PCM_SIGNED};
-        return var1;
+       return new Encoding[]{SpeexEncoding.SPEEX, Encoding.PCM_SIGNED};
     }
 
     @Override
     public Encoding[] getTargetEncodings() {
-        Encoding[] var1 = new Encoding[]{SpeexEncoding.SPEEX_Q0, SpeexEncoding.SPEEX_Q1, SpeexEncoding.SPEEX_Q2, SpeexEncoding.SPEEX_Q3, SpeexEncoding.SPEEX_Q4, SpeexEncoding.SPEEX_Q5, SpeexEncoding.SPEEX_Q6, SpeexEncoding.SPEEX_Q7, SpeexEncoding.SPEEX_Q8, SpeexEncoding.SPEEX_Q9, SpeexEncoding.SPEEX_Q10, SpeexEncoding.SPEEX_VBR0, SpeexEncoding.SPEEX_VBR1, SpeexEncoding.SPEEX_VBR2, SpeexEncoding.SPEEX_VBR3, SpeexEncoding.SPEEX_VBR4, SpeexEncoding.SPEEX_VBR5, SpeexEncoding.SPEEX_VBR6, SpeexEncoding.SPEEX_VBR7, SpeexEncoding.SPEEX_VBR8, SpeexEncoding.SPEEX_VBR9, SpeexEncoding.SPEEX_VBR10, Encoding.PCM_SIGNED};
-        return var1;
+       return new Encoding[]{SpeexEncoding.SPEEX_Q0, SpeexEncoding.SPEEX_Q1, SpeexEncoding.SPEEX_Q2, SpeexEncoding.SPEEX_Q3, SpeexEncoding.SPEEX_Q4, SpeexEncoding.SPEEX_Q5, SpeexEncoding.SPEEX_Q6, SpeexEncoding.SPEEX_Q7, SpeexEncoding.SPEEX_Q8, SpeexEncoding.SPEEX_Q9, SpeexEncoding.SPEEX_Q10, SpeexEncoding.SPEEX_VBR0, SpeexEncoding.SPEEX_VBR1, SpeexEncoding.SPEEX_VBR2, SpeexEncoding.SPEEX_VBR3, SpeexEncoding.SPEEX_VBR4, SpeexEncoding.SPEEX_VBR5, SpeexEncoding.SPEEX_VBR6, SpeexEncoding.SPEEX_VBR7, SpeexEncoding.SPEEX_VBR8, SpeexEncoding.SPEEX_VBR9, SpeexEncoding.SPEEX_VBR10, Encoding.PCM_SIGNED};
     }
 
     @Override

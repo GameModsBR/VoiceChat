@@ -51,8 +51,7 @@ public class ServerNetwork {
 
     public EntityPlayerMP[] getPlayers() {
         List<EntityPlayerMP> pl = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
-        EntityPlayerMP[] players = pl.toArray(new EntityPlayerMP[pl.size()]);
-        return players;
+        return pl.toArray(new EntityPlayerMP[pl.size()]);
     }
 
     public void init() {

@@ -64,11 +64,10 @@ public class DeviceHandler {
     public List<? extends Device> loadDevices() {
         this.devices.clear();
         javax.sound.sampled.Mixer.Info[] mixers = AudioSystem.getMixerInfo();
-        javax.sound.sampled.Mixer.Info[] arr$ = mixers;
         int len$ = mixers.length;
 
         for (int i$ = 0; i$ < len$; ++i$) {
-            javax.sound.sampled.Mixer.Info info = arr$[i$];
+            javax.sound.sampled.Mixer.Info info = mixers[i$];
             Mixer mixer = AudioSystem.getMixer(info);
 
             try {

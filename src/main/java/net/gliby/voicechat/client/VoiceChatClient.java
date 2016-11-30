@@ -79,8 +79,7 @@ public class VoiceChatClient extends VoiceChatServer {
         try {
             Field e = SoundHandler.class.getDeclaredFields()[5];
             e.setAccessible(true);
-            SoundManager soundManager = (SoundManager) e.get(mc.getSoundHandler());
-            return soundManager;
+           return (SoundManager) e.get(mc.getSoundHandler());
         } catch (Exception var4) {
             var4.printStackTrace();
             return null;

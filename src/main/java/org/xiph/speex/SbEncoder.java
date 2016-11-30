@@ -261,8 +261,6 @@ public class SbEncoder extends SbCodec implements Encoder {
                 float var25 = 0.0F;
                 int var21 = this.subframeSize * var31;
                 var32 = this.excIdx + var21;
-                int var20 = var21;
-                int var33 = var21;
                 var15 = (1.0F + (float) var31) / (float) this.nbSubframes;
 
                 for (var3 = 0; var3 < this.lpcSize; ++var3) {
@@ -382,7 +380,7 @@ public class SbEncoder extends SbCodec implements Encoder {
                     Filters.filter_mem2(this.high, var21, this.bw_lpc1, this.bw_lpc2, this.swBuf, var21, this.subframeSize, this.lpcSize, var4, 0);
 
                     for (var3 = 0; var3 < this.subframeSize; ++var3) {
-                        this.target[var3] = this.swBuf[var33 + var3] - this.res[var20 + var3];
+                        this.target[var3] = this.swBuf[var21 + var3] - this.res[var21 + var3];
                     }
 
                     for (var3 = 0; var3 < this.subframeSize; ++var3) {
@@ -431,7 +429,7 @@ public class SbEncoder extends SbCodec implements Encoder {
                 }
 
                 Filters.iir_mem2(this.excBuf, var32, this.interp_qlpc, this.high, var21, this.subframeSize, this.lpcSize, this.mem_sp);
-                Filters.filter_mem2(this.high, var21, this.bw_lpc1, this.bw_lpc2, this.swBuf, var33, this.subframeSize, this.lpcSize, this.mem_sw, 0);
+                Filters.filter_mem2(this.high, var21, this.bw_lpc1, this.bw_lpc2, this.swBuf, var21, this.subframeSize, this.lpcSize, this.mem_sw, 0);
             }
 
             this.filters.fir_mem_up(this.x0d, Codebook.h0, this.y0, this.fullFrameSize, 64, this.g0_mem);
@@ -573,10 +571,10 @@ public class SbEncoder extends SbCodec implements Encoder {
         this.vbr_enabled = 1;
         int var2 = 10;
 
-        for (int var4 = var1; var2 >= 0; --var2) {
+        for (; var2 >= 0; --var2) {
             this.setQuality(var2);
             int var3 = this.getBitRate();
-            if (var3 <= var4) {
+            if (var3 <= var1) {
                 break;
             }
         }

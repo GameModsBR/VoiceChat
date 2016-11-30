@@ -694,10 +694,10 @@ public class NbEncoder extends NbCodec implements Encoder {
         this.vbr_enabled = 1;
         int var2 = 10;
 
-        for (int var4 = var1; var2 >= 0; --var2) {
+        for (; var2 >= 0; --var2) {
             this.setQuality(var2);
             int var3 = this.getBitRate();
-            if (var3 <= var4) {
+            if (var3 <= var1) {
                 break;
             }
         }
