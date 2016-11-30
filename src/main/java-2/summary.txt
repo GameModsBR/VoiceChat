@@ -1,2 +1,0 @@
-Summary for /www/javadecompilers/app/public/data/30.11.16/c72d0d0bec9fdcd15737d17e5b1dbbba/GlibysVC-1.8-0.6.1-deobf.jar
-Decompiled with CFR 0_118
