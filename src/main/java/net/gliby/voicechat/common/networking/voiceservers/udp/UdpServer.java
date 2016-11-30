@@ -333,9 +333,9 @@ public class UdpServer {
         }
     }
 
-    public static interface Listener
+    public interface Listener
             extends EventListener {
-        public void packetReceived(Event var1);
+        void packetReceived(Event var1);
     }
 
     public static class Event
