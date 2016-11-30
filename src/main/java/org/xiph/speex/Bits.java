@@ -30,9 +30,7 @@ public class Bits {
     }
 
     public void read_from(byte[] var1, int var2, int var3) {
-        for (int var4 = 0; var4 < var3; ++var4) {
-            this.bytes[var4] = var1[var2 + var4];
-        }
+        System.arraycopy(var1, var2, this.bytes, 0, var3);
 
         this.bytePtr = 0;
         this.bitPtr = 0;
