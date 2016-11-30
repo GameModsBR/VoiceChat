@@ -27,10 +27,10 @@ public class ClientStreamManager {
 
    public static AudioFormat universalAudioFormat = new AudioFormat(Encoding.PCM_SIGNED, 16000.0F, 16, 1, 2, 16000.0F, false);
    public static Map<Integer, String> playerMutedData = new HashMap<Integer, String>();
-   public List currentStreams = new ArrayList();
+   public List<ClientStream> currentStreams = new ArrayList<ClientStream>();
    public List<Integer> playersMuted = new ArrayList<Integer>();
-   public ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue();
-   public ConcurrentHashMap streaming = new ConcurrentHashMap();
+   public ConcurrentLinkedQueue<Datalet> queue = new ConcurrentLinkedQueue<Datalet>();
+   public ConcurrentHashMap<Integer, ClientStream> streaming = new ConcurrentHashMap<Integer, ClientStream>();
    public final SoundPreProcessor soundPreProcessor;
    public ConcurrentHashMap<Integer, PlayerProxy> playerData = new ConcurrentHashMap<Integer, PlayerProxy>();
    private Thread threadUpdate;
@@ -84,13 +84,14 @@ public class ClientStreamManager {
       }
 
       if(this.voiceChat.specialPlayers.containsKey(var6)) {
-         stream.special = ((Integer)this.voiceChat.specialPlayers.get(var6)).intValue();
+         stream.special = this.voiceChat.specialPlayers.get(var6);
       }
 
       if(!this.containsStream(stream.id)) {
-         ArrayList var7 = new ArrayList(this.currentStreams);
+         ArrayList<ClientStream> var7 = new ArrayList<ClientStream>(this.currentStreams);
          var7.add(stream);
          Collections.sort(var7, new ClientStream.PlayableStreamComparator());
+         // TODO Is this intended?
          this.currentStreams.removeAll(this.currentStreams);
          this.currentStreams.addAll(var7);
       }
@@ -99,7 +100,7 @@ public class ClientStreamManager {
 
    public void alertEnd(int id) {
       if(!this.playersMuted.contains(id)) {
-         this.queue.offer(new Datalet(false, id, (byte[])null));
+         this.queue.offer(new Datalet(false, id, null));
          ThreadSoundQueue var2 = this.threadQueue;
          synchronized(this.threadQueue) {
             this.threadQueue.notify();
@@ -109,7 +110,7 @@ public class ClientStreamManager {
    }
 
    public boolean containsStream(int id) {
-      ClientStream currentStream = (ClientStream)this.streaming.get(id);
+      ClientStream currentStream = this.streaming.get(id);
 
       for(int i = 0; i < this.currentStreams.size(); ++i) {
          ClientStream stream = (ClientStream)this.currentStreams.get(i);
@@ -148,14 +149,14 @@ public class ClientStreamManager {
    }
 
    private PlayerProxy getPlayerData(int entityId) {
-      PlayerProxy proxy = (PlayerProxy)this.playerData.get(entityId);
+      PlayerProxy proxy = this.playerData.get(entityId);
       EntityPlayer entity = (EntityPlayer)this.mc.theWorld.getEntityByID(entityId);
       if(proxy == null) {
          if(entity != null) {
             proxy = new PlayerProxy(entity, entity.getEntityId(), entity.getCommandSenderName(), entity.posX, entity.posY, entity.posZ);
          } else {
             VoiceChat.getLogger().error("Major error, no entity found for player.");
-            proxy = new PlayerProxy((EntityPlayer)null, entityId, "" + entityId, 0.0D, 0.0D, 0.0D);
+            proxy = new PlayerProxy(null, entityId, "" + entityId, 0.0D, 0.0D, 0.0D);
          }
 
          this.playerData.put(entityId, proxy);
@@ -172,7 +173,7 @@ public class ClientStreamManager {
    }
 
    public void giveEnd(int id) {
-      ClientStream stream = (ClientStream)this.streaming.get(id);
+      ClientStream stream = this.streaming.get(id);
       if(stream != null) {
          stream.needsEnd = true;
       }
@@ -180,7 +181,7 @@ public class ClientStreamManager {
    }
 
    public void giveStream(Datalet data) {
-      ClientStream stream = (ClientStream)this.streaming.get(data.id);
+      ClientStream stream = this.streaming.get(data.id);
       if(stream != null) {
          String identifier = this.generateSource(data.id);
          stream.update(data, (int)(System.currentTimeMillis() - stream.lastUpdated));
@@ -206,9 +207,10 @@ public class ClientStreamManager {
 
    public void killStream(ClientStream stream) {
       if(stream != null) {
-         ArrayList streams = new ArrayList(this.currentStreams);
+         ArrayList<ClientStream> streams = new ArrayList<ClientStream>(this.currentStreams);
          streams.remove(stream);
          Collections.sort(streams, new ClientStream.PlayableStreamComparator());
+         //TODO Is this intended? Why not clear()?
          this.currentStreams.removeAll(this.currentStreams);
          this.currentStreams.addAll(streams);
          this.currentStreams.remove(stream);

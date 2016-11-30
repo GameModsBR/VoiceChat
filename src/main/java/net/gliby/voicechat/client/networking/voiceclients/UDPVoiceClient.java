@@ -57,7 +57,7 @@ public class UDPVoiceClient extends VoiceAuthenticatedClient {
    }
 
    public void handleEntityPosition(int entityID, double x, double y, double z) {
-      PlayerProxy proxy = (PlayerProxy)this.soundManager.playerData.get(entityID);
+      PlayerProxy proxy = this.soundManager.playerData.get(entityID);
       if(proxy != null) {
          proxy.setPosition(x, y, z);
       }

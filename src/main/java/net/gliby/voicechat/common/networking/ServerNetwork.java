@@ -84,7 +84,7 @@ public class ServerNetwork {
     }
 
     public void sendEntityData(EntityPlayerMP player, int entityID, String username, double x, double y, double z) {
-        VoiceChat.getDispatcher().sendTo((IMessage)new MinecraftClientEntityDataPacket(entityID, username, x, y, z), player);
+        VoiceChat.getDispatcher().sendTo(new MinecraftClientEntityDataPacket(entityID, username, x, y, z), player);
     }
 
     public void stop() {

@@ -22,7 +22,7 @@ public class KeyManager {
 
    private final VoiceChatClient voiceChat;
    @SideOnly(Side.CLIENT)
-   private final List keyEvents = new ArrayList();
+   private final List<KeyEvent> keyEvents = new ArrayList<KeyEvent>();
    protected boolean[] keyDown;
 
 

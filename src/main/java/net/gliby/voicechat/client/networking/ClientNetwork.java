@@ -87,7 +87,7 @@ public class ClientNetwork {
                 if (serverAddress.isEmpty()) {
                     ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
                     if (serverData != null) {
-                        ServerAddress server = ServerAddress.func_78860_a((String)serverData.serverIP);
+                        ServerAddress server = ServerAddress.func_78860_a(serverData.serverIP);
                         serverAddress = server.getIP();
                     } else {
                         serverAddress = "localhost";
@@ -105,7 +105,7 @@ public class ClientNetwork {
         this.voiceChat.getSettings().setSoundDistance(soundDist);
         this.voiceChat.getSettings().setVoiceIconsAllowed(showVoiceIcons);
         this.voiceChat.getSettings().setVoicePlatesAllowed(showVoicePlates);
-        this.voiceClientThread = new Thread((Runnable)this.voiceClient, "Voice Client");
+        this.voiceClientThread = new Thread(this.voiceClient, "Voice Client");
         this.voiceClientThread.setDaemon(this.voiceClient instanceof VoiceAuthenticatedClient);
         this.voiceClientThread.start();
         this.connected = true;

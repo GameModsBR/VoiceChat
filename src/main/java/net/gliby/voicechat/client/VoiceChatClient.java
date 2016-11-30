@@ -53,7 +53,7 @@ public class VoiceChatClient extends VoiceChatServer {
    @SideOnly(Side.CLIENT)
    private VoiceChat voiceChat;
    public Recorder recorder;
-   public Map specialPlayers = new HashMap();
+   public Map<String, Integer> specialPlayers = new HashMap<String, Integer>();
    String[] testPlayers = new String[]{"captaindogfish", "starguy1245", "SheheryaB", "arsham123", "Chris9awesome", "TechnoX_X", "bubz052", "McJackson3180", "InfamousArgyle", "jdf2", "XxNotexX0", "SirDenerim", "Frankspark", "smith70831", "killazombiecow", "CraftAeternalis", "choclaterainxx", "dragonballkid4", "TH3_CR33PER", "yetshadow", "KristinnVikarJ", "TheMCBros99", "kevinlame"};
 
 

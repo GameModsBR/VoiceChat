@@ -16,7 +16,7 @@ public class ThreadSoundQueue implements Runnable {
    public void run() {
       while(true) {
          if(!this.sndManager.queue.isEmpty()) {
-            Datalet e = (Datalet)this.sndManager.queue.poll();
+            Datalet e = this.sndManager.queue.poll();
             if(e != null) {
                boolean end = e.data == null;
                if(this.sndManager.newDatalet(e) && !end) {

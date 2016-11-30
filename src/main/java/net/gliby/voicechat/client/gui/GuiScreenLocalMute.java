@@ -77,23 +77,23 @@ public class GuiScreenLocalMute
 
     public void drawScreen(int par1, int par2, float par3) {
         this.listPlayers.drawScreen(par1, par2, par3);
-        this.drawCenteredString(this.fontRendererObj, I18n.format((String)"menu.mutedPlayers", (Object[])new Object[0]), this.width / 2, 16, -1);
+        this.drawCenteredString(this.fontRendererObj, I18n.format("menu.mutedPlayers", (Object[])new Object[0]), this.width / 2, 16, -1);
         if (this.playerNotFound) {
-            this.drawCenteredString(this.fontRendererObj, "\u00a7c" + I18n.format((String)"commands.generic.player.notFound", (Object[])new Object[0]), this.width / 2, this.height - 59, -1);
+            this.drawCenteredString(this.fontRendererObj, "\u00a7c" + I18n.format("commands.generic.player.notFound", (Object[])new Object[0]), this.width / 2, this.height - 59, -1);
         }
         this.playerTextField.drawTextBox();
         super.drawScreen(par1, par2, par3);
     }
 
     public void initGui() {
-        Keyboard.enableRepeatEvents((boolean)true);
+        Keyboard.enableRepeatEvents(true);
         this.autoCompletionNames = new ArrayList();
         int heightOffset = -9;
         this.playerTextField = new GuiTextField(0, this.fontRendererObj, this.width / 2 - 100, this.height - 57 - -9, 130, 20);
         this.playerTextField.setFocused(true);
-        this.doneButton = new GuiOptionButton(0, this.width / 2 + 32, this.height - 57 - -9, 98, 20, I18n.format((String)"menu.add", (Object[])new Object[0]));
+        this.doneButton = new GuiOptionButton(0, this.width / 2 + 32, this.height - 57 - -9, 98, 20, I18n.format("menu.add", (Object[])new Object[0]));
         this.buttonList.add(this.doneButton);
-        this.doneButton = new GuiOptionButton(1, this.width / 2 - 75, this.height - 32 - -9, I18n.format((String)"gui.done", (Object[])new Object[0]));
+        this.doneButton = new GuiOptionButton(1, this.width / 2 - 75, this.height - 32 - -9, I18n.format("gui.done", (Object[])new Object[0]));
         this.buttonList.add(this.doneButton);
         this.listPlayers = new List();
         this.listPlayers.registerScrollButtons(7, 8);
@@ -135,7 +135,7 @@ public class GuiScreenLocalMute
 
     public void onGuiClosed() {
         super.onGuiClosed();
-        Keyboard.enableRepeatEvents((boolean)false);
+        Keyboard.enableRepeatEvents(false);
     }
 
     private void shuffleCompleition() {

@@ -32,7 +32,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
    private GuiDropDownMenu dropDown;
    private GuiButton UIPosition;
    private GuiButton microphoneMode;
-   private List warningMessages;
+   private List<String> warningMessages;
    private String updateMessage;
 
 
@@ -63,7 +63,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
          break;
       case 3:
          this.voiceChat.getSettings().getConfiguration().save();
-         this.mc.displayGuiScreen((GuiScreen)null);
+         this.mc.displayGuiScreen(null);
          break;
       case 4:
          this.mc.displayGuiScreen(new GuiScreenOptionsUI(this.voiceChat, this));
@@ -134,17 +134,18 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
       this.boostSlider = new GuiBoostSlider(900, this.width / 2 + 2, this.height / 2 - 55, "", I18n.format("menu.boost") + ": " + ((int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0?I18n.format("options.off"):"" + (int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F);
       this.boostSlider.sliderValue = this.voiceChat.getSettings().getInputBoost();
       this.advancedOptions = new GuiCustomButton(899, this.width / 2 + 2, this.height / 2 + 49 - 55, 150, 20, I18n.format("menu.advancedOptions"));
-      this.buttonList.add(new GuiButton(1, this.width / 2 - 151, this.height - 34, 75, 20, I18n.format("menu.gman.supportGliby")));
-      this.buttonList.add(new GuiButton(2, this.width / 2 - 152, this.height / 2 - 25 - 55, 150, 20, !this.tester.recording?I18n.format("menu.microphoneTest"):I18n.format("menu.microphoneStopTest")));
-      this.buttonList.add(new GuiButton(3, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("menu.returnToGame")));
-      this.buttonList.add(this.advancedOptions);
-      this.buttonList.add(new GuiCustomButton(898, this.width / 2 - 152, this.height / 2 + 49 - 55, 150, 20, I18n.format("menu.openOptionsWizard")));
-      this.buttonList.add(this.UIPosition);
-      this.buttonList.add(this.microphoneMode);
-      this.buttonList.add(this.boostSlider);
-      this.buttonList.add(this.voiceVolume);
-      this.buttonList.add(this.mutePlayer = new GuiCustomButton(897, this.width / 2 - 152, this.height / 2 + 73 - 55, 304, 20, I18n.format("menu.mutePlayers")));
-      this.buttonList.add(this.dropDown);
+      List<GuiButton> buttonList = this.buttonList;
+      buttonList.add(new GuiButton(1, this.width / 2 - 151, this.height - 34, 75, 20, I18n.format("menu.gman.supportGliby")));
+      buttonList.add(new GuiButton(2, this.width / 2 - 152, this.height / 2 - 25 - 55, 150, 20, !this.tester.recording?I18n.format("menu.microphoneTest"):I18n.format("menu.microphoneStopTest")));
+      buttonList.add(new GuiButton(3, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("menu.returnToGame")));
+      buttonList.add(this.advancedOptions);
+      buttonList.add(new GuiCustomButton(898, this.width / 2 - 152, this.height / 2 + 49 - 55, 150, 20, I18n.format("menu.openOptionsWizard")));
+      buttonList.add(this.UIPosition);
+      buttonList.add(this.microphoneMode);
+      buttonList.add(this.boostSlider);
+      buttonList.add(this.voiceVolume);
+      buttonList.add(this.mutePlayer = new GuiCustomButton(897, this.width / 2 - 152, this.height / 2 + 73 - 55, 304, 20, I18n.format("menu.mutePlayers")));
+      buttonList.add(this.dropDown);
       if(this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
          ((GuiButton)this.buttonList.get(0)).enabled = false;
          ((GuiButton)this.buttonList.get(3)).enabled = false;
@@ -155,7 +156,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
       }
 
       super.initGui();
-      this.warningMessages = new ArrayList();
+      this.warningMessages = new ArrayList<String>();
       if(this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
          this.warningMessages.add(EnumChatFormatting.DARK_RED + "No input devices found, add input device and restart Minecraft.");
       }
@@ -178,7 +179,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
    public void keyTyped(char c, int key) {
       if(key == 1) {
          this.voiceChat.getSettings().getConfiguration().save();
-         this.mc.displayGuiScreen((GuiScreen)null);
+         this.mc.displayGuiScreen(null);
          this.mc.setIngameFocus();
       }
 
@@ -229,7 +230,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
    private void openURL(String par1URI) {
       try {
          Class throwable = Class.forName("java.awt.Desktop");
-         Object object = throwable.getMethod("getDesktop", new Class[0]).invoke((Object)null);
+         Object object = throwable.getMethod("getDesktop", new Class[0]).invoke(null);
          throwable.getMethod("browse", new Class[]{URI.class}).invoke(object, new URI(par1URI));
       } catch (Throwable var4) {
          var4.printStackTrace();

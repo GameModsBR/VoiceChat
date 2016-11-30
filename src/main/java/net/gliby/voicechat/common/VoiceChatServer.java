@@ -193,7 +193,7 @@ public class VoiceChatServer {
     }
 
     public void aboutToStartServer(FMLServerAboutToStartEvent event) {
-        FMLCommonHandler.instance().bus().register((Object)new ServerConnectionHandler(this));
+        FMLCommonHandler.instance().bus().register(new ServerConnectionHandler(this));
         this.serverSettings = new ServerSettings(this);
         this.configurationDirectory = new File("config/gliby_vc");
         if (!this.configurationDirectory.exists()) {
@@ -203,8 +203,8 @@ public class VoiceChatServer {
     }
 
     public void preInitServer(FMLServerStartingEvent event) {
-        event.registerServerCommand((ICommand)new CommandVoiceMute());
-        event.registerServerCommand((ICommand)new CommandChatMode());
+        event.registerServerCommand(new CommandVoiceMute());
+        event.registerServerCommand(new CommandChatMode());
     }
 
     private Thread startVoiceServer() {
@@ -223,7 +223,7 @@ public class VoiceChatServer {
                 this.voiceServer = new MinecraftVoiceServer(this);
             }
         }
-        Thread thread = new Thread((Runnable)this.voiceServer, "Voice Server Process");
+        Thread thread = new Thread(this.voiceServer, "Voice Server Process");
         thread.setDaemon(this.voiceServer instanceof VoiceAuthenticatedServer);
         thread.start();
         return thread;

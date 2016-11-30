@@ -101,7 +101,7 @@ public class SpeexDecoder {
 
    public void processData(boolean var1) throws StreamCorruptedException {
       if(var1) {
-         this.decoder.decode((Bits)null, this.decodedData);
+         this.decoder.decode(null, this.decodedData);
       } else {
          this.decoder.decode(this.bits, this.decodedData);
       }

@@ -80,7 +80,7 @@ public class Recorder implements Runnable {
             this.voiceChat.getClientNetwork().sendSamples(pieceSize, this.buffer, false);
          }
 
-         this.voiceChat.getClientNetwork().sendSamples((byte)0, (byte[])null, true);
+         this.voiceChat.getClientNetwork().sendSamples((byte)0, null, true);
          recordingLine.stop();
          recordingLine.close();
       }

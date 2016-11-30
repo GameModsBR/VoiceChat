@@ -186,7 +186,7 @@ public class SourceLWJGLOpenAL extends Source {
          Object var1 = this.soundSequenceLock;
          synchronized(this.soundSequenceLock) {
             if(this.soundSequenceQueue != null && this.soundSequenceQueue.size() > 0) {
-               this.filenameURL = (FilenameURL)this.soundSequenceQueue.remove(0);
+               this.filenameURL = this.soundSequenceQueue.remove(0);
                if(this.codec != null) {
                   this.codec.cleanup();
                }

@@ -136,7 +136,7 @@ public class LibraryLWJGLOpenAL
         for (String filename : keys) {
             IntBuffer buffer = this.ALBufferMap.get(filename);
             if (buffer == null) continue;
-            AL10.alDeleteBuffers((IntBuffer)buffer);
+            AL10.alDeleteBuffers(buffer);
             this.checkALError();
             buffer.clear();
         }
@@ -170,7 +170,7 @@ public class LibraryLWJGLOpenAL
             SoundBuffer buffer = null;
             if (!source.toStream) {
                 this.loadSound(source.filenameURL);
-                buffer = (SoundBuffer)this.bufferMap.get(source.filenameURL.getFilename());
+                buffer = this.bufferMap.get(source.filenameURL.getFilename());
             }
             if (!source.toStream && buffer == null) continue;
             this.sourceMap.put(sourcename, new SourceLWJGLOpenAL(this.listenerPositionAL, this.ALBufferMap.get(source.filenameURL.getFilename()), source, buffer));
@@ -178,9 +178,9 @@ public class LibraryLWJGLOpenAL
     }
 
     protected Channel createChannel(int type) {
-        IntBuffer ALSource = BufferUtils.createIntBuffer((int)1);
+        IntBuffer ALSource = BufferUtils.createIntBuffer(1);
         try {
-            AL10.alGenSources((IntBuffer)ALSource);
+            AL10.alGenSources(ALSource);
         }
         catch (java.lang.Exception e) {
             AL10.alGetError();
@@ -195,9 +195,9 @@ public class LibraryLWJGLOpenAL
 
     public void dopplerChanged() {
         super.dopplerChanged();
-        AL10.alDopplerFactor((float)SoundSystemConfig.getDopplerFactor());
+        AL10.alDopplerFactor(SoundSystemConfig.getDopplerFactor());
         this.checkALError();
-        AL10.alDopplerVelocity((float)SoundSystemConfig.getDopplerVelocity());
+        AL10.alDopplerVelocity(SoundSystemConfig.getDopplerVelocity());
         this.checkALError();
     }
 
@@ -214,7 +214,7 @@ public class LibraryLWJGLOpenAL
         }
         catch (LWJGLException e) {
             this.errorMessage("Unable to initialize OpenAL.  Probable cause: OpenAL not supported.");
-            this.printStackTrace((java.lang.Exception)e);
+            this.printStackTrace(e);
             throw new Exception(e.getMessage(), 101);
         }
         if (errors) {
@@ -222,30 +222,30 @@ public class LibraryLWJGLOpenAL
         } else {
             this.message("OpenAL initialized.");
         }
-        this.listenerPositionAL = BufferUtils.createFloatBuffer((int)3).put(new float[]{this.listener.position.x, this.listener.position.y, this.listener.position.z});
-        this.listenerOrientation = BufferUtils.createFloatBuffer((int)6).put(new float[]{this.listener.lookAt.x, this.listener.lookAt.y, this.listener.lookAt.z, this.listener.up.x, this.listener.up.y, this.listener.up.z});
-        this.listenerVelocity = BufferUtils.createFloatBuffer((int)3).put(new float[]{0.0f, 0.0f, 0.0f});
+        this.listenerPositionAL = BufferUtils.createFloatBuffer(3).put(new float[]{this.listener.position.x, this.listener.position.y, this.listener.position.z});
+        this.listenerOrientation = BufferUtils.createFloatBuffer(6).put(new float[]{this.listener.lookAt.x, this.listener.lookAt.y, this.listener.lookAt.z, this.listener.up.x, this.listener.up.y, this.listener.up.z});
+        this.listenerVelocity = BufferUtils.createFloatBuffer(3).put(new float[]{0.0f, 0.0f, 0.0f});
         this.listenerPositionAL.flip();
         this.listenerOrientation.flip();
         this.listenerVelocity.flip();
-        AL10.alListener((int)4100, (FloatBuffer)this.listenerPositionAL);
+        AL10.alListener(4100, this.listenerPositionAL);
         errors = this.checkALError() || errors;
-        AL10.alListener((int)4111, (FloatBuffer)this.listenerOrientation);
+        AL10.alListener(4111, this.listenerOrientation);
         errors = this.checkALError() || errors;
-        AL10.alListener((int)4102, (FloatBuffer)this.listenerVelocity);
+        AL10.alListener(4102, this.listenerVelocity);
         errors = this.checkALError() || errors;
-        AL10.alDopplerFactor((float)SoundSystemConfig.getDopplerFactor());
+        AL10.alDopplerFactor(SoundSystemConfig.getDopplerFactor());
         errors = this.checkALError() || errors;
-        AL10.alDopplerVelocity((float)SoundSystemConfig.getDopplerVelocity());
+        AL10.alDopplerVelocity(SoundSystemConfig.getDopplerVelocity());
         boolean bl = errors = this.checkALError() || errors;
         if (errors) {
             this.importantMessage("OpenAL did not initialize properly!");
             throw new Exception("Problem encountered while loading OpenAL or creating the listener.  Probable cause:  OpenAL not supported", 101);
         }
         super.init();
-        ChannelLWJGLOpenAL channel = (ChannelLWJGLOpenAL)((Object)this.normalChannels.get(1));
+        ChannelLWJGLOpenAL channel = (ChannelLWJGLOpenAL) this.normalChannels.get(1);
         try {
-            AL10.alSourcef((int)channel.ALSource.get(0), (int)4099, (float)1.0f);
+            AL10.alSourcef(channel.ALSource.get(0), 4099, 1.0f);
             if (this.checkALError()) {
                 LibraryLWJGLOpenAL.alPitchSupported(true, false);
                 throw new Exception("OpenAL: AL_PITCH not supported.", 108);
@@ -276,7 +276,7 @@ public class LibraryLWJGLOpenAL
         if (this.bufferMap.get(filenameURL.getFilename()) != null) {
             return true;
         }
-        ICodec codec = SoundSystemConfig.getCodec((String)filenameURL.getFilename());
+        ICodec codec = SoundSystemConfig.getCodec(filenameURL.getFilename());
         if (this.errorCheck(codec == null, "No codec found for file '" + filenameURL.getFilename() + "' in method 'loadSound'")) {
             return false;
         }
@@ -320,12 +320,12 @@ public class LibraryLWJGLOpenAL
                 soundFormat = 4355;
             }
         }
-        IntBuffer intBuffer = BufferUtils.createIntBuffer((int)1);
-        AL10.alGenBuffers((IntBuffer)intBuffer);
+        IntBuffer intBuffer = BufferUtils.createIntBuffer(1);
+        AL10.alGenBuffers(intBuffer);
         if (this.errorCheck(AL10.alGetError() != 0, "alGenBuffers error when loading " + filenameURL.getFilename())) {
             return false;
         }
-        AL10.alBufferData((int)intBuffer.get(0), (int)soundFormat, (ByteBuffer)((ByteBuffer)BufferUtils.createByteBuffer((int)buffer.audioData.length).put(buffer.audioData).flip()), (int)((int)audioFormat.getSampleRate()));
+        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int)audioFormat.getSampleRate());
         if (this.errorCheck(AL10.alGetError() != 0, "alBufferData error when loading " + filenameURL.getFilename()) && this.errorCheck(intBuffer == null, "Sound buffer was not created for " + filenameURL.getFilename())) {
             return false;
         }
@@ -382,12 +382,12 @@ public class LibraryLWJGLOpenAL
                 soundFormat = 4355;
             }
         }
-        IntBuffer intBuffer = BufferUtils.createIntBuffer((int)1);
-        AL10.alGenBuffers((IntBuffer)intBuffer);
+        IntBuffer intBuffer = BufferUtils.createIntBuffer(1);
+        AL10.alGenBuffers(intBuffer);
         if (this.errorCheck(AL10.alGetError() != 0, "alGenBuffers error when saving " + identifier)) {
             return false;
         }
-        AL10.alBufferData((int)intBuffer.get(0), (int)soundFormat, (ByteBuffer)((ByteBuffer)BufferUtils.createByteBuffer((int)buffer.audioData.length).put(buffer.audioData).flip()), (int)((int)audioFormat.getSampleRate()));
+        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int)audioFormat.getSampleRate());
         if (this.errorCheck(AL10.alGetError() != 0, "alBufferData error when saving " + identifier) && this.errorCheck(intBuffer == null, "Sound buffer was not created for " + identifier)) {
             return false;
         }
@@ -411,12 +411,12 @@ public class LibraryLWJGLOpenAL
         }
         SoundBuffer buffer = null;
         if (!toStream) {
-            buffer = (SoundBuffer)this.bufferMap.get(filenameURL.getFilename());
+            buffer = this.bufferMap.get(filenameURL.getFilename());
             if (buffer == null && !this.loadSound(filenameURL)) {
                 this.errorMessage("Source '" + sourcename + "' was not created " + "because an error occurred while loading " + filenameURL.getFilename());
                 return;
             }
-            buffer = (SoundBuffer)this.bufferMap.get(filenameURL.getFilename());
+            buffer = this.bufferMap.get(filenameURL.getFilename());
             if (buffer == null) {
                 this.errorMessage("Source '" + sourcename + "' was not created " + "because audio data was not found for " + filenameURL.getFilename());
                 return;
@@ -439,12 +439,12 @@ public class LibraryLWJGLOpenAL
         }
         SoundBuffer buffer = null;
         if (!toStream) {
-            buffer = (SoundBuffer)this.bufferMap.get(filenameURL.getFilename());
+            buffer = this.bufferMap.get(filenameURL.getFilename());
             if (buffer == null && !this.loadSound(filenameURL)) {
                 this.errorMessage("Source '" + sourcename + "' was not created " + "because an error occurred while loading " + filenameURL.getFilename());
                 return;
             }
-            buffer = (SoundBuffer)this.bufferMap.get(filenameURL.getFilename());
+            buffer = this.bufferMap.get(filenameURL.getFilename());
             if (buffer == null) {
                 this.errorMessage("Source '" + sourcename + "' was not created " + "because audio data was not found for " + filenameURL.getFilename());
                 return;
@@ -452,7 +452,7 @@ public class LibraryLWJGLOpenAL
         }
         SourceLWJGLOpenAL s = new SourceLWJGLOpenAL(this.listenerPositionAL, myBuffer, priority, toStream, toLoop, sourcename, filenameURL, buffer, x, y, z, attModel, distOrRoll, false);
         this.sourceMap.put(sourcename, s);
-        this.play((Source)s);
+        this.play(s);
         if (temporary) {
             s.setTemporary(true);
         }
@@ -466,7 +466,7 @@ public class LibraryLWJGLOpenAL
         super.setListenerAngle(angle);
         this.listenerOrientation.put(0, this.listener.lookAt.x);
         this.listenerOrientation.put(2, this.listener.lookAt.z);
-        AL10.alListener((int)4111, (FloatBuffer)this.listenerOrientation);
+        AL10.alListener(4111, this.listenerOrientation);
         this.checkALError();
     }
 
@@ -475,7 +475,7 @@ public class LibraryLWJGLOpenAL
         this.listenerPositionAL.put(0, l.position.x);
         this.listenerPositionAL.put(1, l.position.y);
         this.listenerPositionAL.put(2, l.position.z);
-        AL10.alListener((int)4100, (FloatBuffer)this.listenerPositionAL);
+        AL10.alListener(4100, this.listenerPositionAL);
         this.checkALError();
         this.listenerOrientation.put(0, l.lookAt.x);
         this.listenerOrientation.put(1, l.lookAt.y);
@@ -483,12 +483,12 @@ public class LibraryLWJGLOpenAL
         this.listenerOrientation.put(3, l.up.x);
         this.listenerOrientation.put(4, l.up.y);
         this.listenerOrientation.put(5, l.up.z);
-        AL10.alListener((int)4111, (FloatBuffer)this.listenerOrientation);
+        AL10.alListener(4111, this.listenerOrientation);
         this.checkALError();
         this.listenerVelocity.put(0, l.velocity.x);
         this.listenerVelocity.put(1, l.velocity.y);
         this.listenerVelocity.put(2, l.velocity.z);
-        AL10.alListener((int)4102, (FloatBuffer)this.listenerVelocity);
+        AL10.alListener(4102, this.listenerVelocity);
         this.checkALError();
     }
 
@@ -500,7 +500,7 @@ public class LibraryLWJGLOpenAL
         this.listenerOrientation.put(3, upX);
         this.listenerOrientation.put(4, upY);
         this.listenerOrientation.put(5, upZ);
-        AL10.alListener((int)4111, (FloatBuffer)this.listenerOrientation);
+        AL10.alListener(4111, this.listenerOrientation);
         this.checkALError();
     }
 
@@ -509,7 +509,7 @@ public class LibraryLWJGLOpenAL
         this.listenerPositionAL.put(0, x);
         this.listenerPositionAL.put(1, y);
         this.listenerPositionAL.put(2, z);
-        AL10.alListener((int)4100, (FloatBuffer)this.listenerPositionAL);
+        AL10.alListener(4100, this.listenerPositionAL);
         this.checkALError();
     }
 
@@ -518,12 +518,12 @@ public class LibraryLWJGLOpenAL
         this.listenerVelocity.put(0, this.listener.velocity.x);
         this.listenerVelocity.put(1, this.listener.velocity.y);
         this.listenerVelocity.put(2, this.listener.velocity.z);
-        AL10.alListener((int)4102, (FloatBuffer)this.listenerVelocity);
+        AL10.alListener(4102, this.listenerVelocity);
     }
 
     public void setMasterVolume(float value) {
         super.setMasterVolume(value);
-        AL10.alListenerf((int)4106, (float)value);
+        AL10.alListenerf(4106, value);
         this.checkALError();
     }
 

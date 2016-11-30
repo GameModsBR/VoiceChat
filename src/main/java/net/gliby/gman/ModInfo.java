@@ -11,7 +11,7 @@ public class ModInfo {
    @SerializedName("UpdateURL")
    public String updateURL;
    @SerializedName("Versions")
-   public List versions;
+   public List<String> versions;
    boolean updated = true;
    public final String modId;
 
@@ -27,7 +27,7 @@ public class ModInfo {
    }
 
    public void determineUpdate(String currentModVersion, String currentMinecraftVersion) {
-      Iterator i$ = this.versions.iterator();
+      Iterator<String> i$ = this.versions.iterator();
 
       while(i$.hasNext()) {
          String s = (String)i$.next();

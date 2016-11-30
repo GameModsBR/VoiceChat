@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL11;
 
 public class GuiUIPlacement extends GuiScreen {
 
-   private final List placeables = new ArrayList();
+   private final List<GuiPlaceableInterface> placeables = new ArrayList<GuiPlaceableInterface>();
    private final GuiScreen parent;
    private int offsetX;
    private int offsetY;

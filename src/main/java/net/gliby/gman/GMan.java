@@ -25,7 +25,7 @@ public class GMan {
          return;
       }
 
-      ModInfo externalInfo = (ModInfo)gson.fromJson(reader, ModInfo.class);
+      ModInfo externalInfo = gson.fromJson(reader, ModInfo.class);
       modInfo.donateURL = externalInfo.donateURL;
       modInfo.updateURL = externalInfo.updateURL;
       modInfo.versions = externalInfo.versions;

@@ -10,7 +10,7 @@ public class ModPackSettings {
    public ModPackSettings.GVCModPackInstructions init() throws UnsupportedEncodingException {
       InputStreamReader reader = new InputStreamReader(this.getClass().getResourceAsStream("/modpack.json"), "UTF-8");
       Gson gson = (new GsonBuilder()).create();
-      return (ModPackSettings.GVCModPackInstructions)gson.fromJson(reader, ModPackSettings.GVCModPackInstructions.class);
+      return gson.fromJson(reader, GVCModPackInstructions.class);
    }
 
    public class UIContainer {

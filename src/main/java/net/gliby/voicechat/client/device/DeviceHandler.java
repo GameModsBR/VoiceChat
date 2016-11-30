@@ -12,7 +12,7 @@ import net.gliby.voicechat.client.sound.ClientStreamManager;
 
 public class DeviceHandler {
 
-   private final List devices = new ArrayList();
+   private final List<Device> devices = new ArrayList<Device>();
 
 
    public Device getDefaultDevice() {

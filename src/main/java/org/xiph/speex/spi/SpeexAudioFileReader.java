@@ -59,7 +59,7 @@ public class SpeexAudioFileReader extends AudioFileReader {
    }
 
    protected AudioFileFormat getAudioFileFormat(InputStream var1, int var2) throws UnsupportedAudioFileException, IOException {
-      return this.getAudioFileFormat(var1, (ByteArrayOutputStream)null, var2);
+      return this.getAudioFileFormat(var1, null, var2);
    }
 
    protected AudioFileFormat getAudioFileFormat(InputStream var1, ByteArrayOutputStream var2, int var3) throws UnsupportedAudioFileException, IOException {

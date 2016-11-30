@@ -10,7 +10,7 @@ public class ServerStream {
    long lastUpdated;
    int tick;
    public EntityPlayerMP player;
-   public List entities;
+   public List<Integer> entities;
    public int chatMode;
    public boolean dirty;
 
@@ -18,7 +18,7 @@ public class ServerStream {
    ServerStream(EntityPlayerMP player, int id, String identifier) {
       this.id = id;
       this.player = player;
-      this.entities = new ArrayList();
+      this.entities = new ArrayList<Integer>();
       this.lastUpdated = System.currentTimeMillis();
    }
 

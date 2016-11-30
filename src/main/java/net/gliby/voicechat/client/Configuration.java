@@ -60,13 +60,13 @@ public class Configuration {
                this.settings.setInputDevice(handler.getDeviceByName(this.init.ReadString("Audio", "InputDevice", e.getName())));
             }
 
-            this.settings.setWorldVolume(this.init.ReadFloat("Audio", "WorldVolume", 1.0F).floatValue());
-            this.settings.setInputBoost(this.init.ReadFloat("Audio", "InputBoost", 1.0F).floatValue());
+            this.settings.setWorldVolume(this.init.ReadFloat("Audio", "WorldVolume", 1.0F));
+            this.settings.setInputBoost(this.init.ReadFloat("Audio", "InputBoost", 1.0F));
             this.settings.setSpeakMode(this.init.ReadFloat("Audio", "SpeakMode", 0.0F).intValue());
-            this.settings.setEncodingQuality(this.init.ReadFloat("AdvancedAudio", "EncodingQuality", 1.0F).floatValue());
+            this.settings.setEncodingQuality(this.init.ReadFloat("AdvancedAudio", "EncodingQuality", 1.0F));
             this.settings.setEncodingMode(this.init.ReadFloat("AdvancedAudio", "EncodingMode", 1.0F).intValue());
             this.settings.setPerceptualEnchantment(this.init.ReadBool("AdvancedAudio", "EnhancedDecoding", true));
-            this.settings.setUIOpacity(this.init.ReadFloat("Interface", "UIOpacity", 1.0F).floatValue());
+            this.settings.setUIOpacity(this.init.ReadFloat("Interface", "UIOpacity", 1.0F));
             String[] positionArray = this.init.ReadString("Interface", "UIPositionSpeak", this.settings.getUIPositionSpeak().x + ":" + this.settings.getUIPositionSpeak().y + ":" + this.settings.getUIPositionSpeak().type + ":" + this.settings.getUIPositionSpeak().scale).split(":");
             this.settings.setUIPosition(EnumUIPlacement.SPEAK, Float.parseFloat(positionArray[0]), Float.parseFloat(positionArray[1]), Float.parseFloat(positionArray[3]), Integer.parseInt(positionArray[2]));
             positionArray = this.init.ReadString("Interface", "UIPositionPlate", this.settings.getUIPositionPlate().x + ":" + this.settings.getUIPositionPlate().y + ":" + this.settings.getUIPositionPlate().type + ":" + this.settings.getUIPositionPlate().scale).split(":");

@@ -61,7 +61,7 @@ public class SoundPreProcessor {
             this.buffer = new byte[0];
 
             for(int i = 0; i < samplesList.size(); ++i) {
-               byte[] sample = (byte[])((byte[])samplesList.get(i));
+               byte[] sample = samplesList.get(i);
                SpeexDecoder tempDecoder = new SpeexDecoder();
                tempDecoder.init(0, (int)ClientStreamManager.getUniversalAudioFormat().getSampleRate(), ClientStreamManager.getUniversalAudioFormat().getChannels(), this.voiceChat.getSettings().isPerceptualEnchantmentAllowed());
 

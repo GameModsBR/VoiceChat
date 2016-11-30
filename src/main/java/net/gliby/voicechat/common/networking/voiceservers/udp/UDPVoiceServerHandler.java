@@ -67,7 +67,7 @@ public class UDPVoiceServerHandler {
    }
 
    private void handleVoiceEnd(UDPClient client) {
-      this.server.handleVoiceData(client.player, (byte[])null, (byte)0, client.player.getEntityId(), true);
+      this.server.handleVoiceData(client.player, null, (byte)0, client.player.getEntityId(), true);
    }
 
    public void read(byte[] data, final DatagramPacket packet) throws Exception {

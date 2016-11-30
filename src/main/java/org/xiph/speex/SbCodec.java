@@ -52,17 +52,17 @@ public class SbCodec extends NbCodec {
       SplitShapeSearch var1 = new SplitShapeSearch(40, 10, 4, Codebook.hexc_10_32_table, 5, 0);
       SplitShapeSearch var2 = new SplitShapeSearch(40, 8, 5, Codebook.hexc_table, 7, 1);
       SubMode[] var3 = new SubMode[8];
-      var3[1] = new SubMode(0, 0, 1, 0, var0, (Ltp)null, (CbSearch)null, 0.75F, 0.75F, -1.0F, 36);
-      var3[2] = new SubMode(0, 0, 1, 0, var0, (Ltp)null, var1, 0.85F, 0.6F, -1.0F, 112);
-      var3[3] = new SubMode(0, 0, 1, 0, var0, (Ltp)null, var2, 0.75F, 0.7F, -1.0F, 192);
-      var3[4] = new SubMode(0, 0, 1, 1, var0, (Ltp)null, var2, 0.75F, 0.75F, -1.0F, 352);
+      var3[1] = new SubMode(0, 0, 1, 0, var0, null, null, 0.75F, 0.75F, -1.0F, 36);
+      var3[2] = new SubMode(0, 0, 1, 0, var0, null, var1, 0.85F, 0.6F, -1.0F, 112);
+      var3[3] = new SubMode(0, 0, 1, 0, var0, null, var2, 0.75F, 0.7F, -1.0F, 192);
+      var3[4] = new SubMode(0, 0, 1, 1, var0, null, var2, 0.75F, 0.75F, -1.0F, 352);
       return var3;
    }
 
    protected static SubMode[] buildUwbSubModes() {
       HighLspQuant var0 = new HighLspQuant();
       SubMode[] var1 = new SubMode[8];
-      var1[1] = new SubMode(0, 0, 1, 0, var0, (Ltp)null, (CbSearch)null, 0.75F, 0.75F, -1.0F, 2);
+      var1[1] = new SubMode(0, 0, 1, 0, var0, null, null, 0.75F, 0.75F, -1.0F, 2);
       return var1;
    }
 

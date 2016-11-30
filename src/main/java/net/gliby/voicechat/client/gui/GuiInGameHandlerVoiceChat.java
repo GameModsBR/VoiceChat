@@ -89,7 +89,7 @@ public class GuiInGameHandlerVoiceChat extends Gui {
             this.getDelta();
             this.lastFPS = this.getTime();
             if(this.voiceChat.getSettings().isSetupNeeded()) {
-               this.mc.displayGuiScreen(new GuiScreenOptionsWizard(this.voiceChat, (GuiScreen)null));
+               this.mc.displayGuiScreen(new GuiScreenOptionsWizard(this.voiceChat, null));
             }
          }
 

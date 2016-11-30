@@ -19,9 +19,9 @@ import net.minecraft.server.MinecraftServer;
 
 public class ServerStreamManager {
 
-   List currentStreams;
-   ConcurrentLinkedQueue dataQueue;
-   public ConcurrentHashMap streaming;
+   List<ServerStream> currentStreams;
+   ConcurrentLinkedQueue<ServerDatalet> dataQueue;
+   public ConcurrentHashMap<Integer, ServerStream> streaming;
    public HashMap chatModeMap;
    private HashMap receivedEntityData;
    private Thread threadUpdate;

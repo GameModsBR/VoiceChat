@@ -17,7 +17,7 @@ public class ServerStreamHandler {
    public void createdStream(ServerStreamEvent.StreamCreated event) {
       int chatMode = this.voiceChat.getServerSettings().getDefaultChatMode();
       if(event.streamManager.chatModeMap.containsKey(event.voiceLet.player.getPersistentID())) {
-         chatMode = ((Integer)event.streamManager.chatModeMap.get(event.voiceLet.player.getPersistentID())).intValue();
+         chatMode = (Integer) event.streamManager.chatModeMap.get(event.voiceLet.player.getPersistentID());
       }
 
       event.stream.chatMode = chatMode;
@@ -26,7 +26,7 @@ public class ServerStreamHandler {
    @SubscribeEvent
    public void feedStream(ServerStreamEvent.StreamFeed event) {
       if(event.stream.dirty && event.streamManager.chatModeMap.containsKey(event.stream.player.getPersistentID())) {
-         event.stream.chatMode = ((Integer)event.streamManager.chatModeMap.get(event.stream.player.getPersistentID())).intValue();
+         event.stream.chatMode = (Integer) event.streamManager.chatModeMap.get(event.stream.player.getPersistentID());
       }
 
       switch(event.stream.chatMode) {

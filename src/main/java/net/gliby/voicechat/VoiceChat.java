@@ -59,7 +59,7 @@ public class VoiceChat {
    }
 
    public static VoiceChatClient getProxyInstance() {
-      return (VoiceChatClient)((VoiceChatClient)(proxy instanceof VoiceChatClient?(VoiceChatClient)proxy:proxy));
+      return proxy instanceof VoiceChatClient?(VoiceChatClient)proxy:proxy;
    }
 
    public static VoiceChatServer getServerInstance() {

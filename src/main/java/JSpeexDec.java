@@ -340,12 +340,12 @@ public class JSpeexDec {
                   }
 
                   ((AudioFileWriter)var21).open(var2);
-                  ((AudioFileWriter)var21).writeHeader((String)null);
+                  ((AudioFileWriter)var21).writeHeader(null);
                   ++var19;
                } else {
                   var20.readFully(var4, 0, var17);
                   if(this.loss > 0 && random.nextInt(100) < this.loss) {
-                     this.speexDecoder.processData((byte[])null, 0, var17);
+                     this.speexDecoder.processData(null, 0, var17);
 
                      for(var24 = 1; var24 < this.nframes; ++var24) {
                         this.speexDecoder.processData(true);
@@ -420,7 +420,7 @@ public class JSpeexDec {
                      }
 
                      ((AudioFileWriter)var21).open(var2);
-                     ((AudioFileWriter)var21).writeHeader((String)null);
+                     ((AudioFileWriter)var21).writeHeader(null);
                      ++var19;
                   } else {
                      var19 = 0;
@@ -429,7 +429,7 @@ public class JSpeexDec {
                   ++var19;
                } else {
                   if(this.loss > 0 && random.nextInt(100) < this.loss) {
-                     this.speexDecoder.processData((byte[])null, 0, var17);
+                     this.speexDecoder.processData(null, 0, var17);
 
                      for(var24 = 1; var24 < this.nframes; ++var24) {
                         this.speexDecoder.processData(true);

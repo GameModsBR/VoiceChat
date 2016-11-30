@@ -12,7 +12,7 @@ public class MinecraftServerVoiceEndPacket extends MinecraftPacket implements IM
    public void fromBytes(ByteBuf buf) {}
 
    public IMessage onMessage(MinecraftServerVoiceEndPacket packet, MessageContext ctx) {
-      VoiceChat.getServerInstance().getVoiceServer().handleVoiceData(ctx.getServerHandler().playerEntity, (byte[])null, (byte)0, ctx.getServerHandler().playerEntity.getEntityId(), true);
+      VoiceChat.getServerInstance().getVoiceServer().handleVoiceData(ctx.getServerHandler().playerEntity, null, (byte)0, ctx.getServerHandler().playerEntity.getEntityId(), true);
       return null;
    }
 

@@ -99,7 +99,7 @@ public class UdpServer {
     public synchronized void fireProperties() {
         this.firePropertyChange("port", null, this.getPort());
         this.firePropertyChange("groups", null, this.getGroups());
-        this.firePropertyChange("state", null, (Object)this.getState());
+        this.firePropertyChange("state", null, this.getState());
     }
 
     protected synchronized void firePropertyChange(String prop, Object oldVal, Object newVal) {
@@ -107,7 +107,7 @@ public class UdpServer {
             this.propSupport.firePropertyChange(prop, oldVal, newVal);
         }
         catch (Exception exc) {
-            LOGGER.log(Level.WARN, "A property change listener threw an exception: " + exc.getMessage(), (Throwable)exc);
+            LOGGER.log(Level.WARN, "A property change listener threw an exception: " + exc.getMessage(), exc);
             this.fireExceptionNotification(exc);
         }
     }
@@ -172,7 +172,7 @@ public class UdpServer {
 
                     @Override
                     public void propertyChange(PropertyChangeEvent evt) {
-                        State newState = (State)((Object)evt.getNewValue());
+                        State newState = (State) evt.getNewValue();
                         if (newState == State.STOPPED) {
                             UdpServer server = (UdpServer)evt.getSource();
                             server.removePropertyChangeListener("state", this);
@@ -240,7 +240,7 @@ public class UdpServer {
                     LOGGER.info("Udp Server closed normally.");
                 } else {
                     LOGGER.warn("If the server cannot bind: Switch to Minecraft Networking in config or setup UDP properly, that means port-forwarding.");
-                    LOGGER.log(Level.WARN, "Server closed unexpectedly: " + exc.getMessage(), (Throwable)exc);
+                    LOGGER.log(Level.WARN, "Server closed unexpectedly: " + exc.getMessage(), exc);
                 }
             }
             this.fireExceptionNotification(exc);
@@ -292,7 +292,7 @@ public class UdpServer {
     protected synchronized void setState(State state) {
         State oldVal = this.currentState;
         this.currentState = state;
-        this.firePropertyChange("state", (Object)oldVal, (Object)state);
+        this.firePropertyChange("state", oldVal, state);
     }
 
     public synchronized void start() {

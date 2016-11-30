@@ -68,7 +68,7 @@ public class GuiScreenDonate extends GuiScreen {
    private void openURL(String par1URI) {
       try {
          Class throwable = Class.forName("java.awt.Desktop");
-         Object object = throwable.getMethod("getDesktop", new Class[0]).invoke((Object)null);
+         Object object = throwable.getMethod("getDesktop", new Class[0]).invoke(null);
          throwable.getMethod("browse", new Class[]{URI.class}).invoke(object, new URI(par1URI));
       } catch (Throwable var4) {
          var4.printStackTrace();
