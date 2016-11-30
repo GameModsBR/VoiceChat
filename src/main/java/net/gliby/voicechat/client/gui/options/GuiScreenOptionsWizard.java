@@ -12,6 +12,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.opengl.GL11;
@@ -164,11 +165,11 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer renderer = tessellator.getWorldRenderer();
-        renderer.startDrawingQuads();
-        renderer.addVertexWithUV((double) (par1 + 0.0F), (double) (par2 + par6), (double) this.zLevel, (double) ((par3 + 0.0F) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F));
-        renderer.addVertexWithUV((double) (par1 + par5), (double) (par2 + par6), (double) this.zLevel, (double) ((par3 + par5) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F));
-        renderer.addVertexWithUV((double) (par1 + par5), (double) (par2 + 0.0F), (double) this.zLevel, (double) ((par3 + par5) * 0.00390625F), (double) ((par4 + 0.0F) * 0.00390625F));
-        renderer.addVertexWithUV((double) (par1 + 0.0F), (double) (par2 + 0.0F), (double) this.zLevel, (double) ((par3 + 0.0F) * 0.00390625F), (double) ((par4 + 0.0F) * 0.00390625F));
+        renderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+        renderer.pos((double) (par1 + 0.0F), (double) (par2 + par6), (double) this.zLevel).tex((double) ((par3 + 0.0F) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F)).endVertex();
+        renderer.pos((double) (par1 + par5), (double) (par2 + par6), (double) this.zLevel).tex((double) ((par3 + par5) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F)).endVertex();
+        renderer.pos((double) (par1 + par5), (double) (par2 + 0.0F), (double) this.zLevel).tex((double) ((par3 + par5) * 0.00390625F), (double) ((par4 + 0.0F) * 0.00390625F)).endVertex();
+        renderer.pos((double) (par1 + 0.0F), (double) (par2 + 0.0F), (double) this.zLevel).tex((double) ((par3 + 0.0F) * 0.00390625F), (double) ((par4 + 0.0F) * 0.00390625F)).endVertex();
         tessellator.draw();
     }
 

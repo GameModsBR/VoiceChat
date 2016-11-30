@@ -42,19 +42,19 @@ public class ClientEventHandler {
                             for (Map.Entry<Integer, String> entry : ClientStreamManager.playerMutedData.entrySet()) {
                                 Integer key = entry.getKey();
                                 String value = entry.getValue();
-                                if (!value.equals(player.getCommandSenderName())) continue;
+                                if (!value.equals(player.getName())) continue;
                                 VoiceChatClient.getSoundManager().playersMuted.remove(key);
                                 VoiceChatClient.getSoundManager();
                                 ClientStreamManager.playerMutedData.remove(key);
                                 VoiceChatClient.getSoundManager().playersMuted.add(player.getEntityId());
                                 VoiceChatClient.getSoundManager();
-                                ClientStreamManager.playerMutedData.put(player.getEntityId(), player.getCommandSenderName());
+                                ClientStreamManager.playerMutedData.put(player.getEntityId(), player.getName());
                                 break;
                             }
                         }
                         if ((proxy = VoiceChatClient.getSoundManager().playerData.get(player.getEntityId())) != null) {
                             proxy.setPlayer(player);
-                            proxy.setName(player.getCommandSenderName());
+                            proxy.setName(player.getName());
                             proxy.usesEntity = true;
                         }
                     }

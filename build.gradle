@@ -7,7 +7,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.0-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -16,9 +16,9 @@ version = "0.6.1"
 group= "net.gliby"
 
 minecraft {
-    version = "1.8-11.14.4.1577"
+    version = "1.8.8-11.15.0.1655"
     runDir = "run"
-    mappings = "stable_18"
+    mappings = "stable_20"
 
     replace "@VERSION@", project.version
     replace "@MC_VERSION@", project.minecraft.version

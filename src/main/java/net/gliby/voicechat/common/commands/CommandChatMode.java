@@ -73,7 +73,7 @@ public class CommandChatMode extends CommandBase {
                 }
 
                 if (player != par1ICommandSender) {
-                    notifyOperators(par1ICommandSender, this, player.getCommandSenderName() + " set chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")", par2ArrayOfStr[0]);
+                    notifyOperators(par1ICommandSender, this, player.getName() + " set chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")", par2ArrayOfStr[0]);
                 } else {
                     player.addChatMessage(new ChatComponentText("Set own chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")"));
                     switch (chatMode) {

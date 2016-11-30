@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.IResourcePack;
 import net.minecraft.util.ResourceLocation;
@@ -121,11 +122,11 @@ public class GuiScreenDonate extends GuiScreen {
                     this.cachedLogoDimensions.height = (int) ((double) this.cachedLogoDimensions.height * scale);
                     Tessellator tessellator = Tessellator.getInstance();
                     WorldRenderer renderer = tessellator.getWorldRenderer();
-                    renderer.startDrawingQuads();
-                    renderer.addVertexWithUV(0.0D, (double) this.cachedLogoDimensions.height, (double) this.zLevel, 0.0D, 1.0D);
-                    renderer.addVertexWithUV((double) (0 + this.cachedLogoDimensions.width), (double) (0 + this.cachedLogoDimensions.height), (double) this.zLevel, 1.0D, 1.0D);
-                    renderer.addVertexWithUV((double) (0 + this.cachedLogoDimensions.width), 0.0D, (double) this.zLevel, 1.0D, 0.0D);
-                    renderer.addVertexWithUV(0.0D, 0.0D, (double) this.zLevel, 0.0D, 0.0D);
+                    renderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+                    renderer.pos(0.0D, (double) this.cachedLogoDimensions.height, (double) this.zLevel).tex(0.0D, 1.0D).endVertex();
+                    renderer.pos((double) (0 + this.cachedLogoDimensions.width), (double) (0 + this.cachedLogoDimensions.height), (double) this.zLevel).tex(1.0D, 1.0D).endVertex();
+                    renderer.pos((double) (0 + this.cachedLogoDimensions.width), 0.0D, (double) this.zLevel).tex(1.0D, 0.0D).endVertex();
+                    renderer.pos(0.0D, 0.0D, (double) this.zLevel).tex(0.0D, 0.0D).endVertex();
                     tessellator.draw();
                 }
             } catch (IOException var15) {

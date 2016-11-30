@@ -176,7 +176,7 @@ public class ServerStreamManager {
     }
 
     public void giveEntity(EntityPlayerMP receiver, EntityPlayerMP speaker) {
-        this.voiceChat.getServerNetwork().sendEntityData(receiver, speaker.getEntityId(), speaker.getCommandSenderName(), speaker.posX, speaker.posY, speaker.posZ);
+        this.voiceChat.getServerNetwork().sendEntityData(receiver, speaker.getEntityId(), speaker.getName(), speaker.posX, speaker.posY, speaker.posZ);
     }
 
     public void giveStream(ServerStream stream, ServerDatalet let) {

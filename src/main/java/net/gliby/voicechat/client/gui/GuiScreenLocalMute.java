@@ -31,7 +31,7 @@ import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
 public class GuiScreenLocalMute
         extends GuiScreen {
@@ -61,7 +61,7 @@ public class GuiScreenLocalMute
                         break;
                     VoiceChatClient.getSoundManager().playersMuted.add(entityPlayer.getEntityId());
                     VoiceChatClient.getSoundManager();
-                    ClientStreamManager.playerMutedData.put(entityPlayer.getEntityId(), entityPlayer.getCommandSenderName());
+                    ClientStreamManager.playerMutedData.put(entityPlayer.getEntityId(), entityPlayer.getName());
                     break;
                 }
                 this.playerNotFound = true;
@@ -123,7 +123,7 @@ public class GuiScreenLocalMute
                 this.autoCompletionNames.clear();
                 for (Object obj : this.mc.theWorld.playerEntities.toArray()) {
                     String s2;
-                    if (!(obj instanceof EntityOtherPlayerMP) || !(s2 = ((EntityOtherPlayerMP) obj).getCommandSenderName()).toLowerCase().startsWith(this.playerTextField.getText().toLowerCase().trim().replaceAll(" ", "")))
+                    if (!(obj instanceof EntityOtherPlayerMP) || !(s2 = ((EntityOtherPlayerMP) obj).getName()).toLowerCase().startsWith(this.playerTextField.getText().toLowerCase().trim().replaceAll(" ", "")))
                         continue;
                     this.autoCompletionNames.add(s2);
                 }

@@ -87,7 +87,7 @@ public class ClientNetwork {
                 if (serverAddress.isEmpty()) {
                     ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
                     if (serverData != null) {
-                        ServerAddress server = ServerAddress.func_78860_a(serverData.serverIP);
+                        ServerAddress server = ServerAddress.fromString(serverData.serverIP);
                         serverAddress = server.getIP();
                     } else {
                         serverAddress = "localhost";

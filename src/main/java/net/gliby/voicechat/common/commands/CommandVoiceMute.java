@@ -51,10 +51,10 @@ public class CommandVoiceMute extends CommandBase {
             if (player != null) {
                 if (network.getDataManager().mutedPlayers.contains(player.getUniqueID())) {
                     network.getDataManager().mutedPlayers.remove(player.getUniqueID());
-                    notifyOperators(sender, this, player.getCommandSenderName() + " has been unmuted.", args[0]);
+                    notifyOperators(sender, this, player.getName() + " has been unmuted.", args[0]);
                     player.addChatMessage(new ChatComponentText("You have been unmuted!"));
                 } else {
-                    notifyOperators(sender, this, player.getCommandSenderName() + " has been muted.", args[0]);
+                    notifyOperators(sender, this, player.getName() + " has been muted.", args[0]);
                     network.getDataManager().mutedPlayers.add(player.getUniqueID());
                     player.addChatMessage(new ChatComponentText("You have been voice muted, you cannot talk untill you have been unmuted."));
                 }

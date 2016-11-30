@@ -25,7 +25,7 @@ public class PlayerProxy {
     }
 
     public String entityName() {
-        return this.entityName != null ? this.entityName : this.player.getCommandSenderName();
+        return this.entityName != null ? this.entityName : this.player.getName();
     }
 
     public Entity getPlayer() {

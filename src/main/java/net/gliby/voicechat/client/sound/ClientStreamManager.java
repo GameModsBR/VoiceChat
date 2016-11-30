@@ -147,7 +147,7 @@ public class ClientStreamManager {
         EntityPlayer entity = (EntityPlayer) this.mc.theWorld.getEntityByID(entityId);
         if (proxy == null) {
             if (entity != null) {
-                proxy = new PlayerProxy(entity, entity.getEntityId(), entity.getCommandSenderName(), entity.posX, entity.posY, entity.posZ);
+                proxy = new PlayerProxy(entity, entity.getEntityId(), entity.getName(), entity.posX, entity.posY, entity.posZ);
             } else {
                 VoiceChat.getLogger().error("Major error, no entity found for player.");
                 proxy = new PlayerProxy(null, entityId, "" + entityId, 0.0D, 0.0D, 0.0D);
@@ -156,7 +156,7 @@ public class ClientStreamManager {
             this.playerData.put(entityId, proxy);
         } else if (entity != null) {
             proxy.setPlayer(entity);
-            proxy.setName(entity.getCommandSenderName());
+            proxy.setName(entity.getName());
         }
 
         return proxy;

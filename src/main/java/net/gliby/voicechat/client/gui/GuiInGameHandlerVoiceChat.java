@@ -90,7 +90,7 @@ public class GuiInGameHandlerVoiceChat extends Gui {
                 }
             }
 
-            this.res = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
+            this.res = new ScaledResolution(this.mc);
             int width = this.res.getScaledWidth();
             int height = this.res.getScaledHeight();
             int delta = this.getDelta();
