@@ -131,6 +131,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         this.boostSlider = new GuiBoostSlider(900, this.width / 2 + 2, this.height / 2 - 55, "", I18n.format("menu.boost") + ": " + ((int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0 ? I18n.format("options.off") : "" + (int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F);
         this.boostSlider.sliderValue = this.voiceChat.getSettings().getInputBoost();
         this.advancedOptions = new GuiCustomButton(899, this.width / 2 + 2, this.height / 2 + 49 - 55, 150, 20, I18n.format("menu.advancedOptions"));
+        @SuppressWarnings("unchecked")
         List<GuiButton> buttonList = this.buttonList;
         buttonList.add(new GuiButton(1, this.width / 2 - 151, this.height - 34, 75, 20, I18n.format("menu.gman.supportGliby")));
         buttonList.add(new GuiButton(2, this.width / 2 - 152, this.height / 2 - 25 - 55, 150, 20, !this.tester.recording ? I18n.format("menu.microphoneTest") : I18n.format("menu.microphoneStopTest")));
@@ -229,11 +230,11 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
 
     private void openURL(String par1URI) {
         try {
-            Class throwable = Class.forName("java.awt.Desktop");
-            Object object = throwable.getMethod("getDesktop", new Class[0]).invoke(null);
-            throwable.getMethod("browse", new Class[]{URI.class}).invoke(object, new URI(par1URI));
-        } catch (Throwable var4) {
-            var4.printStackTrace();
+            Class<?> clazz = Class.forName("java.awt.Desktop");
+            Object object = clazz.getMethod("getDesktop", new Class[0]).invoke(null);
+            clazz.getMethod("browse", new Class[]{URI.class}).invoke(object, new URI(par1URI));
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
 
     }

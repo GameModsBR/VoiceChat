@@ -18,6 +18,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -180,11 +181,13 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         }
 
         this.dropDown = new GuiDropDownMenu(-1, this.width / 2 - 75, this.height / 2 - 55, 150, 20, this.voiceChat.getSettings().getInputDevice() != null ? this.voiceChat.getSettings().getInputDevice().getName() : "None", array);
-        this.buttonList.add(this.nextButton = new GuiCustomButton(0, this.width / 2 - 90, this.height / 2 + 60, 180, 20, I18n.format("menu.next") + " ->"));
-        this.buttonList.add(this.previousButton = new GuiCustomButton(1, this.width / 2 - 90, this.height / 2, 180, 20, "<- " + I18n.format("menu.previous")));
-        this.buttonList.add(this.doneButton = new GuiCustomButton(2, this.width / 2 - 90, this.height / 2, 180, 20, I18n.format("gui.done")));
-        this.buttonList.add(this.backButton = new GuiCustomButton(3, this.width / 2 - 90, this.height / 2 + 18, 180, 20, I18n.format("gui.back")));
-        this.buttonList.add(this.boostSlider = new GuiBoostSlider(900, this.width / 2 - 75, this.height / 2 - 15, "", I18n.format("menu.boost") + ": " + ((int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0 ? I18n.format("options.off") : "" + (int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F));
+        @SuppressWarnings("unchecked")
+        List<GuiButton> buttonList = this.buttonList;
+        buttonList.add(this.nextButton = new GuiCustomButton(0, this.width / 2 - 90, this.height / 2 + 60, 180, 20, I18n.format("menu.next") + " ->"));
+        buttonList.add(this.previousButton = new GuiCustomButton(1, this.width / 2 - 90, this.height / 2, 180, 20, "<- " + I18n.format("menu.previous")));
+        buttonList.add(this.doneButton = new GuiCustomButton(2, this.width / 2 - 90, this.height / 2, 180, 20, I18n.format("gui.done")));
+        buttonList.add(this.backButton = new GuiCustomButton(3, this.width / 2 - 90, this.height / 2 + 18, 180, 20, I18n.format("gui.back")));
+        buttonList.add(this.boostSlider = new GuiBoostSlider(900, this.width / 2 - 75, this.height / 2 - 15, "", I18n.format("menu.boost") + ": " + ((int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0 ? I18n.format("options.off") : "" + (int) (this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F));
         this.boostSlider.sliderValue = this.voiceChat.getSettings().getInputBoost();
         this.doneButton.visible = false;
         this.buttonMap.put(this.backButton, 1);

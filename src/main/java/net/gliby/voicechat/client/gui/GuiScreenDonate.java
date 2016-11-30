@@ -20,6 +20,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.util.*;
+import java.util.List;
 
 public class GuiScreenDonate extends GuiScreen {
 
@@ -65,17 +67,19 @@ public class GuiScreenDonate extends GuiScreen {
 
     @Override
     public void initGui() {
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 50, this.height - 34, 100, 20, I18n.format("gui.back")));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2, I18n.format("menu.gman.donate")));
+        @SuppressWarnings("unchecked")
+        List<GuiButton> buttonList = this.buttonList;
+        buttonList.add(new GuiButton(0, this.width / 2 - 50, this.height - 34, 100, 20, I18n.format("gui.back")));
+        buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2, I18n.format("menu.gman.donate")));
     }
 
     private void openURL(String par1URI) {
         try {
-            Class throwable = Class.forName("java.awt.Desktop");
-            Object object = throwable.getMethod("getDesktop", new Class[0]).invoke(null);
-            throwable.getMethod("browse", new Class[]{URI.class}).invoke(object, new URI(par1URI));
-        } catch (Throwable var4) {
-            var4.printStackTrace();
+            Class<?> clazz = Class.forName("java.awt.Desktop");
+            Object object = clazz.getMethod("getDesktop", new Class[0]).invoke(null);
+            clazz.getMethod("browse", new Class[]{URI.class}).invoke(object, new URI(par1URI));
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
         }
 
     }

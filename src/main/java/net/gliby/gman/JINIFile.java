@@ -3,7 +3,7 @@ package net.gliby.gman;
 import java.io.*;
 import java.util.ArrayList;
 
-public class JINIFile extends ArrayList {
+public class JINIFile extends ArrayList<String> {
 
     private final File userFileName;
 
@@ -61,7 +61,7 @@ public class JINIFile extends ArrayList {
         int start = this.SectionPosition(Section) + 1;
         if (this.SectionPosition(Section) > -1) {
             for (int i = start; i < this.size(); ++i) {
-                String s = this.get(i).toString();
+                String s = this.get(i);
                 if (s.startsWith("[") && s.endsWith("]")) {
                     break;
                 }
@@ -76,7 +76,7 @@ public class JINIFile extends ArrayList {
     }
 
     public boolean ReadBool(String Section, String key, boolean defaultValue) throws JINIFile.JINIReadException {
-        String s = this.get(this.ValuePosition(Section, key)).toString().substring(key.length() + 1, this.get(this.ValuePosition(Section, key)).toString().length());
+        String s = this.get(this.ValuePosition(Section, key)).substring(key.length() + 1, this.get(this.ValuePosition(Section, key)).length());
         if (this.ValuePosition(Section, key) > 0) {
            return Boolean.parseBoolean(s);
         } else {
@@ -88,7 +88,7 @@ public class JINIFile extends ArrayList {
         new Float(0.0F);
         if (this.ValuePosition(Section, key) > 0) {
             int strLen = key.length() + 1;
-           return Float.valueOf(this.get(this.ValuePosition(Section, key)).toString().substring(strLen, this.get(this.ValuePosition(Section, key)).toString().length()));
+           return Float.valueOf(this.get(this.ValuePosition(Section, key)).substring(strLen, this.get(this.ValuePosition(Section, key)).length()));
         } else {
             throw new JINIFile.JINIReadException("ReadFloat operation failed.");
         }
@@ -97,7 +97,7 @@ public class JINIFile extends ArrayList {
     public int ReadInteger(String Section, String key, int defaultValue) throws JINIFile.JINIReadException {
         if (this.ValuePosition(Section, key) > 0) {
             int strLen = key.length() + 1;
-           return Integer.parseInt(this.get(this.ValuePosition(Section, key)).toString().substring(strLen, this.get(this.ValuePosition(Section, key)).toString().length()));
+           return Integer.parseInt(this.get(this.ValuePosition(Section, key)).substring(strLen, this.get(this.ValuePosition(Section, key)).length()));
         } else {
             throw new JINIFile.JINIReadException("ReadInteger operation failed.");
         }
@@ -108,7 +108,7 @@ public class JINIFile extends ArrayList {
         int start = this.SectionPosition(Section) + 1;
         if (this.SectionPosition(Section) > -1) {
             for (int i = start; i < this.size(); ++i) {
-                String s = this.get(i).toString();
+                String s = this.get(i);
                 if (s.startsWith("[") && s.endsWith("]")) {
                     break;
                 }
@@ -124,7 +124,7 @@ public class JINIFile extends ArrayList {
         ArrayList<String> list = new ArrayList<String>();
 
         for (int i = 0; i < this.size(); ++i) {
-            String s = this.get(i).toString();
+            String s = this.get(i);
             if (s.startsWith("[") && s.endsWith("]")) {
                 list.add(s.substring(1, s.length() - 1));
             }
@@ -138,7 +138,7 @@ public class JINIFile extends ArrayList {
         int start = this.SectionPosition(Section) + 1;
         if (this.SectionPosition(Section) > -1) {
             for (int i = start; i < this.size(); ++i) {
-                String s = this.get(i).toString().substring(this.get(i).toString().indexOf("=") + 1, this.get(i).toString().length());
+                String s = this.get(i).substring(this.get(i).indexOf("=") + 1, this.get(i).length());
                 if (s.startsWith("[") && s.endsWith("]")) {
                     break;
                 }
@@ -154,7 +154,7 @@ public class JINIFile extends ArrayList {
         String value = defaultValue;
         if (this.ValuePosition(Section, key) > 0) {
             int e = key.length() + 1;
-            value = this.get(this.ValuePosition(Section, key)).toString().substring(e, this.get(this.ValuePosition(Section, key)).toString().length());
+            value = this.get(this.ValuePosition(Section, key)).substring(e, this.get(this.ValuePosition(Section, key)).length());
         } else {
             try {
                 throw new Exception("Failed to parse");
@@ -170,7 +170,7 @@ public class JINIFile extends ArrayList {
         boolean val = false;
 
         for (int i = 0; i < this.size(); ++i) {
-            String s = this.get(i).toString();
+            String s = this.get(i);
             if (s.equals("[" + Section + "]")) {
                 val = true;
                 break;
@@ -184,7 +184,7 @@ public class JINIFile extends ArrayList {
         int pos = -1;
 
         for (int i = 0; i < this.size(); ++i) {
-            String s = this.get(i).toString();
+            String s = this.get(i);
             if (s.equals("[" + Section + "]")) {
                 pos = i;
                 break;
@@ -199,7 +199,7 @@ public class JINIFile extends ArrayList {
             BufferedWriter ioe = new BufferedWriter(new FileWriter(this.userFileName, false));
 
             for (int i = 0; i < this.size(); ++i) {
-                String s = this.get(i).toString();
+                String s = this.get(i);
                 if (s == null) {
                     break;
                 }
@@ -221,7 +221,7 @@ public class JINIFile extends ArrayList {
         key.length();
 
         for (int i = start + 1; i < this.size(); ++i) {
-            String s = this.get(i).toString();
+            String s = this.get(i);
             if (s.startsWith(key + "=")) {
                 val = true;
                 break;
@@ -241,7 +241,7 @@ public class JINIFile extends ArrayList {
         key.length();
 
         for (int i = start + 1; i < this.size(); ++i) {
-            String s = this.get(i).toString();
+            String s = this.get(i);
             if (s.startsWith(key + "=")) {
                 pos = i;
                 break;

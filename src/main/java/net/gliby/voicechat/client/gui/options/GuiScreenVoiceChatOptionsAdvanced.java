@@ -7,6 +7,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.opengl.GL11;
 
+import java.util.List;
+
 public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
 
     private final VoiceChatClient voiceChat;
@@ -86,16 +88,18 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
 
     @Override
     public void initGui() {
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("gui.back")));
-        this.buttonList.add(new GuiButton(1, this.width / 2 + 77, this.height - 34, 75, 20, I18n.format("controls.reset")));
+        @SuppressWarnings("unchecked")
+        List<GuiButton> buttonList = this.buttonList;
+        buttonList.add(new GuiButton(0, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("gui.back")));
+        buttonList.add(new GuiButton(1, this.width / 2 + 77, this.height - 34, 75, 20, I18n.format("controls.reset")));
         this.qualitySlider = new GuiBoostSlider(4, this.width / 2 + 2, 74, "", I18n.format("menu.encodingQuality") + ": " + (this.voiceChat.getSettings().getEncodingQuality() == 0.0F ? "0" : String.valueOf((int) (this.voiceChat.getSettings().getEncodingQuality() * 10.0F))), 0.0F);
         this.qualitySlider.sliderValue = this.voiceChat.getSettings().getEncodingQuality();
         this.encodingMode = new GuiButton(5, this.width / 2 - 152, 98, 150, 20, I18n.format("menu.encodingMode") + ": " + this.voiceChat.getSettings().getEncodingModeString());
-        this.buttonList.add(this.enhancedDecoding = new GuiButton(6, this.width / 2 - 152, 50, 150, 20, I18n.format("menu.enhancedDecoding") + ": " + (this.voiceChat.getSettings().isPerceptualEnchantmentAllowed() ? I18n.format("options.on") : I18n.format("options.off"))));
-        this.buttonList.add(this.serverConnection = new GuiButton(7, this.width / 2 + 2, 50, 150, 20, I18n.format("menu.allowSnooper") + ": " + (this.voiceChat.getSettings().isSnooperAllowed() ? I18n.format("options.on") : I18n.format("options.off"))));
-        this.buttonList.add(this.volumeControlButton = new GuiButton(8, this.width / 2 - 152, 74, 150, 20, I18n.format("menu.volumeControl") + ": " + (this.voiceChat.getSettings().isVolumeControlled() ? I18n.format("options.on") : I18n.format("options.off"))));
-        this.buttonList.add(this.qualitySlider);
-        this.buttonList.add(this.encodingMode);
+        buttonList.add(this.enhancedDecoding = new GuiButton(6, this.width / 2 - 152, 50, 150, 20, I18n.format("menu.enhancedDecoding") + ": " + (this.voiceChat.getSettings().isPerceptualEnchantmentAllowed() ? I18n.format("options.on") : I18n.format("options.off"))));
+        buttonList.add(this.serverConnection = new GuiButton(7, this.width / 2 + 2, 50, 150, 20, I18n.format("menu.allowSnooper") + ": " + (this.voiceChat.getSettings().isSnooperAllowed() ? I18n.format("options.on") : I18n.format("options.off"))));
+        buttonList.add(this.volumeControlButton = new GuiButton(8, this.width / 2 - 152, 74, 150, 20, I18n.format("menu.volumeControl") + ": " + (this.voiceChat.getSettings().isVolumeControlled() ? I18n.format("options.on") : I18n.format("options.off"))));
+        buttonList.add(this.qualitySlider);
+        buttonList.add(this.encodingMode);
         this.serverConnection.enabled = false;
         this.encodingMode.enabled = false;
     }

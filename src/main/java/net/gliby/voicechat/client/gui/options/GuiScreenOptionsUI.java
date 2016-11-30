@@ -8,6 +8,8 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.opengl.GL11;
 
+import java.util.List;
+
 public class GuiScreenOptionsUI extends GuiScreen {
 
     private final VoiceChatClient voiceChat;
@@ -53,10 +55,12 @@ public class GuiScreenOptionsUI extends GuiScreen {
 
     @Override
     public void initGui() {
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("gui.back")));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 75, 73, 150, 20, I18n.format("menu.resetAll")));
-        this.buttonList.add(new GuiButton(2, this.width / 2 - 150, 50, 150, 20, I18n.format("menu.uiPlacement")));
-        this.buttonList.add(this.opacity = new GuiBoostSlider(-1, this.width / 2 + 2, 50, "", I18n.format("menu.uiOpacity") + ": " + (this.voiceChat.getSettings().getUIOpacity() == 0.0F ? I18n.format("options.off") : (int) (this.voiceChat.getSettings().getUIOpacity() * 100.0F) + "%"), 0.0F));
+        @SuppressWarnings("unchecked")
+        List<GuiButton> buttonList = this.buttonList;
+        buttonList.add(new GuiButton(0, this.width / 2 - 75, this.height - 34, 150, 20, I18n.format("gui.back")));
+        buttonList.add(new GuiButton(1, this.width / 2 - 75, 73, 150, 20, I18n.format("menu.resetAll")));
+        buttonList.add(new GuiButton(2, this.width / 2 - 150, 50, 150, 20, I18n.format("menu.uiPlacement")));
+        buttonList.add(this.opacity = new GuiBoostSlider(-1, this.width / 2 + 2, 50, "", I18n.format("menu.uiOpacity") + ": " + (this.voiceChat.getSettings().getUIOpacity() == 0.0F ? I18n.format("options.off") : (int) (this.voiceChat.getSettings().getUIOpacity() * 100.0F) + "%"), 0.0F));
         this.opacity.sliderValue = this.voiceChat.getSettings().getUIOpacity();
     }
 

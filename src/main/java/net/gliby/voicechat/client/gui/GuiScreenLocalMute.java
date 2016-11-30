@@ -31,7 +31,7 @@ import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class GuiScreenLocalMute
         extends GuiScreen {
@@ -92,9 +92,11 @@ public class GuiScreenLocalMute
         this.playerTextField = new GuiTextField(0, this.fontRendererObj, this.width / 2 - 100, this.height - 57 - -9, 130, 20);
         this.playerTextField.setFocused(true);
         this.doneButton = new GuiOptionButton(0, this.width / 2 + 32, this.height - 57 - -9, 98, 20, I18n.format("menu.add", (Object[]) new Object[0]));
-        this.buttonList.add(this.doneButton);
+        @SuppressWarnings("unchecked")
+        java.util.List<GuiButton> buttonList = this.buttonList;
+        buttonList.add(this.doneButton);
         this.doneButton = new GuiOptionButton(1, this.width / 2 - 75, this.height - 32 - -9, I18n.format("gui.done", (Object[]) new Object[0]));
-        this.buttonList.add(this.doneButton);
+        buttonList.add(this.doneButton);
         this.listPlayers = new List();
         this.listPlayers.registerScrollButtons(7, 8);
     }
