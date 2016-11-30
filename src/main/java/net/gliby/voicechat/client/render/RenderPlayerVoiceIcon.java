@@ -83,7 +83,7 @@ public class RenderPlayerVoiceIcon extends Gui {
                   GL11.glScalef(-1.0F, -1.0F, -1.0F);
                   GL11.glScalef(2.0F, 2.0F, 0.0F);
                   Gui.drawScaledCustomSizeModalRect(0, 0, 8.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
-                  if(this.mc.thePlayer != null && this.mc.thePlayer.func_175148_a(EnumPlayerModelParts.HAT)) {
+                  if(this.mc.thePlayer != null && this.mc.thePlayer.isWearing(EnumPlayerModelParts.HAT)) {
                      Gui.drawScaledCustomSizeModalRect(0, 0, 40.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
                   }
 

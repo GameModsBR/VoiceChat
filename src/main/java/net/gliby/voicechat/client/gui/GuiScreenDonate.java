@@ -53,23 +53,23 @@ public class GuiScreenDonate extends GuiScreen {
       GL11.glTranslatef((float)(this.width / 2 - this.cachedLogoDimensions.width / 2), (float)(this.height / 2 - (this.cachedLogoDimensions.height + 60)), 0.0F);
       this.renderModLogo(this.info.modId, this.modMetadata, true);
       GL11.glPopMatrix();
-      String s = I18n.format("menu.gman.supportGliby.description", new Object[0]);
+      String s = I18n.format("menu.gman.supportGliby.description");
       this.fontRendererObj.drawSplitString(s, this.width / 2 - 150, this.height / 2 - 50, 300, -1);
-      String s1 = I18n.format("menu.gman.supportGliby.contact", new Object[0]);
+      String s1 = I18n.format("menu.gman.supportGliby.contact");
       this.fontRendererObj.drawSplitString(s1, this.width / 2 - 150, this.height / 2 + 35, 300, -1);
       super.drawScreen(x, y, tick);
    }
 
    public void initGui() {
-      this.buttonList.add(new GuiButton(0, this.width / 2 - 50, this.height - 34, 100, 20, I18n.format("gui.back", new Object[0])));
-      this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2, I18n.format("menu.gman.donate", new Object[0])));
+      this.buttonList.add(new GuiButton(0, this.width / 2 - 50, this.height - 34, 100, 20, I18n.format("gui.back")));
+      this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 2, I18n.format("menu.gman.donate")));
    }
 
    private void openURL(String par1URI) {
       try {
          Class throwable = Class.forName("java.awt.Desktop");
-         Object object = throwable.getMethod("getDesktop", new Class[0]).invoke((Object)null, new Object[0]);
-         throwable.getMethod("browse", new Class[]{URI.class}).invoke(object, new Object[]{new URI(par1URI)});
+         Object object = throwable.getMethod("getDesktop", new Class[0]).invoke((Object)null);
+         throwable.getMethod("browse", new Class[]{URI.class}).invoke(object, new URI(par1URI));
       } catch (Throwable var4) {
          var4.printStackTrace();
       }

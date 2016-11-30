@@ -63,7 +63,7 @@ public class GuiScreenLocalMute
                     if (entityPlayer.isUser() || VoiceChatClient.getSoundManager().playersMuted.contains(entityPlayer.getEntityId())) break;
                     VoiceChatClient.getSoundManager().playersMuted.add(entityPlayer.getEntityId());
                     VoiceChatClient.getSoundManager();
-                    ClientStreamManager.playerMutedData.put(entityPlayer.getEntityId(), entityPlayer.getName());
+                    ClientStreamManager.playerMutedData.put(entityPlayer.getEntityId(), entityPlayer.getCommandSenderName());
                     break;
                 }
                 this.playerNotFound = true;
@@ -121,7 +121,7 @@ public class GuiScreenLocalMute
                 this.autoCompletionNames.clear();
                 for (Object obj : this.mc.theWorld.playerEntities.toArray()) {
                     String s2;
-                    if (!(obj instanceof EntityOtherPlayerMP) || !(s2 = ((EntityOtherPlayerMP)obj).getName()).toLowerCase().startsWith(this.playerTextField.getText().toLowerCase().trim().replaceAll(" ", ""))) continue;
+                    if (!(obj instanceof EntityOtherPlayerMP) || !(s2 = ((EntityOtherPlayerMP)obj).getCommandSenderName()).toLowerCase().startsWith(this.playerTextField.getText().toLowerCase().trim().replaceAll(" ", ""))) continue;
                     this.autoCompletionNames.add(s2);
                 }
                 this.shuffleCompleition();

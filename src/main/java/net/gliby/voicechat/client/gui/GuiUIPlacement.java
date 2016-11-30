@@ -96,7 +96,7 @@ public class GuiUIPlacement extends GuiScreen {
 
    public void drawScreen(int x, int y, float tick) {
       this.drawDefaultBackground();
-      this.drawCenteredString(this.fontRendererObj, I18n.format("menu.pressESCtoReturn", new Object[0]), this.width / 2, 2, -1);
+      this.drawCenteredString(this.fontRendererObj, I18n.format("menu.pressESCtoReturn"), this.width / 2, 2, -1);
       if(this.selectedUIPlaceable != null) {
          this.selectedUIPlaceable.x = (float)(x - this.offsetX);
          this.selectedUIPlaceable.y = (float)(y - this.offsetY);
@@ -106,7 +106,7 @@ public class GuiUIPlacement extends GuiScreen {
       }
 
       if(this.lastSelected != null) {
-         this.scaleSlider.setDisplayString(I18n.format("menu.scale", new Object[0]) + ": " + (int)(this.lastSelected.scale * 100.0F) + "%");
+         this.scaleSlider.setDisplayString(I18n.format("menu.scale") + ": " + (int)(this.lastSelected.scale * 100.0F) + "%");
          this.scaleSlider.sliderValue = this.lastSelected.scale;
          boolean i = this.inBounds(this.lastSelected.x + (float)this.lastSelected.width + 151.0F, this.lastSelected.y + 42.0F, (float)this.width, 0.0F, (float)this.width, (float)(this.height * 2));
          boolean placeable = this.inBounds(this.lastSelected.x + (float)this.lastSelected.width - 75.0F, this.lastSelected.y, (float)(-this.width), (float)(-this.height), (float)(this.width * 2), (float)this.height);
@@ -117,7 +117,7 @@ public class GuiUIPlacement extends GuiScreen {
          this.scaleSlider.yPosition = (int)(this.lastSelected.y + 22.0F - (bottomSide?this.lastSelected.y + 66.0F - (float)this.height:(placeable?this.lastSelected.y - 0.0F:0.0F)));
          this.resetButton.xPosition = (int)(this.lastSelected.x + (float)(i?-100:this.lastSelected.width + 2));
          this.resetButton.yPosition = (int)(this.lastSelected.y + 44.0F - (bottomSide?this.lastSelected.y + 66.0F - (float)this.height:(placeable?this.lastSelected.y - 0.0F:0.0F)));
-         this.positionTypeButton.displayString = I18n.format("menu.position", new Object[0]) + ": " + this.positionTypes[this.lastSelected.positionType];
+         this.positionTypeButton.displayString = I18n.format("menu.position") + ": " + this.positionTypes[this.lastSelected.positionType];
          this.positionTypeButton.drawButton(this.mc, x, y);
          this.resetButton.drawButton(this.mc, x, y);
          this.scaleSlider.drawButton(this.mc, x, y);
@@ -145,15 +145,15 @@ public class GuiUIPlacement extends GuiScreen {
    }
 
    public void initGui() {
-      this.positionTypes[0] = I18n.format("menu.positionAutomatic", new Object[0]);
-      this.positionTypes[1] = I18n.format("menu.positionAbsolute", new Object[0]);
+      this.positionTypes[0] = I18n.format("menu.positionAutomatic");
+      this.positionTypes[1] = I18n.format("menu.positionAbsolute");
       if(this.scaleSlider == null) {
          this.placeables.add(new GuiUIPlacementSpeak(VoiceChat.getProxyInstance().getSettings().getUIPositionSpeak(), this.width, this.height));
          this.placeables.add(new GuiUIPlacementVoicePlate(VoiceChat.getProxyInstance().getSettings().getUIPositionPlate(), this.width, this.height));
       }
 
       this.buttonList.add(this.positionTypeButton = new GuiButton(0, 2, 2, 96, 20, "Position: Automatic"));
-      this.buttonList.add(this.resetButton = new GuiButton(1, 2, 2, 96, 20, I18n.format("menu.resetLocation", new Object[0])));
+      this.buttonList.add(this.resetButton = new GuiButton(1, 2, 2, 96, 20, I18n.format("menu.resetLocation")));
       this.buttonList.add(this.scaleSlider = new GuiBoostSlider(2, 2, 2, "", "Scale: 100%", 0.0F));
 
       for(int i = 0; i < this.placeables.size(); ++i) {

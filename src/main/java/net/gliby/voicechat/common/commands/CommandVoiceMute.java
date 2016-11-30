@@ -18,7 +18,7 @@ public class CommandVoiceMute extends CommandBase {
       return par2ArrayOfStr.length == 1?getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getPlayers()):null;
    }
 
-   public String getName() {
+   public String getCommandName() {
       return "vmute";
    }
 
@@ -38,17 +38,17 @@ public class CommandVoiceMute extends CommandBase {
       return par1 == 0;
    }
 
-   public void execute(ICommandSender sender, String[] args) throws CommandException {
+   public void processCommand(ICommandSender sender, String[] args) throws CommandException {
       if(args.length == 1 && args[0].length() > 0) {
          ServerNetwork network = VoiceChat.getServerInstance().getServerNetwork();
          EntityPlayerMP player = getPlayer(sender, args[0]);
          if(player != null) {
             if(network.getDataManager().mutedPlayers.contains(player.getUniqueID())) {
                network.getDataManager().mutedPlayers.remove(player.getUniqueID());
-               notifyOperators(sender, this, player.getName() + " has been unmuted.", new Object[]{args[0]});
+               notifyOperators(sender, this, player.getCommandSenderName() + " has been unmuted.", args[0]);
                player.addChatMessage(new ChatComponentText("You have been unmuted!"));
             } else {
-               notifyOperators(sender, this, player.getName() + " has been muted.", new Object[]{args[0]});
+               notifyOperators(sender, this, player.getCommandSenderName() + " has been muted.", args[0]);
                network.getDataManager().mutedPlayers.add(player.getUniqueID());
                player.addChatMessage(new ChatComponentText("You have been voice muted, you cannot talk untill you have been unmuted."));
             }
@@ -57,7 +57,7 @@ public class CommandVoiceMute extends CommandBase {
          }
 
       } else {
-         throw new WrongUsageException(this.getCommandUsage(sender), new Object[0]);
+         throw new WrongUsageException(this.getCommandUsage(sender));
       }
    }
 }

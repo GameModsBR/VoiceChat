@@ -89,10 +89,10 @@ public class GuiScreenOptionsWizard extends GuiScreen {
 
       switch(this.currentPage) {
       case 1:
-         this.title = "Gliby\'s Voice Chat " + I18n.format("menu.setupWizard", new Object[0]);
+         this.title = "Gliby\'s Voice Chat " + I18n.format("menu.setupWizard");
          break;
       case 2:
-         this.title = I18n.format("menu.selectInputDevice", new Object[0]);
+         this.title = I18n.format("menu.selectInputDevice");
          this.dropDown.drawButton(this.mc, x, y);
          break;
       case 3:
@@ -100,7 +100,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
             this.tester.start();
          }
 
-         this.title = I18n.format("menu.adjustMicrophone", new Object[0]);
+         this.title = I18n.format("menu.adjustMicrophone");
          IndependentGUITexture.GUI_WIZARD.bindTexture(this.mc);
          GL11.glPushMatrix();
          GL11.glEnable(3042);
@@ -117,11 +117,11 @@ public class GuiScreenOptionsWizard extends GuiScreen {
          this.drawTexturedModalRect(3.35F, 0.0F, 35.0F, 127.0F, procent, 20.0F);
          GL11.glEnable(3008);
          GL11.glPopMatrix();
-         String ratingText = I18n.format("menu.boostVoiceVolume", new Object[0]);
+         String ratingText = I18n.format("menu.boostVoiceVolume");
          this.drawCenteredString(this.fontRendererObj, ratingText, this.width / 2, this.height / 2 - 26, -1);
          break;
       case 4:
-         this.title = I18n.format("menu.finishWizard", new Object[0]);
+         this.title = I18n.format("menu.finishWizard");
       }
 
       this.lastPage = this.currentPage;
@@ -176,11 +176,11 @@ public class GuiScreenOptionsWizard extends GuiScreen {
       }
 
       this.dropDown = new GuiDropDownMenu(-1, this.width / 2 - 75, this.height / 2 - 55, 150, 20, this.voiceChat.getSettings().getInputDevice() != null?this.voiceChat.getSettings().getInputDevice().getName():"None", array);
-      this.buttonList.add(this.nextButton = new GuiCustomButton(0, this.width / 2 - 90, this.height / 2 + 60, 180, 20, I18n.format("menu.next", new Object[0]) + " ->"));
-      this.buttonList.add(this.previousButton = new GuiCustomButton(1, this.width / 2 - 90, this.height / 2, 180, 20, "<- " + I18n.format("menu.previous", new Object[0])));
-      this.buttonList.add(this.doneButton = new GuiCustomButton(2, this.width / 2 - 90, this.height / 2, 180, 20, I18n.format("gui.done", new Object[0])));
-      this.buttonList.add(this.backButton = new GuiCustomButton(3, this.width / 2 - 90, this.height / 2 + 18, 180, 20, I18n.format("gui.back", new Object[0])));
-      this.buttonList.add(this.boostSlider = new GuiBoostSlider(900, this.width / 2 - 75, this.height / 2 - 15, "", I18n.format("menu.boost", new Object[0]) + ": " + ((int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0?I18n.format("options.off", new Object[0]):"" + (int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F));
+      this.buttonList.add(this.nextButton = new GuiCustomButton(0, this.width / 2 - 90, this.height / 2 + 60, 180, 20, I18n.format("menu.next") + " ->"));
+      this.buttonList.add(this.previousButton = new GuiCustomButton(1, this.width / 2 - 90, this.height / 2, 180, 20, "<- " + I18n.format("menu.previous")));
+      this.buttonList.add(this.doneButton = new GuiCustomButton(2, this.width / 2 - 90, this.height / 2, 180, 20, I18n.format("gui.done")));
+      this.buttonList.add(this.backButton = new GuiCustomButton(3, this.width / 2 - 90, this.height / 2 + 18, 180, 20, I18n.format("gui.back")));
+      this.buttonList.add(this.boostSlider = new GuiBoostSlider(900, this.width / 2 - 75, this.height / 2 - 15, "", I18n.format("menu.boost") + ": " + ((int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0?I18n.format("options.off"):"" + (int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"), 0.0F));
       this.boostSlider.sliderValue = this.voiceChat.getSettings().getInputBoost();
       this.doneButton.visible = false;
       this.buttonMap.put(this.backButton, 1);
@@ -229,7 +229,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
    }
 
    public void updateScreen() {
-      this.boostSlider.setDisplayString(I18n.format("menu.boost", new Object[0]) + ": " + ((int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0?I18n.format("options.off", new Object[0]):"" + (int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"));
+      this.boostSlider.setDisplayString(I18n.format("menu.boost") + ": " + ((int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) <= 0?I18n.format("options.off"):"" + (int)(this.voiceChat.getSettings().getInputBoost() * 5.0F) + "db"));
       this.voiceChat.getSettings().setInputBoost(this.boostSlider.sliderValue);
       if(this.lastPage != this.currentPage || this.dirty) {
          if(this.currentPage == 1) {

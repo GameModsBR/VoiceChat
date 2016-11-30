@@ -28,7 +28,7 @@ public class ClientStreamManager {
    public static AudioFormat universalAudioFormat = new AudioFormat(Encoding.PCM_SIGNED, 16000.0F, 16, 1, 2, 16000.0F, false);
    public static Map<Integer, String> playerMutedData = new HashMap<Integer, String>();
    public List currentStreams = new ArrayList();
-   public List playersMuted = new ArrayList();
+   public List<Integer> playersMuted = new ArrayList<Integer>();
    public ConcurrentLinkedQueue queue = new ConcurrentLinkedQueue();
    public ConcurrentHashMap streaming = new ConcurrentHashMap();
    public final SoundPreProcessor soundPreProcessor;
@@ -152,7 +152,7 @@ public class ClientStreamManager {
       EntityPlayer entity = (EntityPlayer)this.mc.theWorld.getEntityByID(entityId);
       if(proxy == null) {
          if(entity != null) {
-            proxy = new PlayerProxy(entity, entity.getEntityId(), entity.getName(), entity.posX, entity.posY, entity.posZ);
+            proxy = new PlayerProxy(entity, entity.getEntityId(), entity.getCommandSenderName(), entity.posX, entity.posY, entity.posZ);
          } else {
             VoiceChat.getLogger().error("Major error, no entity found for player.");
             proxy = new PlayerProxy((EntityPlayer)null, entityId, "" + entityId, 0.0D, 0.0D, 0.0D);
@@ -161,7 +161,7 @@ public class ClientStreamManager {
          this.playerData.put(entityId, proxy);
       } else if(entity != null) {
          proxy.setPlayer(entity);
-         proxy.setName(entity.getName());
+         proxy.setName(entity.getCommandSenderName());
       }
 
       return proxy;

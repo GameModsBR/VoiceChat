@@ -40,7 +40,7 @@ public class GuiUIPlacementSpeak extends GuiPlaceableInterface {
       GL11.glTranslatef(0.0F, 14.0F, 0.0F);
       GL11.glScalef(2.4F, 2.4F, 0.0F);
       Gui.drawScaledCustomSizeModalRect(0, 0, 8.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
-      if(mc.thePlayer != null && mc.thePlayer.func_175148_a(EnumPlayerModelParts.HAT)) {
+      if(mc.thePlayer != null && mc.thePlayer.isWearing(EnumPlayerModelParts.HAT)) {
          Gui.drawScaledCustomSizeModalRect(0, 0, 40.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
       }
 

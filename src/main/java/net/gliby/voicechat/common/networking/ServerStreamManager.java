@@ -3,6 +3,7 @@ package net.gliby.voicechat.common.networking;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import net.gliby.voicechat.common.VoiceChatServer;
@@ -26,7 +27,7 @@ public class ServerStreamManager {
    private Thread threadUpdate;
    private Thread treadQueue;
    private final VoiceChatServer voiceChat;
-   public List mutedPlayers;
+   public List<UUID> mutedPlayers;
    public EntityHandler entityHandler;
    volatile boolean running;
 
@@ -178,7 +179,7 @@ public class ServerStreamManager {
    }
 
    public void giveEntity(EntityPlayerMP receiver, EntityPlayerMP speaker) {
-      this.voiceChat.getServerNetwork().sendEntityData(receiver, speaker.getEntityId(), speaker.getName(), speaker.posX, speaker.posY, speaker.posZ);
+      this.voiceChat.getServerNetwork().sendEntityData(receiver, speaker.getEntityId(), speaker.getCommandSenderName(), speaker.posX, speaker.posY, speaker.posZ);
    }
 
    public void giveStream(ServerStream stream, ServerDatalet let) {

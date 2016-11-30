@@ -15,7 +15,7 @@ import net.minecraft.util.ChatComponentText;
 public class CommandChatMode extends CommandBase {
 
    public List addTabCompletionOptions(ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
-      return par2ArrayOfStr.length == 1?getListOfStringsMatchingLastWord(par2ArrayOfStr, new String[]{"distance", "global", "world"}):(par2ArrayOfStr.length == 2?getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames()):null);
+      return par2ArrayOfStr.length == 1?getListOfStringsMatchingLastWord(par2ArrayOfStr, "distance", "global", "world"):(par2ArrayOfStr.length == 2?getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames()):null);
    }
 
    public String getChatMode(int chatMode) {
@@ -26,7 +26,7 @@ public class CommandChatMode extends CommandBase {
       return !par2Str.equalsIgnoreCase("distance") && !par2Str.startsWith("d") && !par2Str.equalsIgnoreCase("0")?(!par2Str.equalsIgnoreCase("world") && !par2Str.startsWith("w") && !par2Str.equalsIgnoreCase("1")?(!par2Str.equalsIgnoreCase("global") && !par2Str.startsWith("g") && !par2Str.equalsIgnoreCase("2")?0:2):1):0;
    }
 
-   public String getName() {
+   public String getCommandName() {
       return "vchatmode";
    }
 
@@ -46,7 +46,7 @@ public class CommandChatMode extends CommandBase {
       return par2 == 1;
    }
 
-   public void execute(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
+   public void processCommand(ICommandSender par1ICommandSender, String[] par2ArrayOfStr) {
       if(par2ArrayOfStr.length > 0) {
          int chatMode = this.getChatModeFromCommand(par1ICommandSender, par2ArrayOfStr[0]);
          EntityPlayerMP player = null;
@@ -66,7 +66,7 @@ public class CommandChatMode extends CommandBase {
             }
 
             if(player != par1ICommandSender) {
-               notifyOperators(par1ICommandSender, this, player.getName() + " set chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")", new Object[]{par2ArrayOfStr[0]});
+               notifyOperators(par1ICommandSender, this, player.getCommandSenderName() + " set chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")", par2ArrayOfStr[0]);
             } else {
                player.addChatMessage(new ChatComponentText("Set own chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")"));
                switch(chatMode) {
