@@ -169,7 +169,7 @@ public class ServerStreamManager {
 
    }
 
-   private final String generateSource(ServerDatalet let) {
+   private String generateSource(ServerDatalet let) {
       return Integer.toString(let.id);
    }
 
