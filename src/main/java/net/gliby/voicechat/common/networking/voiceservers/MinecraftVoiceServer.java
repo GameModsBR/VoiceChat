@@ -9,41 +9,42 @@ import net.minecraft.entity.player.EntityPlayerMP;
 
 public class MinecraftVoiceServer extends VoiceServer {
 
-   private final VoiceChatServer voiceChat;
+    private final VoiceChatServer voiceChat;
 
 
-   public MinecraftVoiceServer(VoiceChatServer voiceChat) {
-      this.voiceChat = voiceChat;
-   }
+    public MinecraftVoiceServer(VoiceChatServer voiceChat) {
+        this.voiceChat = voiceChat;
+    }
 
-   public EnumVoiceNetworkType getType() {
-      return EnumVoiceNetworkType.MINECRAFT;
-   }
+    public EnumVoiceNetworkType getType() {
+        return EnumVoiceNetworkType.MINECRAFT;
+    }
 
-   public void handleVoiceData(EntityPlayerMP player, byte[] data, byte divider, int id, boolean end) {
-      this.voiceChat.getServerNetwork().getDataManager().addQueue(player, data, divider, id, end);
-   }
+    public void handleVoiceData(EntityPlayerMP player, byte[] data, byte divider, int id, boolean end) {
+        this.voiceChat.getServerNetwork().getDataManager().addQueue(player, data, divider, id, end);
+    }
 
-   public void sendChunkVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples, byte chunkSize) {
-      VoiceChat.getDispatcher().sendTo(new MinecraftClientVoicePacket(chunkSize, samples, entityID, direct), player);
-   }
+    public void sendChunkVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples, byte chunkSize) {
+        VoiceChat.getDispatcher().sendTo(new MinecraftClientVoicePacket(chunkSize, samples, entityID, direct), player);
+    }
 
-   public void sendEntityPosition(EntityPlayerMP player, int entityID, double x, double y, double z) {
-      VoiceChat.getDispatcher().sendTo(new MinecraftClientEntityPositionPacket(entityID, x, y, z), player);
-   }
+    public void sendEntityPosition(EntityPlayerMP player, int entityID, double x, double y, double z) {
+        VoiceChat.getDispatcher().sendTo(new MinecraftClientEntityPositionPacket(entityID, x, y, z), player);
+    }
 
-   public void sendVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples) {
-      VoiceChat.getDispatcher().sendTo(new MinecraftClientVoicePacket((byte)samples.length, samples, entityID, direct), player);
-   }
+    public void sendVoiceData(EntityPlayerMP player, int entityID, boolean direct, byte[] samples) {
+        VoiceChat.getDispatcher().sendTo(new MinecraftClientVoicePacket((byte) samples.length, samples, entityID, direct), player);
+    }
 
-   public void sendVoiceEnd(EntityPlayerMP player, int id) {
-      VoiceChat.getDispatcher().sendTo(new MinecraftClientVoiceEndPacket(id), player);
-   }
+    public void sendVoiceEnd(EntityPlayerMP player, int id) {
+        VoiceChat.getDispatcher().sendTo(new MinecraftClientVoiceEndPacket(id), player);
+    }
 
-   public boolean start() {
-      VoiceChatServer.getLogger().warn("Minecraft Networking is not recommended and is consider very slow, please setup UDP.");
-      return true;
-   }
+    public boolean start() {
+        VoiceChatServer.getLogger().warn("Minecraft Networking is not recommended and is consider very slow, please setup UDP.");
+        return true;
+    }
 
-   public void stop() {}
+    public void stop() {
+    }
 }

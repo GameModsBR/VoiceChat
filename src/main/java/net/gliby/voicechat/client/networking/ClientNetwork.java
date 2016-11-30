@@ -22,13 +22,13 @@ import net.minecraft.client.multiplayer.ServerData;
 
 public class ClientNetwork {
     private final VoiceChatClient voiceChat;
+    public boolean connected;
     private VoiceClient voiceClient;
     private Thread voiceClientThread;
-    public boolean connected;
 
     public ClientNetwork(VoiceChatClient voiceChatClient) {
         this.voiceChat = voiceChatClient;
-        Runtime.getRuntime().addShutdownHook(new Thread(){
+        Runtime.getRuntime().addShutdownHook(new Thread() {
 
             @Override
             public void run() {

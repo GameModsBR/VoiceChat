@@ -10,26 +10,26 @@ import java.net.URL;
 
 public class GMan {
 
-   public static void launchMod(Logger logger, ModInfo modInfo, String minecraftVersion, String modVersion) {
-      String url = "https://raw.githubusercontent.com/Gliby/Mod-Information-Storage/master/" + modInfo.modId + ".json";
-      Gson gson = new Gson();
-      InputStreamReader reader = null;
+    public static void launchMod(Logger logger, ModInfo modInfo, String minecraftVersion, String modVersion) {
+        String url = "https://raw.githubusercontent.com/Gliby/Mod-Information-Storage/master/" + modInfo.modId + ".json";
+        Gson gson = new Gson();
+        InputStreamReader reader = null;
 
-      try {
-         reader = new InputStreamReader((new URL(url)).openStream());
-      } catch (MalformedURLException var8) {
-         var8.printStackTrace();
-         return;
-      } catch (IOException var9) {
-         logger.info("Failed to retrieve mod info, either mod doesn\'t exist or host(" + url + ") is down?");
-         return;
-      }
+        try {
+            reader = new InputStreamReader((new URL(url)).openStream());
+        } catch (MalformedURLException var8) {
+            var8.printStackTrace();
+            return;
+        } catch (IOException var9) {
+            logger.info("Failed to retrieve mod info, either mod doesn\'t exist or host(" + url + ") is down?");
+            return;
+        }
 
-      ModInfo externalInfo = gson.fromJson(reader, ModInfo.class);
-      modInfo.donateURL = externalInfo.donateURL;
-      modInfo.updateURL = externalInfo.updateURL;
-      modInfo.versions = externalInfo.versions;
-      modInfo.determineUpdate(modVersion, minecraftVersion);
-      logger.info(modInfo.isUpdated()?"Mod is up-to-date.":"Mod is outdated, download latest at " + modInfo.updateURL);
-   }
+        ModInfo externalInfo = gson.fromJson(reader, ModInfo.class);
+        modInfo.donateURL = externalInfo.donateURL;
+        modInfo.updateURL = externalInfo.updateURL;
+        modInfo.versions = externalInfo.versions;
+        modInfo.determineUpdate(modVersion, minecraftVersion);
+        logger.info(modInfo.isUpdated() ? "Mod is up-to-date." : "Mod is outdated, download latest at " + modInfo.updateURL);
+    }
 }

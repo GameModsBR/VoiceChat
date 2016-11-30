@@ -4,7 +4,7 @@ import com.google.common.io.ByteArrayDataOutput;
 
 public abstract class UDPPacket {
 
-   public abstract byte id();
+    public abstract byte id();
 
-   public abstract void write(ByteArrayDataOutput var1);
+    public abstract void write(ByteArrayDataOutput var1);
 }

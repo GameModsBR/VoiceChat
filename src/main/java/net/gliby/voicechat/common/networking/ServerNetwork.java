@@ -22,9 +22,9 @@ import java.net.URL;
 import java.util.List;
 
 public class ServerNetwork {
+    public final ServerStreamManager dataManager;
     private final VoiceChatServer voiceChat;
     private String externalAddress;
-    public final ServerStreamManager dataManager;
 
     public ServerNetwork(VoiceChatServer voiceChat) {
         this.voiceChat = voiceChat;
@@ -43,7 +43,7 @@ public class ServerNetwork {
         List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
         String[] ips = new String[players.size()];
         for (int i = 0; i < players.size(); ++i) {
-            EntityPlayerMP p = (EntityPlayerMP)players.get(i);
+            EntityPlayerMP p = (EntityPlayerMP) players.get(i);
             ips[i] = p.getPlayerIP();
         }
         return ips;
@@ -57,7 +57,7 @@ public class ServerNetwork {
 
     public void init() {
         if (this.voiceChat.getServerSettings().isUsingProxy()) {
-            new Thread(new Runnable(){
+            new Thread(new Runnable() {
 
                 @Override
                 public void run() {
@@ -75,8 +75,7 @@ public class ServerNetwork {
             URL whatismyip = new URL("http://checkip.amazonaws.com");
             in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
             return in.readLine();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return "0.0.0.0";
         }

@@ -9,49 +9,50 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MinecraftClientVoiceServerPacket extends MinecraftPacket implements IMessageHandler<MinecraftClientVoiceServerPacket, IMessage> {
 
-   boolean showVoicePlates;
-   boolean showVoiceIcons;
-   int minQuality;
-   int maxQuality;
-   int bufferSize;
-   int soundDistance;
-   int voiceServerType;
+    boolean showVoicePlates;
+    boolean showVoiceIcons;
+    int minQuality;
+    int maxQuality;
+    int bufferSize;
+    int soundDistance;
+    int voiceServerType;
 
 
-   public MinecraftClientVoiceServerPacket() {}
+    public MinecraftClientVoiceServerPacket() {
+    }
 
-   public MinecraftClientVoiceServerPacket(boolean canShowVoicePlates, boolean canShowVoiceIcons, int minQuality, int maxQuality, int bufferSize, int soundDistance, int voiceServerType) {
-      this.showVoicePlates = canShowVoicePlates;
-      this.showVoiceIcons = canShowVoiceIcons;
-      this.minQuality = minQuality;
-      this.maxQuality = maxQuality;
-      this.bufferSize = bufferSize;
-      this.soundDistance = soundDistance;
-      this.voiceServerType = voiceServerType;
-   }
+    public MinecraftClientVoiceServerPacket(boolean canShowVoicePlates, boolean canShowVoiceIcons, int minQuality, int maxQuality, int bufferSize, int soundDistance, int voiceServerType) {
+        this.showVoicePlates = canShowVoicePlates;
+        this.showVoiceIcons = canShowVoiceIcons;
+        this.minQuality = minQuality;
+        this.maxQuality = maxQuality;
+        this.bufferSize = bufferSize;
+        this.soundDistance = soundDistance;
+        this.voiceServerType = voiceServerType;
+    }
 
-   public void fromBytes(ByteBuf buf) {
-      this.showVoicePlates = buf.readBoolean();
-      this.showVoiceIcons = buf.readBoolean();
-      this.minQuality = buf.readInt();
-      this.maxQuality = buf.readInt();
-      this.bufferSize = buf.readInt();
-      this.soundDistance = buf.readInt();
-      this.voiceServerType = buf.readInt();
-   }
+    public void fromBytes(ByteBuf buf) {
+        this.showVoicePlates = buf.readBoolean();
+        this.showVoiceIcons = buf.readBoolean();
+        this.minQuality = buf.readInt();
+        this.maxQuality = buf.readInt();
+        this.bufferSize = buf.readInt();
+        this.soundDistance = buf.readInt();
+        this.voiceServerType = buf.readInt();
+    }
 
-   public IMessage onMessage(MinecraftClientVoiceServerPacket packet, MessageContext ctx) {
-      VoiceChat.getProxyInstance().getClientNetwork().handleVoiceServer(packet.showVoicePlates, packet.showVoiceIcons, packet.minQuality, packet.maxQuality, packet.bufferSize, packet.soundDistance, packet.voiceServerType);
-      return null;
-   }
+    public IMessage onMessage(MinecraftClientVoiceServerPacket packet, MessageContext ctx) {
+        VoiceChat.getProxyInstance().getClientNetwork().handleVoiceServer(packet.showVoicePlates, packet.showVoiceIcons, packet.minQuality, packet.maxQuality, packet.bufferSize, packet.soundDistance, packet.voiceServerType);
+        return null;
+    }
 
-   public void toBytes(ByteBuf buf) {
-      buf.writeBoolean(this.showVoicePlates);
-      buf.writeBoolean(this.showVoiceIcons);
-      buf.writeInt(this.minQuality);
-      buf.writeInt(this.maxQuality);
-      buf.writeInt(this.bufferSize);
-      buf.writeInt(this.soundDistance);
-      buf.writeInt(this.voiceServerType);
-   }
+    public void toBytes(ByteBuf buf) {
+        buf.writeBoolean(this.showVoicePlates);
+        buf.writeBoolean(this.showVoiceIcons);
+        buf.writeInt(this.minQuality);
+        buf.writeInt(this.maxQuality);
+        buf.writeInt(this.bufferSize);
+        buf.writeInt(this.soundDistance);
+        buf.writeInt(this.voiceServerType);
+    }
 }

@@ -9,28 +9,29 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MinecraftClientVoiceEndPacket extends MinecraftPacket implements IMessageHandler<MinecraftClientVoiceEndPacket, IMessage> {
 
-   int entityID;
+    int entityID;
 
 
-   public MinecraftClientVoiceEndPacket() {}
+    public MinecraftClientVoiceEndPacket() {
+    }
 
-   public MinecraftClientVoiceEndPacket(int entityID) {
-      this.entityID = entityID;
-   }
+    public MinecraftClientVoiceEndPacket(int entityID) {
+        this.entityID = entityID;
+    }
 
-   public void fromBytes(ByteBuf buf) {
-      this.entityID = buf.readInt();
-   }
+    public void fromBytes(ByteBuf buf) {
+        this.entityID = buf.readInt();
+    }
 
-   public IMessage onMessage(MinecraftClientVoiceEndPacket packet, MessageContext ctx) {
-      if(VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
-         VoiceChat.getProxyInstance().getClientNetwork().getVoiceClient().handleEnd(packet.entityID);
-      }
+    public IMessage onMessage(MinecraftClientVoiceEndPacket packet, MessageContext ctx) {
+        if (VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
+            VoiceChat.getProxyInstance().getClientNetwork().getVoiceClient().handleEnd(packet.entityID);
+        }
 
-      return null;
-   }
+        return null;
+    }
 
-   public void toBytes(ByteBuf buf) {
-      buf.writeInt(this.entityID);
-   }
+    public void toBytes(ByteBuf buf) {
+        buf.writeInt(this.entityID);
+    }
 }

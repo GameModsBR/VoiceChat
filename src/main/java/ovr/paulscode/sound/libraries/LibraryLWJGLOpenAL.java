@@ -44,6 +44,10 @@ public class LibraryLWJGLOpenAL
     private FloatBuffer listenerVelocity = null;
     private HashMap<String, IntBuffer> ALBufferMap = new HashMap();
 
+    public LibraryLWJGLOpenAL() throws SoundSystemException {
+        this.reverseByteOrder = true;
+    }
+
     public static boolean alPitchSupported() {
         return LibraryLWJGLOpenAL.alPitchSupported(false, false);
     }
@@ -73,21 +77,15 @@ public class LibraryLWJGLOpenAL
         }
         try {
             AL.create();
-        }
-        catch (java.lang.Exception e) {
+        } catch (java.lang.Exception e) {
             return false;
         }
         try {
             AL.destroy();
-        }
-        catch (java.lang.Exception e) {
+        } catch (java.lang.Exception e) {
             // empty catch block
         }
         return true;
-    }
-
-    public LibraryLWJGLOpenAL() throws SoundSystemException {
-        this.reverseByteOrder = true;
     }
 
     private boolean checkALError() {
@@ -171,8 +169,7 @@ public class LibraryLWJGLOpenAL
         IntBuffer ALSource = BufferUtils.createIntBuffer(1);
         try {
             AL10.alGenSources(ALSource);
-        }
-        catch (java.lang.Exception e) {
+        } catch (java.lang.Exception e) {
             AL10.alGetError();
             return null;
         }
@@ -201,8 +198,7 @@ public class LibraryLWJGLOpenAL
             AL.destroy();
             AL.create();
             errors = this.checkALError();
-        }
-        catch (LWJGLException e) {
+        } catch (LWJGLException e) {
             this.errorMessage("Unable to initialize OpenAL.  Probable cause: OpenAL not supported.");
             this.printStackTrace(e);
             throw new Exception(e.getMessage(), 101);
@@ -241,8 +237,7 @@ public class LibraryLWJGLOpenAL
                 throw new Exception("OpenAL: AL_PITCH not supported.", 108);
             }
             LibraryLWJGLOpenAL.alPitchSupported(true, true);
-        }
-        catch (java.lang.Exception e) {
+        } catch (java.lang.Exception e) {
             LibraryLWJGLOpenAL.alPitchSupported(true, false);
             throw new Exception("OpenAL: AL_PITCH not supported.", 108);
         }
@@ -315,7 +310,7 @@ public class LibraryLWJGLOpenAL
         if (this.errorCheck(AL10.alGetError() != 0, "alGenBuffers error when loading " + filenameURL.getFilename())) {
             return false;
         }
-        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int)audioFormat.getSampleRate());
+        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int) audioFormat.getSampleRate());
         if (this.errorCheck(AL10.alGetError() != 0, "alBufferData error when loading " + filenameURL.getFilename()) && this.errorCheck(intBuffer == null, "Sound buffer was not created for " + filenameURL.getFilename())) {
             return false;
         }
@@ -377,7 +372,7 @@ public class LibraryLWJGLOpenAL
         if (this.errorCheck(AL10.alGetError() != 0, "alGenBuffers error when saving " + identifier)) {
             return false;
         }
-        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int)audioFormat.getSampleRate());
+        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int) audioFormat.getSampleRate());
         if (this.errorCheck(AL10.alGetError() != 0, "alBufferData error when saving " + identifier) && this.errorCheck(intBuffer == null, "Sound buffer was not created for " + identifier)) {
             return false;
         }
@@ -524,7 +519,6 @@ public class LibraryLWJGLOpenAL
 
     public static class Exception
             extends SoundSystemException {
-        private static final long serialVersionUID = -7502452059037798035L;
         public static final int CREATE = 101;
         public static final int INVALID_NAME = 102;
         public static final int INVALID_ENUM = 103;
@@ -533,6 +527,7 @@ public class LibraryLWJGLOpenAL
         public static final int OUT_OF_MEMORY = 106;
         public static final int LISTENER = 107;
         public static final int NO_AL_PITCH = 108;
+        private static final long serialVersionUID = -7502452059037798035L;
 
         public Exception(String message) {
             super(message);

@@ -5,8 +5,8 @@ import java.util.Map;
 
 public abstract class VoiceAuthenticatedServer extends VoiceServer {
 
-   public Map waitingAuth = new HashMap();
+    public Map waitingAuth = new HashMap();
 
 
-   public abstract void closeConnection(int var1);
+    public abstract void closeConnection(int var1);
 }

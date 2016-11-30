@@ -48,13 +48,13 @@ import java.util.concurrent.Executors;
 
 public class VoiceChatServer {
     public static final String VERSION = "0.6.1";
+    protected static final Logger LOGGER = LogManager.getLogger((String) "Gliby's Voice Chat Mod");
     private static final String MC_VERSION = "1.8";
-    protected static final Logger LOGGER = LogManager.getLogger((String)"Gliby's Voice Chat Mod");
     public ModInfo modInfo;
-    private VoiceServer voiceServer;
-    private Thread voiceServerThread;
     public ServerNetwork serverNetwork;
     public ServerSettings serverSettings;
+    private VoiceServer voiceServer;
+    private Thread voiceServerThread;
     private File configurationDirectory;
 
     /*
@@ -73,19 +73,16 @@ public class VoiceChatServer {
             ds.setReuseAddress(true);
             boolean bl = true;
             return bl;
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             if (ds != null) {
                 ds.close();
             }
             if (ss != null) {
                 try {
                     ss.close();
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -108,7 +105,7 @@ public class VoiceChatServer {
     }
 
     public void commonInit(final FMLPreInitializationEvent event) {
-        Executors.newSingleThreadExecutor().execute(new Runnable(){
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
 
             @Override
             public void run() {
@@ -158,8 +155,8 @@ public class VoiceChatServer {
         if (this.serverSettings.getUDPPort() == 0) {
             if (server.isDedicatedServer()) {
                 int queryPort = -1;
-                if (((DedicatedServer)server).getBooleanProperty("enable-query", false)) {
-                    queryPort = ((DedicatedServer)server).getIntProperty("query.port", 0);
+                if (((DedicatedServer) server).getBooleanProperty("enable-query", false)) {
+                    queryPort = ((DedicatedServer) server).getIntProperty("query.port", 0);
                 }
                 boolean portTaken = queryPort == server.getServerPort();
                 this.serverSettings.setUDPPort(portTaken ? this.getNearestPort(server.getServerPort()) : server.getServerPort());
@@ -169,8 +166,7 @@ public class VoiceChatServer {
             } else {
                 try {
                     this.serverSettings.setUDPPort(this.getAvailablePort());
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     VoiceChatServer.getLogger().fatal("Couldn't start voice server.");
                     e.printStackTrace();
                     return;
@@ -226,7 +222,7 @@ public class VoiceChatServer {
     public void stop() {
         this.serverNetwork.stop();
         if (this.voiceServer instanceof VoiceAuthenticatedServer) {
-            ((VoiceAuthenticatedServer)this.voiceServer).waitingAuth.clear();
+            ((VoiceAuthenticatedServer) this.voiceServer).waitingAuth.clear();
         }
         this.voiceServer.stop();
         this.voiceServer = null;

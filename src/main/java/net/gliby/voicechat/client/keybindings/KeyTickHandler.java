@@ -8,18 +8,18 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class KeyTickHandler {
 
-   VoiceChatClient voiceChat;
+    VoiceChatClient voiceChat;
 
 
-   public KeyTickHandler(VoiceChatClient voiceChat) {
-      this.voiceChat = voiceChat;
-   }
+    public KeyTickHandler(VoiceChatClient voiceChat) {
+        this.voiceChat = voiceChat;
+    }
 
-   @SubscribeEvent
-   public void tick(TickEvent event) {
-      if(event.type == Type.PLAYER && event.side == Side.CLIENT) {
-         this.voiceChat.keyManager.keyEvent(null);
-      }
+    @SubscribeEvent
+    public void tick(TickEvent event) {
+        if (event.type == Type.PLAYER && event.side == Side.CLIENT) {
+            this.voiceChat.keyManager.keyEvent(null);
+        }
 
-   }
+    }
 }

@@ -30,7 +30,7 @@ public class SoundSystemWrapper {
         this.soundManager = ReflectionHelper.getPrivateValue(SoundHandler.class, soundHandler, 5);
         this.sndSystem = ReflectionHelper.getPrivateValue(SoundManager.class, this.soundManager, 4);
         running = true;
-        Runtime.getRuntime().addShutdownHook(new Thread(){
+        Runtime.getRuntime().addShutdownHook(new Thread() {
 
             @Override
             public void run() {
@@ -48,8 +48,7 @@ public class SoundSystemWrapper {
         while (this.sndSystem.randomNumberGenerator == null && running) {
             try {
                 Thread.sleep(1);
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             this.refresh();
@@ -59,7 +58,7 @@ public class SoundSystemWrapper {
 
     private void fixThreaded() {
         if (this.sndSystem.randomNumberGenerator == null) {
-            new Thread(new Runnable(){
+            new Thread(new Runnable() {
 
                 @Override
                 public void run() {

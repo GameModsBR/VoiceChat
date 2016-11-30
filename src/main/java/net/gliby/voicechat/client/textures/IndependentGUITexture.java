@@ -7,34 +7,34 @@ import net.minecraft.util.ResourceLocation;
 
 public class IndependentGUITexture {
 
-   public static final IndependentGUITexture TEXTURES = new IndependentGUITexture("gvctextures");
-   public static final IndependentGUITexture GUI_WIZARD = new IndependentGUITexture("wizard_gui");
-   private static final ResourceLocation steve = new ResourceLocation("textures/entity/steve.png");
-   private final Object resource;
+    public static final IndependentGUITexture TEXTURES = new IndependentGUITexture("gvctextures");
+    public static final IndependentGUITexture GUI_WIZARD = new IndependentGUITexture("wizard_gui");
+    private static final ResourceLocation steve = new ResourceLocation("textures/entity/steve.png");
+    private final Object resource;
 
 
-   public static void bindClientPlayer(Minecraft mc) {
-      mc.getTextureManager().bindTexture(mc.thePlayer.getLocationSkin());
-   }
+    public IndependentGUITexture(String texture) {
+        this.resource = new ResourceLocation("gvc:textures/gui/" + texture + ".png");
+    }
 
-   public static void bindDefaultPlayer(Minecraft mc) {
-      mc.getTextureManager().bindTexture(steve);
-   }
+    public static void bindClientPlayer(Minecraft mc) {
+        mc.getTextureManager().bindTexture(mc.thePlayer.getLocationSkin());
+    }
 
-   public static void bindPlayer(Minecraft mc, Entity entity) {
-      mc.getTextureManager().bindTexture(((AbstractClientPlayer)entity).getLocationSkin());
-   }
+    public static void bindDefaultPlayer(Minecraft mc) {
+        mc.getTextureManager().bindTexture(steve);
+    }
 
-   public IndependentGUITexture(String texture) {
-      this.resource = new ResourceLocation("gvc:textures/gui/" + texture + ".png");
-   }
+    public static void bindPlayer(Minecraft mc, Entity entity) {
+        mc.getTextureManager().bindTexture(((AbstractClientPlayer) entity).getLocationSkin());
+    }
 
-   public void bindTexture(Minecraft mc) {
-      mc.getTextureManager().bindTexture((ResourceLocation)this.getTexture());
-   }
+    public void bindTexture(Minecraft mc) {
+        mc.getTextureManager().bindTexture((ResourceLocation) this.getTexture());
+    }
 
-   public Object getTexture() {
-      return this.resource;
-   }
+    public Object getTexture() {
+        return this.resource;
+    }
 
 }

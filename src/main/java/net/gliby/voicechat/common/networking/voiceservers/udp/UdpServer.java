@@ -22,26 +22,26 @@ import java.util.LinkedList;
 import java.util.concurrent.ThreadFactory;
 
 public class UdpServer {
-    private static Logger LOGGER;
     public static final String PORT_PROP = "port";
-    private static final int PORT_DEFAULT = 8000;
     public static final String GROUPS_PROP = "groups";
-    private static final String GROUPS_DEFAULT = null;
     public static final String STATE_PROP = "state";
     public static final String LAST_EXCEPTION_PROP = "lastException";
-    private int port = 8000;
-    private String groups = GROUPS_DEFAULT;
-    private State currentState = State.STOPPED;
+    private static final int PORT_DEFAULT = 8000;
+    private static final String GROUPS_DEFAULT = null;
+    private static Logger LOGGER;
     private final Collection<Listener> listeners = new LinkedList<Listener>();
     private final Event event;
     private final PropertyChangeSupport propSupport;
     private final UdpServer This;
+    private final DatagramPacket packet;
+    String hostname;
+    private int port = 8000;
+    private String groups = GROUPS_DEFAULT;
+    private State currentState = State.STOPPED;
     private ThreadFactory threadFactory;
     private Thread ioThread;
     private MulticastSocket mSocket;
-    private final DatagramPacket packet;
     private Throwable lastException;
-    String hostname;
 
     public UdpServer(Logger logger) {
         this.event = new Event(this);
@@ -102,8 +102,7 @@ public class UdpServer {
     protected synchronized void firePropertyChange(String prop, Object oldVal, Object newVal) {
         try {
             this.propSupport.firePropertyChange(prop, oldVal, newVal);
-        }
-        catch (Exception exc) {
+        } catch (Exception exc) {
             LOGGER.log(Level.WARN, "A property change listener threw an exception: " + exc.getMessage(), exc);
             this.fireExceptionNotification(exc);
         }
@@ -115,8 +114,7 @@ public class UdpServer {
             try {
                 l.packetReceived(this.event);
                 continue;
-            }
-            catch (Exception exc) {
+            } catch (Exception exc) {
                 LOGGER.warn("UdpServer.Listener " + l + " threw an exception: " + exc.getMessage());
                 this.fireExceptionNotification(exc);
             }
@@ -125,6 +123,15 @@ public class UdpServer {
 
     public synchronized String getGroups() {
         return this.groups;
+    }
+
+    public synchronized void setGroups(String group) {
+        String oldVal = this.groups;
+        this.groups = group;
+        if (this.getState() == State.STARTED) {
+            this.reset();
+        }
+        this.firePropertyChange("groups", oldVal, this.groups);
     }
 
     public synchronized Throwable getLastException() {
@@ -139,6 +146,18 @@ public class UdpServer {
         return this.port;
     }
 
+    public synchronized void setPort(int port) {
+        if (port < 0 || port > 65535) {
+            throw new IllegalArgumentException("Cannot set port outside range 0..65535: " + port);
+        }
+        int oldVal = this.port;
+        this.port = port;
+        if (this.getState() == State.STARTED) {
+            this.reset();
+        }
+        this.firePropertyChange("port", oldVal, port);
+    }
+
     public synchronized int getReceiveBufferSize() throws SocketException {
         if (this.mSocket == null) {
             throw new SocketException("getReceiveBufferSize() cannot be called when the server is not started.");
@@ -146,8 +165,21 @@ public class UdpServer {
         return this.mSocket.getReceiveBufferSize();
     }
 
+    public synchronized void setReceiveBufferSize(int size) throws SocketException {
+        if (this.mSocket == null) {
+            throw new SocketException("setReceiveBufferSize(..) cannot be called when the server is not started.");
+        }
+        this.mSocket.setReceiveBufferSize(size);
+    }
+
     public synchronized State getState() {
         return this.currentState;
+    }
+
+    protected synchronized void setState(State state) {
+        State oldVal = this.currentState;
+        this.currentState = state;
+        this.firePropertyChange("state", oldVal, state);
     }
 
     public synchronized void removePropertyChangeListener(PropertyChangeListener listener) {
@@ -165,13 +197,13 @@ public class UdpServer {
     public synchronized void reset() {
         switch (this.currentState) {
             case STARTED: {
-                this.addPropertyChangeListener("state", new PropertyChangeListener(){
+                this.addPropertyChangeListener("state", new PropertyChangeListener() {
 
                     @Override
                     public void propertyChange(PropertyChangeEvent evt) {
                         State newState = (State) evt.getNewValue();
                         if (newState == State.STOPPED) {
-                            UdpServer server = (UdpServer)evt.getSource();
+                            UdpServer server = (UdpServer) evt.getSource();
                             server.removePropertyChangeListener("state", this);
                             server.start();
                         }
@@ -194,8 +226,7 @@ public class UdpServer {
             try {
                 this.mSocket.setReceiveBufferSize(this.packet.getData().length);
                 LOGGER.info("UDP Server receive buffer size (bytes): " + this.mSocket.getReceiveBufferSize());
-            }
-            catch (IOException exc) {
+            } catch (IOException exc) {
                 int pl = this.packet.getData().length;
                 int bl = this.mSocket.getReceiveBufferSize();
                 LOGGER.warn(String.format("Could not set receive buffer to %d. It is now at %d. Error: %s", pl, bl, exc.getMessage()));
@@ -208,8 +239,7 @@ public class UdpServer {
                         this.mSocket.joinGroup(InetAddress.getByName(p));
                         LOGGER.info("UDP Server joined multicast group " + p);
                         continue;
-                    }
-                    catch (IOException exc) {
+                    } catch (IOException exc) {
                         LOGGER.warn("Could not join " + p + " as a multicast group: " + exc.getMessage());
                     }
                 }
@@ -228,8 +258,7 @@ public class UdpServer {
                 this.mSocket.receive(this.packet);
                 this.fireUdpServerPacketReceived();
             }
-        }
-        catch (Exception exc) {
+        } catch (Exception exc) {
             UdpServer gg = this.This;
             synchronized (gg) {
                 if (this.currentState == State.STOPPING) {
@@ -241,8 +270,7 @@ public class UdpServer {
                 }
             }
             this.fireExceptionNotification(exc);
-        }
-        finally {
+        } finally {
             this.setState(State.STOPPING);
             if (this.mSocket != null) {
                 this.mSocket.close();
@@ -258,44 +286,10 @@ public class UdpServer {
         this.mSocket.send(packet);
     }
 
-    public synchronized void setGroups(String group) {
-        String oldVal = this.groups;
-        this.groups = group;
-        if (this.getState() == State.STARTED) {
-            this.reset();
-        }
-        this.firePropertyChange("groups", oldVal, this.groups);
-    }
-
-    public synchronized void setPort(int port) {
-        if (port < 0 || port > 65535) {
-            throw new IllegalArgumentException("Cannot set port outside range 0..65535: " + port);
-        }
-        int oldVal = this.port;
-        this.port = port;
-        if (this.getState() == State.STARTED) {
-            this.reset();
-        }
-        this.firePropertyChange("port", oldVal, port);
-    }
-
-    public synchronized void setReceiveBufferSize(int size) throws SocketException {
-        if (this.mSocket == null) {
-            throw new SocketException("setReceiveBufferSize(..) cannot be called when the server is not started.");
-        }
-        this.mSocket.setReceiveBufferSize(size);
-    }
-
-    protected synchronized void setState(State state) {
-        State oldVal = this.currentState;
-        this.currentState = state;
-        this.firePropertyChange("state", oldVal, state);
-    }
-
     public synchronized void start() {
         if (this.currentState == State.STOPPED) {
             assert (this.ioThread == null);
-            Runnable run = new Runnable(){
+            Runnable run = new Runnable() {
 
                 @Override
                 public void run() {
@@ -371,7 +365,7 @@ public class UdpServer {
         }
 
         public UdpServer getUdpServer() {
-            return (UdpServer)this.getSource();
+            return (UdpServer) this.getSource();
         }
 
         public void send(DatagramPacket packet) throws IOException {

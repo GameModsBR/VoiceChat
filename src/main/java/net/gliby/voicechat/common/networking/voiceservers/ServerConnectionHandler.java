@@ -41,19 +41,18 @@ public class ServerConnectionHandler {
     public void onConnected(final PlayerEvent.PlayerLoggedInEvent event) {
         if (FMLCommonHandler.instance().getEffectiveSide().isServer()) {
             ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
-            executor.schedule(new Runnable(){
+            executor.schedule(new Runnable() {
 
                 @Override
                 public void run() {
-                    EntityPlayerMP player = (EntityPlayerMP)event.player;
+                    EntityPlayerMP player = (EntityPlayerMP) event.player;
                     if (ServerConnectionHandler.this.voiceChat.getVoiceServer() instanceof VoiceAuthenticatedServer) {
-                        VoiceAuthenticatedServer voiceServer = (VoiceAuthenticatedServer)ServerConnectionHandler.this.voiceChat.getVoiceServer();
+                        VoiceAuthenticatedServer voiceServer = (VoiceAuthenticatedServer) ServerConnectionHandler.this.voiceChat.getVoiceServer();
                         String hash = null;
                         while (hash == null) {
                             try {
                                 hash = ServerConnectionHandler.this.sha256(RandomStringUtils.random(32));
-                            }
-                            catch (NoSuchAlgorithmException e) {
+                            } catch (NoSuchAlgorithmException e) {
                                 e.printStackTrace();
                             }
                         }
@@ -80,8 +79,7 @@ public class ServerConnectionHandler {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             hash = md.digest(s.getBytes());
-        }
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         StringBuilder sb = new StringBuilder();

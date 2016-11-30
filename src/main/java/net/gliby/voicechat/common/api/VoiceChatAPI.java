@@ -6,28 +6,28 @@ import net.minecraftforge.fml.common.eventhandler.EventBus;
 
 public class VoiceChatAPI {
 
-   private static VoiceChatAPI instance;
-   private ServerStreamHandler handler;
-   private EventBus eventBus;
+    private static VoiceChatAPI instance;
+    private ServerStreamHandler handler;
+    private EventBus eventBus;
 
 
-   public static VoiceChatAPI instance() {
-      return instance;
-   }
+    public static VoiceChatAPI instance() {
+        return instance;
+    }
 
-   public EventBus bus() {
-      return this.eventBus;
-   }
+    public EventBus bus() {
+        return this.eventBus;
+    }
 
-   public void init() {
-      instance = this;
-      this.eventBus = new EventBus();
-      this.bus().register(this.handler = new ServerStreamHandler(VoiceChat.getServerInstance()));
-   }
+    public void init() {
+        instance = this;
+        this.eventBus = new EventBus();
+        this.bus().register(this.handler = new ServerStreamHandler(VoiceChat.getServerInstance()));
+    }
 
-   public void setCustomStreamHandler(Object eventHandler) {
-      this.eventBus = null;
-      this.eventBus = new EventBus();
-      this.eventBus.register(eventHandler);
-   }
+    public void setCustomStreamHandler(Object eventHandler) {
+        this.eventBus = null;
+        this.eventBus = new EventBus();
+        this.eventBus.register(eventHandler);
+    }
 }

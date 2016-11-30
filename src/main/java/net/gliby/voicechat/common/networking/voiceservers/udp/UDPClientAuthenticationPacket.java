@@ -6,23 +6,23 @@ import java.io.UnsupportedEncodingException;
 
 public class UDPClientAuthenticationPacket extends UDPPacket {
 
-   String hash;
+    String hash;
 
 
-   public UDPClientAuthenticationPacket(String hash) {
-      this.hash = hash;
-   }
+    public UDPClientAuthenticationPacket(String hash) {
+        this.hash = hash;
+    }
 
-   public byte id() {
-      return (byte)0;
-   }
+    public byte id() {
+        return (byte) 0;
+    }
 
-   public void write(ByteArrayDataOutput out) {
-      try {
-         UDPByteUtilities.writeBytes(this.hash.getBytes("UTF-8"), out);
-      } catch (UnsupportedEncodingException var3) {
-         var3.printStackTrace();
-      }
+    public void write(ByteArrayDataOutput out) {
+        try {
+            UDPByteUtilities.writeBytes(this.hash.getBytes("UTF-8"), out);
+        } catch (UnsupportedEncodingException var3) {
+            var3.printStackTrace();
+        }
 
-   }
+    }
 }

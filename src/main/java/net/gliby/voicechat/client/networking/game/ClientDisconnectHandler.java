@@ -8,11 +8,11 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class ClientDisconnectHandler {
 
-   @SubscribeEvent
-   public void onClientDisconnected(ClientDisconnectionFromServerEvent event) {
-      if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-         VoiceChat.getProxyInstance().getClientNetwork().stopClientNetwork();
-      }
+    @SubscribeEvent
+    public void onClientDisconnected(ClientDisconnectionFromServerEvent event) {
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+            VoiceChat.getProxyInstance().getClientNetwork().stopClientNetwork();
+        }
 
-   }
+    }
 }
