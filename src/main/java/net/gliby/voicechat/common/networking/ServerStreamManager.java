@@ -60,19 +60,19 @@ public class ServerStreamManager {
 
     public void feedStreamToAllPlayers(ServerStream stream, ServerDatalet voiceData) {
         EntityPlayerMP speaker = voiceData.player;
-        List players = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
+        List<EntityPlayerMP> players = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
         int i;
         EntityPlayerMP target;
         if (voiceData.end) {
             for (i = 0; i < players.size(); ++i) {
-                target = (EntityPlayerMP) players.get(i);
+                target = players.get(i);
                 if (target.getEntityId() != speaker.getEntityId()) {
                     this.voiceChat.getVoiceServer().sendVoiceEnd(target, voiceData.id);
                 }
             }
         } else {
             for (i = 0; i < players.size(); ++i) {
-                target = (EntityPlayerMP) players.get(i);
+                target = players.get(i);
                 if (target.getEntityId() != speaker.getEntityId()) {
                     this.entityHandler.whileSpeaking(stream, speaker, target);
                     this.voiceChat.getVoiceServer().sendChunkVoiceData(target, voiceData.id, false, voiceData.data, voiceData.divider);
