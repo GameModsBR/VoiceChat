@@ -20,7 +20,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.util.*;
 import java.util.List;
 
 public class GuiScreenDonate extends GuiScreen {
