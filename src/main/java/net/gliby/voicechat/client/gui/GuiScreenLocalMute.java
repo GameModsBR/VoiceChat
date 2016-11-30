@@ -84,7 +84,7 @@ public class GuiScreenLocalMute
 
     public void initGui() {
         Keyboard.enableRepeatEvents(true);
-        this.autoCompletionNames = new ArrayList();
+        this.autoCompletionNames = new ArrayList<String>();
         int heightOffset = -9;
         this.playerTextField = new GuiTextField(0, this.fontRendererObj, this.width / 2 - 100, this.height - 57 - -9, 130, 20);
         this.playerTextField.setFocused(true);

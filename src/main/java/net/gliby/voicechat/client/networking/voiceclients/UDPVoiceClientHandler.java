@@ -9,12 +9,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class UDPVoiceClientHandler implements Runnable {
 
     private final UDPVoiceClient client;
-    public LinkedBlockingQueue packetQueue;
+    public LinkedBlockingQueue<byte[]> packetQueue;
 
 
     public UDPVoiceClientHandler(UDPVoiceClient client) {
         this.client = client;
-        this.packetQueue = new LinkedBlockingQueue();
+        this.packetQueue = new LinkedBlockingQueue<byte[]>();
     }
 
     private void handleAuthComplete() {
@@ -76,7 +76,7 @@ public class UDPVoiceClientHandler implements Runnable {
     public void run() {
         while (UDPVoiceClient.running) {
             if (!this.packetQueue.isEmpty()) {
-                this.read((byte[]) this.packetQueue.poll());
+                this.read(this.packetQueue.poll());
             } else {
                 synchronized (this) {
                     try {

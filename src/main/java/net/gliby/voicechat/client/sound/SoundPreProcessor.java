@@ -23,8 +23,8 @@ public class SoundPreProcessor {
         this.stats = VoiceChatClient.getStatistics();
     }
 
-    public static List divideArray(byte[] source, int chunksize) {
-        ArrayList result = new ArrayList();
+    public static List<byte[]> divideArray(byte[] source, int chunksize) {
+        ArrayList<byte[]> result = new ArrayList<byte[]>();
 
         for (int start = 0; start < source.length; start += chunksize) {
             int end = Math.min(source.length, start + chunksize);
@@ -57,7 +57,7 @@ public class SoundPreProcessor {
                 var13 = new byte[this.decoder.getProcessedDataByteSize()];
                 this.decoder.getProcessedData(var13, 0);
             } else {
-                List samplesList = divideArray(encodedSamples, chunkSize);
+                List<byte[]> samplesList = divideArray(encodedSamples, chunkSize);
                 this.buffer = new byte[0];
 
                 for (int i = 0; i < samplesList.size(); ++i) {

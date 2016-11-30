@@ -231,7 +231,7 @@ public class JSpeexDec {
 
         this.speexDecoder = new SpeexDecoder();
         DataInputStream var20 = new DataInputStream(new FileInputStream(var1));
-        Object var21 = null;
+        AudioFileWriter var21 = null;
 
         try {
             int var22;
@@ -337,8 +337,8 @@ public class JSpeexDec {
                             }
                         }
 
-                        ((AudioFileWriter) var21).open(var2);
-                        ((AudioFileWriter) var21).writeHeader(null);
+                        (var21).open(var2);
+                        (var21).writeHeader(null);
                         ++var19;
                     } else {
                         var20.readFully(var4, 0, var17);
@@ -357,7 +357,7 @@ public class JSpeexDec {
                         }
 
                         if ((var29 = this.speexDecoder.getProcessedData(var5, 0)) > 0) {
-                            ((AudioFileWriter) var21).writePacket(var5, 0, var29);
+                            (var21).writePacket(var5, 0, var29);
                         }
 
                         ++var19;
@@ -417,8 +417,8 @@ public class JSpeexDec {
                                 }
                             }
 
-                            ((AudioFileWriter) var21).open(var2);
-                            ((AudioFileWriter) var21).writeHeader(null);
+                            (var21).open(var2);
+                            (var21).writeHeader(null);
                             ++var19;
                         } else {
                             var19 = 0;
@@ -441,7 +441,7 @@ public class JSpeexDec {
                         }
 
                         if ((var29 = this.speexDecoder.getProcessedData(var5, 0)) > 0) {
-                            ((AudioFileWriter) var21).writePacket(var5, 0, var29);
+                            (var21).writePacket(var5, 0, var29);
                         }
 
                         ++var19;
@@ -451,7 +451,7 @@ public class JSpeexDec {
 
             throw new IOException("Ogg CheckSums do not match");
         } catch (EOFException var26) {
-            ((AudioFileWriter) var21).close();
+            (var21).close();
         }
     }
 

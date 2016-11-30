@@ -42,7 +42,7 @@ public class LibraryLWJGLOpenAL
     private FloatBuffer listenerPositionAL = null;
     private FloatBuffer listenerOrientation = null;
     private FloatBuffer listenerVelocity = null;
-    private HashMap<String, IntBuffer> ALBufferMap = new HashMap();
+    private HashMap<String, IntBuffer> ALBufferMap = new HashMap<String, IntBuffer>();
 
     public LibraryLWJGLOpenAL() throws SoundSystemException {
         this.reverseByteOrder = true;
@@ -143,11 +143,11 @@ public class LibraryLWJGLOpenAL
         Set<String> keys = srcMap.keySet();
         Iterator<String> iter = keys.iterator();
         if (this.bufferMap == null) {
-            this.bufferMap = new HashMap();
+            this.bufferMap = new HashMap<String, SoundBuffer>();
             this.importantMessage("Buffer Map was null in method 'copySources'");
         }
         if (this.ALBufferMap == null) {
-            this.ALBufferMap = new HashMap();
+            this.ALBufferMap = new HashMap<String, IntBuffer>();
             this.importantMessage("Open AL Buffer Map was null in method'copySources'");
         }
         this.sourceMap.clear();
@@ -248,11 +248,11 @@ public class LibraryLWJGLOpenAL
      */
     public boolean loadSound(FilenameURL filenameURL) {
         if (this.bufferMap == null) {
-            this.bufferMap = new HashMap();
+            this.bufferMap = new HashMap<String, SoundBuffer>();
             this.importantMessage("Buffer Map was null in method 'loadSound'");
         }
         if (this.ALBufferMap == null) {
-            this.ALBufferMap = new HashMap();
+            this.ALBufferMap = new HashMap<String, IntBuffer>();
             this.importantMessage("Open AL Buffer Map was null in method'loadSound'");
         }
         if (this.errorCheck(filenameURL == null, "Filename/URL not specified in method 'loadSound'")) {
@@ -323,11 +323,11 @@ public class LibraryLWJGLOpenAL
      */
     public boolean loadSound(SoundBuffer buffer, String identifier) {
         if (this.bufferMap == null) {
-            this.bufferMap = new HashMap();
+            this.bufferMap = new HashMap<String, SoundBuffer>();
             this.importantMessage("Buffer Map was null in method 'loadSound'");
         }
         if (this.ALBufferMap == null) {
-            this.ALBufferMap = new HashMap();
+            this.ALBufferMap = new HashMap<String, IntBuffer>();
             this.importantMessage("Open AL Buffer Map was null in method'loadSound'");
         }
         if (this.errorCheck(identifier == null, "Identifier not specified in method 'loadSound'")) {

@@ -53,7 +53,7 @@ public class DeviceHandler {
         return null;
     }
 
-    public List getDevices() {
+    public List<Device> getDevices() {
         return this.devices;
     }
 
@@ -61,7 +61,7 @@ public class DeviceHandler {
         return this.devices.isEmpty();
     }
 
-    public List loadDevices() {
+    public List<? extends Device> loadDevices() {
         this.devices.clear();
         javax.sound.sampled.Mixer.Info[] mixers = AudioSystem.getMixerInfo();
         javax.sound.sampled.Mixer.Info[] arr$ = mixers;

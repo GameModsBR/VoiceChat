@@ -106,8 +106,8 @@ public class JINIFile extends ArrayList {
         }
     }
 
-    public ArrayList ReadSection(String Section) {
-        ArrayList myList = new ArrayList();
+    public ArrayList<String> ReadSection(String Section) {
+        ArrayList<String> myList = new ArrayList<String>();
         int start = this.SectionPosition(Section) + 1;
         if (this.SectionPosition(Section) > -1) {
             for (int i = start; i < this.size(); ++i) {
@@ -123,8 +123,8 @@ public class JINIFile extends ArrayList {
         return myList;
     }
 
-    public ArrayList ReadSections() {
-        ArrayList list = new ArrayList();
+    public ArrayList<String> ReadSections() {
+        ArrayList<String> list = new ArrayList<String>();
 
         for (int i = 0; i < this.size(); ++i) {
             String s = this.get(i).toString();
@@ -136,8 +136,8 @@ public class JINIFile extends ArrayList {
         return list;
     }
 
-    public ArrayList ReadSectionValues(String Section) {
-        ArrayList myList = new ArrayList();
+    public ArrayList<String> ReadSectionValues(String Section) {
+        ArrayList<String> myList = new ArrayList<String>();
         int start = this.SectionPosition(Section) + 1;
         if (this.SectionPosition(Section) > -1) {
             for (int i = start; i < this.size(); ++i) {

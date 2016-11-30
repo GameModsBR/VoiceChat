@@ -26,7 +26,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
     private final VoiceChatClient voiceChat;
     private final GuiScreen parent;
     private final MicrophoneTester tester;
-    private final Map buttonMap = new HashMap();
+    private final Map<GuiButton, Integer> buttonMap = new HashMap<GuiButton, Integer>();
     private final int maxPages = 4;
     String title = "Voice Chat Setup Wizard.";
     String text = "";
@@ -49,7 +49,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
     }
 
     public void actionPerformed(GuiButton button) {
-        if ((button == this.nextButton || button == this.previousButton || this.doneButton == button || this.buttonMap.get(button) != null && (Integer) this.buttonMap.get(button) == this.currentPage) && !this.dropDown.dropDownMenu) {
+        if ((button == this.nextButton || button == this.previousButton || this.doneButton == button || this.buttonMap.get(button) != null && this.buttonMap.get(button) == this.currentPage) && !this.dropDown.dropDownMenu) {
             switch (button.id) {
                 case 0:
                     if (this.currentPage < 4) {
@@ -148,7 +148,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
 
         for (int k = 0; k < this.buttonList.size(); ++k) {
             GuiButton guibutton = (GuiButton) this.buttonList.get(k);
-            if (guibutton == this.nextButton || guibutton == this.previousButton || guibutton == this.doneButton || this.buttonMap.get(guibutton) != null && (Integer) this.buttonMap.get(guibutton) == this.currentPage) {
+            if (guibutton == this.nextButton || guibutton == this.previousButton || guibutton == this.doneButton || this.buttonMap.get(guibutton) != null && this.buttonMap.get(guibutton) == this.currentPage) {
                 guibutton.drawButton(this.mc, x, y);
             }
         }
@@ -173,7 +173,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         String[] array = new String[this.voiceChat.getSettings().getDeviceHandler().getDevices().size()];
 
         for (int i = 0; i < this.voiceChat.getSettings().getDeviceHandler().getDevices().size(); ++i) {
-            array[i] = ((Device) this.voiceChat.getSettings().getDeviceHandler().getDevices().get(i)).getName();
+            array[i] = (this.voiceChat.getSettings().getDeviceHandler().getDevices().get(i)).getName();
         }
 
         this.dropDown = new GuiDropDownMenu(-1, this.width / 2 - 75, this.height / 2 - 55, 150, 20, this.voiceChat.getSettings().getInputDevice() != null ? this.voiceChat.getSettings().getInputDevice().getName() : "None", array);
@@ -193,7 +193,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
     public void mouseClicked(int x, int y, int b) {
         if (this.currentPage == 2) {
             if (this.dropDown.getMouseOverInteger() != -1 && this.dropDown.dropDownMenu && !this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
-                Device l = (Device) this.voiceChat.getSettings().getDeviceHandler().getDevices().get(this.dropDown.getMouseOverInteger());
+                Device l = this.voiceChat.getSettings().getDeviceHandler().getDevices().get(this.dropDown.getMouseOverInteger());
                 if (l != null) {
                     this.voiceChat.getSettings().setInputDevice(l);
                     this.dropDown.setDisplayString(l.getName());
@@ -209,7 +209,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         if (b == 0) {
             for (int var8 = 0; var8 < this.buttonList.size(); ++var8) {
                 GuiButton guibutton = (GuiButton) this.buttonList.get(var8);
-                if ((guibutton == this.nextButton || guibutton == this.previousButton || this.doneButton == guibutton || this.buttonMap.get(guibutton) != null && (Integer) this.buttonMap.get(guibutton) == this.currentPage) && guibutton.mousePressed(this.mc, x, y)) {
+                if ((guibutton == this.nextButton || guibutton == this.previousButton || this.doneButton == guibutton || this.buttonMap.get(guibutton) != null && this.buttonMap.get(guibutton) == this.currentPage) && guibutton.mousePressed(this.mc, x, y)) {
                     try {
                         super.mouseClicked(x, y, b);
                     } catch (IOException var7) {

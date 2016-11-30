@@ -18,7 +18,7 @@ public class UpdatedSoundManager {
     }
 
     public void init(FMLInitializationEvent event) {
-        Iterator e = Loader.instance().getModList().iterator();
+        Iterator<ModContainer> e = Loader.instance().getModList().iterator();
 
         ModContainer mod;
         do {
@@ -37,7 +37,7 @@ public class UpdatedSoundManager {
                 return;
             }
 
-            mod = (ModContainer) e.next();
+            mod = e.next();
         } while (!mod.getModId().equals("soundfilters"));
 
         VoiceChat.getLogger().info("Found Sound Filters mod, won\'t replace OpenAL library.");

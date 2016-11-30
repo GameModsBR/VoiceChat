@@ -25,7 +25,7 @@ public class VoiceChatAPI {
         this.bus().register(this.handler = new ServerStreamHandler(VoiceChat.getServerInstance()));
     }
 
-    public void setCustomStreamHandler(Object eventHandler) {
+    public void setCustomStreamHandler(net.gliby.voicechat.common.api.examples.ExampleStreamHandlerOnlyOP eventHandler) {
         this.eventBus = null;
         this.eventBus = new EventBus();
         this.eventBus.register(eventHandler);

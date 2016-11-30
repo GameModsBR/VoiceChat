@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class MovingAverage {
 
-    private final Queue window = new LinkedList();
+    private final Queue<BigDecimal> window = new LinkedList<BigDecimal>();
     private final int period;
     private BigDecimal sum;
 
@@ -26,7 +26,7 @@ public class MovingAverage {
         this.sum = this.sum.add(num);
         this.window.add(num);
         if (this.window.size() > this.period) {
-            this.sum = this.sum.subtract((BigDecimal) this.window.remove());
+            this.sum = this.sum.subtract(this.window.remove());
         }
 
     }

@@ -28,7 +28,7 @@ public class KeyManager {
     }
 
     @SideOnly(Side.CLIENT)
-    public List getKeyEvents() {
+    public List<? extends KeyEvent> getKeyEvents() {
         return this.keyEvents;
     }
 

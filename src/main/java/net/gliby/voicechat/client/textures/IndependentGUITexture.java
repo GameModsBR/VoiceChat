@@ -10,7 +10,7 @@ public class IndependentGUITexture {
     public static final IndependentGUITexture TEXTURES = new IndependentGUITexture("gvctextures");
     public static final IndependentGUITexture GUI_WIZARD = new IndependentGUITexture("wizard_gui");
     private static final ResourceLocation steve = new ResourceLocation("textures/entity/steve.png");
-    private final Object resource;
+    private final ResourceLocation resource;
 
 
     public IndependentGUITexture(String texture) {
@@ -30,10 +30,10 @@ public class IndependentGUITexture {
     }
 
     public void bindTexture(Minecraft mc) {
-        mc.getTextureManager().bindTexture((ResourceLocation) this.getTexture());
+        mc.getTextureManager().bindTexture(this.getTexture());
     }
 
-    public Object getTexture() {
+    public ResourceLocation getTexture() {
         return this.resource;
     }
 

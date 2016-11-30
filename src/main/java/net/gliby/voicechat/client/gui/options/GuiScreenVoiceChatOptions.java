@@ -116,7 +116,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         String[] array = new String[this.voiceChat.getSettings().getDeviceHandler().getDevices().size()];
 
         for (int heightOffset = 0; heightOffset < this.voiceChat.getSettings().getDeviceHandler().getDevices().size(); ++heightOffset) {
-            array[heightOffset] = ((Device) this.voiceChat.getSettings().getDeviceHandler().getDevices().get(heightOffset)).getName();
+            array[heightOffset] = (this.voiceChat.getSettings().getDeviceHandler().getDevices().get(heightOffset)).getName();
         }
 
         boolean var3 = true;
@@ -196,7 +196,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
             }
 
             if (this.dropDown.getMouseOverInteger() != -1 && this.dropDown.dropDownMenu && !this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
-                Device var9 = (Device) this.voiceChat.getSettings().getDeviceHandler().getDevices().get(this.dropDown.getMouseOverInteger());
+                Device var9 = this.voiceChat.getSettings().getDeviceHandler().getDevices().get(this.dropDown.getMouseOverInteger());
                 if (var9 == null) {
                     return;
                 }

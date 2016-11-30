@@ -99,7 +99,7 @@ public class UdpServer {
         this.firePropertyChange("state", null, this.getState());
     }
 
-    protected synchronized void firePropertyChange(String prop, Object oldVal, Object newVal) {
+    protected synchronized void firePropertyChange(String prop, java.io.Serializable oldVal, java.io.Serializable newVal) {
         try {
             this.propSupport.firePropertyChange(prop, oldVal, newVal);
         } catch (Exception exc) {

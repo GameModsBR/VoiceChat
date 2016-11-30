@@ -334,7 +334,7 @@ public class JSpeexEnc {
             System.out.println("Discontinouous Transmission: " + this.dtx);
         }
 
-        Object var17;
+        AudioFileWriter var17;
         if (this.destFormat == 1) {
             var17 = new OggSpeexWriter(this.mode, this.sampleRate, this.channels, this.nframes, this.vbr);
         } else if (this.destFormat == 2) {
@@ -344,8 +344,8 @@ public class JSpeexEnc {
             var17 = new RawWriter();
         }
 
-        ((AudioFileWriter) var17).open(var2);
-        ((AudioFileWriter) var17).writeHeader("Encoded with: Java Speex Command Line Encoder v0.9.7 ($Revision: 1.5 $)");
+        (var17).open(var2);
+        (var17).writeHeader("Encoded with: Java Speex Command Line Encoder v0.9.7 ($Revision: 1.5 $)");
         int var13 = 2 * this.channels * var16.getFrameSize();
 
         try {
@@ -359,11 +359,11 @@ public class JSpeexEnc {
 
                 var14 = var16.getProcessedData(var3, 0);
                 if (var14 > 0) {
-                    ((AudioFileWriter) var17).writePacket(var3, 0, var14);
+                    (var17).writePacket(var3, 0, var14);
                 }
             }
         } catch (EOFException var15) {
-            ((AudioFileWriter) var17).close();
+            (var17).close();
             var10.close();
         }
     }

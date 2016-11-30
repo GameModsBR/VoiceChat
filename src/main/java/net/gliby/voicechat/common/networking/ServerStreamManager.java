@@ -18,7 +18,7 @@ public class ServerStreamManager {
 
     private final VoiceChatServer voiceChat;
     public ConcurrentHashMap<Integer, ServerStream> streaming;
-    public HashMap chatModeMap;
+    public HashMap<UUID, Integer> chatModeMap;
     public List<UUID> mutedPlayers;
     public EntityHandler entityHandler;
     List<ServerStream> currentStreams;
@@ -191,11 +191,11 @@ public class ServerStreamManager {
     public void init() {
         this.running = true;
         this.entityHandler = new EntityHandler(this.voiceChat);
-        this.mutedPlayers = new ArrayList();
-        this.dataQueue = new ConcurrentLinkedQueue();
-        this.currentStreams = new ArrayList();
-        this.streaming = new ConcurrentHashMap();
-        this.chatModeMap = new HashMap();
+        this.mutedPlayers = new ArrayList<UUID>();
+        this.dataQueue = new ConcurrentLinkedQueue<ServerDatalet>();
+        this.currentStreams = new ArrayList<ServerStream>();
+        this.streaming = new ConcurrentHashMap<Integer, ServerStream>();
+        this.chatModeMap = new HashMap<UUID, Integer>();
         this.receivedEntityData = new HashMap();
         this.treadQueue = new Thread(new ThreadDataQueue(this), "Stream Queue");
         this.treadQueue.start();

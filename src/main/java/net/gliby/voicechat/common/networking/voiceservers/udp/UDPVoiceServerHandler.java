@@ -18,14 +18,14 @@ import java.util.concurrent.Executors;
 public class UDPVoiceServerHandler {
 
     private final ExecutorService threadService;
-    private final Map clientNetworkMap;
+    private final Map<InetSocketAddress, UDPClient> clientNetworkMap;
     private final UDPVoiceServer server;
 
 
     public UDPVoiceServerHandler(UDPVoiceServer server) {
         this.server = server;
         this.threadService = Executors.newFixedThreadPool((int) MathUtility.clamp((float) MinecraftServer.getServer().getMaxPlayers(), 1.0F, 10.0F));
-        this.clientNetworkMap = new HashMap();
+        this.clientNetworkMap = new HashMap<InetSocketAddress, UDPClient>();
     }
 
     public void close() {
@@ -47,7 +47,7 @@ public class UDPVoiceServerHandler {
             return;
         }
 
-        EntityPlayerMP player = (EntityPlayerMP) this.server.waitingAuth.get(hash);
+        EntityPlayerMP player = this.server.waitingAuth.get(hash);
         if (player != null) {
             UDPClient client = new UDPClient(player, address, hash);
             this.clientNetworkMap.put(client.socketAddress, client);
@@ -69,7 +69,7 @@ public class UDPVoiceServerHandler {
 
     public void read(byte[] data, final DatagramPacket packet) throws Exception {
         final InetSocketAddress address = (InetSocketAddress) packet.getSocketAddress();
-        final UDPClient client = (UDPClient) this.clientNetworkMap.get(address);
+        final UDPClient client = this.clientNetworkMap.get(address);
         final ByteArrayDataInput in = ByteStreams.newDataInput(data);
         final byte id = in.readByte();
         this.threadService.execute(new Runnable() {
