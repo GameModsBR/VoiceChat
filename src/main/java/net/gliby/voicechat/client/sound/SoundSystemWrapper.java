@@ -28,7 +28,7 @@ public class SoundSystemWrapper {
 
     public SoundSystemWrapper(SoundHandler soundHandler) {
         this.soundManager = ReflectionHelper.getPrivateValue(SoundHandler.class, soundHandler, 5);
-        this.sndSystem = ReflectionHelper.getPrivateValue(SoundManager.class, this.soundManager, 4);
+        this.sndSystem = ReflectionHelper.getPrivateValue(SoundManager.class, this.soundManager, 5);
         running = true;
         Runtime.getRuntime().addShutdownHook(new Thread() {
 
@@ -89,7 +89,7 @@ public class SoundSystemWrapper {
     }
 
     public void refresh() {
-        this.sndSystem = ReflectionHelper.getPrivateValue(SoundManager.class, this.soundManager, 4);
+        this.sndSystem = ReflectionHelper.getPrivateValue(SoundManager.class, this.soundManager, 5);
     }
 
     public void setAttenuation(String generateSource, int att) {
