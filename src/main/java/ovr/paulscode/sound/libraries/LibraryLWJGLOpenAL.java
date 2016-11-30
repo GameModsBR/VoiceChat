@@ -27,6 +27,7 @@ import paulscode.sound.*;
 
 import javax.sound.sampled.AudioFormat;
 import java.net.URL;
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.HashMap;
@@ -316,7 +317,7 @@ public class LibraryLWJGLOpenAL
         if (this.errorCheck(AL10.alGetError() != 0, "alGenBuffers error when loading " + filenameURL.getFilename())) {
             return false;
         }
-        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int) audioFormat.getSampleRate());
+        AL10.alBufferData(intBuffer.get(0), soundFormat, (ByteBuffer) BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int) audioFormat.getSampleRate());
         if (this.errorCheck(AL10.alGetError() != 0, "alBufferData error when loading " + filenameURL.getFilename()) && this.errorCheck(intBuffer == null, "Sound buffer was not created for " + filenameURL.getFilename())) {
             return false;
         }
@@ -379,7 +380,7 @@ public class LibraryLWJGLOpenAL
         if (this.errorCheck(AL10.alGetError() != 0, "alGenBuffers error when saving " + identifier)) {
             return false;
         }
-        AL10.alBufferData(intBuffer.get(0), soundFormat, BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int) audioFormat.getSampleRate());
+        AL10.alBufferData(intBuffer.get(0), soundFormat, (ByteBuffer) BufferUtils.createByteBuffer(buffer.audioData.length).put(buffer.audioData).flip(), (int) audioFormat.getSampleRate());
         if (this.errorCheck(AL10.alGetError() != 0, "alBufferData error when saving " + identifier) && this.errorCheck(intBuffer == null, "Sound buffer was not created for " + identifier)) {
             return false;
         }

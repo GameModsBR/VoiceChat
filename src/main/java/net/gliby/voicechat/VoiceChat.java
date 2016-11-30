@@ -45,7 +45,7 @@ public class VoiceChat {
     }
 
     public static VoiceChatClient getProxyInstance() {
-        return proxy instanceof VoiceChatClient ? (VoiceChatClient) proxy : proxy;
+        return (VoiceChatClient) proxy;
     }
 
     public static VoiceChatServer getServerInstance() {
