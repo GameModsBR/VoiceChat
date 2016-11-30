@@ -108,7 +108,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
 
       for(int i = 0; i < this.warningMessages.size(); ++i) {
          int warnY = i * this.fontRendererObj.FONT_HEIGHT + this.height / 2 + 66 - this.fontRendererObj.FONT_HEIGHT * this.warningMessages.size() / 2;
-         this.drawCenteredString(this.fontRendererObj, (String)this.warningMessages.get(i), this.width / 2, warnY, -1);
+         this.drawCenteredString(this.fontRendererObj, this.warningMessages.get(i), this.width / 2, warnY, -1);
       }
 
       super.drawScreen(x, y, tick);
@@ -191,7 +191,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
          }
 
          for(int e = 0; e < this.warningMessages.size(); ++e) {
-            String s = (String)this.warningMessages.get(e);
+            String s = this.warningMessages.get(e);
             if(s.equals(this.updateMessage)) {
                int warnY = e * this.fontRendererObj.FONT_HEIGHT + this.height / 2 + 66 - this.fontRendererObj.FONT_HEIGHT * this.warningMessages.size() / 2;
                int length = this.fontRendererObj.getStringWidth(s);

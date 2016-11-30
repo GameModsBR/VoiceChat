@@ -118,11 +118,7 @@ public class SbEncoder extends SbCodec implements Encoder {
       float[] var9 = this.lowenc.getInnov();
       int var11 = this.lowenc.getMode();
       boolean var10;
-      if(var11 == 0) {
-         var10 = true;
-      } else {
-         var10 = false;
-      }
+       var10 = var11 == 0;
 
       for(var3 = 0; var3 < this.windowSize; ++var3) {
          this.buf[var3] = this.high[var3] * this.window[var3];

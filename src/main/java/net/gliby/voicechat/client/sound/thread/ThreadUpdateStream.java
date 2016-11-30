@@ -32,7 +32,7 @@ public class ThreadUpdateStream implements Runnable {
             }
          } else {
             for(int e1 = 0; e1 < VoiceChatClient.getSoundManager().currentStreams.size(); ++e1) {
-               ClientStream stream = (ClientStream)VoiceChatClient.getSoundManager().currentStreams.get(e1);
+               ClientStream stream = VoiceChatClient.getSoundManager().currentStreams.get(e1);
                String source = stream.generateSource();
                if((stream.needsEnd || stream.getLastTimeUpdatedMS() > 400) && !this.voiceChat.sndSystem.playing(source)) {
                   this.manager.killStream(stream);

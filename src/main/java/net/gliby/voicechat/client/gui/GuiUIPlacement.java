@@ -125,7 +125,7 @@ public class GuiUIPlacement extends GuiScreen {
       }
 
       for(int var7 = 0; var7 < this.placeables.size(); ++var7) {
-         GuiPlaceableInterface var8 = (GuiPlaceableInterface)this.placeables.get(var7);
+         GuiPlaceableInterface var8 = this.placeables.get(var7);
          GL11.glPushMatrix();
          GL11.glTranslatef(var8.x, var8.y, 0.0F);
          var8.draw(this.mc, this, x, y, tick);
@@ -157,7 +157,7 @@ public class GuiUIPlacement extends GuiScreen {
       this.buttonList.add(this.scaleSlider = new GuiBoostSlider(2, 2, 2, "", "Scale: 100%", 0.0F));
 
       for(int i = 0; i < this.placeables.size(); ++i) {
-         GuiPlaceableInterface placeableInterface = (GuiPlaceableInterface)this.placeables.get(i);
+         GuiPlaceableInterface placeableInterface = this.placeables.get(i);
          if(placeableInterface.positionType == 0) {
             this.resize(placeableInterface);
          }
@@ -194,7 +194,7 @@ public class GuiUIPlacement extends GuiScreen {
       if(b == 0) {
          if(this.selectedUIPlaceable == null) {
             for(int e = 0; e < this.placeables.size(); ++e) {
-               GuiPlaceableInterface placeable = (GuiPlaceableInterface)this.placeables.get(e);
+               GuiPlaceableInterface placeable = this.placeables.get(e);
                if(this.inBounds((float)x, (float)y, placeable.x, placeable.y, (float)placeable.width, (float)placeable.height)) {
                   this.offsetX = (int)Math.abs((float)x - placeable.x);
                   this.offsetY = (int)Math.abs((float)y - placeable.y);
@@ -228,7 +228,7 @@ public class GuiUIPlacement extends GuiScreen {
       Settings settings = VoiceChat.getProxyInstance().getSettings();
 
       for(int i = 0; i < this.placeables.size(); ++i) {
-         GuiPlaceableInterface placeable = (GuiPlaceableInterface)this.placeables.get(i);
+         GuiPlaceableInterface placeable = this.placeables.get(i);
          if(placeable.positionType == 0) {
             placeable.positionUI.x = placeable.x * 1.0F / (float)placeable.screenWidth;
             placeable.positionUI.y = placeable.y * 1.0F / (float)placeable.screenHeight;

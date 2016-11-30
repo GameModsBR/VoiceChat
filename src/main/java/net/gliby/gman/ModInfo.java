@@ -30,7 +30,7 @@ public class ModInfo {
       Iterator<String> i$ = this.versions.iterator();
 
       while(i$.hasNext()) {
-         String s = (String)i$.next();
+         String s = i$.next();
          if(s.startsWith(currentMinecraftVersion)) {
             this.updated = s.split(":")[1].trim().equals(currentModVersion);
             break;

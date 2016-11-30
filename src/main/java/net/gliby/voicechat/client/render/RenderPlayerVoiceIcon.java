@@ -54,7 +54,7 @@ public class RenderPlayerVoiceIcon extends Gui {
          this.translateWorld(this.mc, event.partialTicks);
 
          for(int i = 0; (float)i < MathUtility.clamp((float)VoiceChatClient.getSoundManager().currentStreams.size(), 0.0F, (float)this.voiceChat.getSettings().getMaximumRenderableVoiceIcons()); ++i) {
-            ClientStream stream = (ClientStream)VoiceChatClient.getSoundManager().currentStreams.get(i);
+            ClientStream stream = VoiceChatClient.getSoundManager().currentStreams.get(i);
             if(stream.player.getPlayer() != null && stream.player.usesEntity) {
                EntityLivingBase entity = (EntityLivingBase)stream.player.getPlayer();
                if(!entity.isInvisible() && !this.mc.gameSettings.hideGUI) {

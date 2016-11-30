@@ -37,7 +37,7 @@ public class KeyManager {
 
    public String getKeyName(EnumBinding binding) {
       for(int i = 0; i < this.keyEvents.size(); ++i) {
-         KeyEvent event = (KeyEvent)this.keyEvents.get(i);
+         KeyEvent event = this.keyEvents.get(i);
          if(event.keyBind == binding) {
             return Keyboard.getKeyName(event.keyID);
          }
@@ -56,8 +56,8 @@ public class KeyManager {
    @SubscribeEvent
    public void keyEvent(KeyInputEvent event) {
       for(int i = 0; i < this.keyEvents.size(); ++i) {
-         KeyEvent keyEvent = (KeyEvent)this.keyEvents.get(i);
-         KeyBinding keyBinding = ((KeyEvent)this.keyEvents.get(i)).forgeKeyBinding;
+         KeyEvent keyEvent = this.keyEvents.get(i);
+         KeyBinding keyBinding = this.keyEvents.get(i).forgeKeyBinding;
          int keyCode = keyBinding.getKeyCode();
          boolean state = keyCode < 0?Mouse.isButtonDown(keyCode + 100):Keyboard.isKeyDown(keyCode);
          boolean tickEnd = true;
@@ -78,7 +78,7 @@ public class KeyManager {
       KeyBinding[] keyBinding = new KeyBinding[this.keyEvents.size()];
 
       for(int i = 0; i < keyBinding.length; ++i) {
-         KeyEvent keyEvent = (KeyEvent)this.keyEvents.get(i);
+         KeyEvent keyEvent = this.keyEvents.get(i);
          keyBinding[i] = new KeyBinding(keyEvent.keyBind.name, keyEvent.keyID, "key.categories.multiplayer");
          this.keyDown = new boolean[keyBinding.length];
          keyEvent.forgeKeyBinding = keyBinding[i];

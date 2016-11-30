@@ -219,7 +219,7 @@ public class ChannelLWJGLOpenAL extends Channel {
 
    public boolean playing() {
       int state = AL10.alGetSourcei(this.ALSource.get(0), 4112);
-      return this.checkALError()?false:state == 4114;
+      return !this.checkALError() && state == 4114;
    }
 
    public boolean preLoadBuffers(LinkedList bufferList) {

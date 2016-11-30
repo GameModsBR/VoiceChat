@@ -33,7 +33,7 @@ public class DeviceHandler {
 
    private Device getDeviceByLine(TargetDataLine line) {
       for(int i = 0; i < this.devices.size(); ++i) {
-         Device device = (Device)this.devices.get(i);
+         Device device = this.devices.get(i);
          if(device.getLine().getLineInfo().equals(line.getLineInfo())) {
             return device;
          }
@@ -44,7 +44,7 @@ public class DeviceHandler {
 
    public Device getDeviceByName(String deviceName) {
       for(int i = 0; i < this.devices.size(); ++i) {
-         Device device = (Device)this.devices.get(i);
+         Device device = this.devices.get(i);
          if(device.getName().equals(deviceName)) {
             return device;
          }

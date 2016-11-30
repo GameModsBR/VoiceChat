@@ -17,7 +17,7 @@ public class ThreadDataUpdateStream implements Runnable {
       while(this.dataManager.running) {
          if(!this.dataManager.currentStreams.isEmpty()) {
             for(int e = 0; e < this.dataManager.currentStreams.size(); ++e) {
-               ServerStream stream = (ServerStream)this.dataManager.currentStreams.get(e);
+               ServerStream stream = this.dataManager.currentStreams.get(e);
                int duration = stream.getLastTimeUpdated();
                if(duration > 350 && duration > stream.player.ping * 2) {
                   this.dataManager.killStream(stream);

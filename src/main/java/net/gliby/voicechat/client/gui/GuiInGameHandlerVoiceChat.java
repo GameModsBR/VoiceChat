@@ -155,7 +155,7 @@ public class GuiInGameHandlerVoiceChat extends Gui {
             GL11.glBlendFunc(770, 771);
 
             for(int i = 0; i < VoiceChatClient.getSoundManager().currentStreams.size(); ++i) {
-               ClientStream stream = (ClientStream)VoiceChatClient.getSoundManager().currentStreams.get(i);
+               ClientStream stream = VoiceChatClient.getSoundManager().currentStreams.get(i);
                if(stream != null) {
                   String s = stream.player.entityName();
                   boolean playerExists = stream.player.getPlayer() != null;

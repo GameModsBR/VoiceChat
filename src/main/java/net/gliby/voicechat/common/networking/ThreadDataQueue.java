@@ -16,7 +16,7 @@ public class ThreadDataQueue implements Runnable {
    public void run() {
       while(this.manager.running) {
          if(!this.manager.dataQueue.isEmpty()) {
-            ServerDatalet voiceData = (ServerDatalet)this.manager.dataQueue.poll();
+            ServerDatalet voiceData = this.manager.dataQueue.poll();
             ServerStream e;
             if((e = this.manager.newDatalet(voiceData)) == null) {
                this.manager.createStream(voiceData);

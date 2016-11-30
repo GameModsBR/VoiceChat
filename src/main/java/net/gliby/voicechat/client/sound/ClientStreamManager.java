@@ -113,7 +113,7 @@ public class ClientStreamManager {
       ClientStream currentStream = this.streaming.get(id);
 
       for(int i = 0; i < this.currentStreams.size(); ++i) {
-         ClientStream stream = (ClientStream)this.currentStreams.get(i);
+         ClientStream stream = this.currentStreams.get(i);
          String currentName = currentStream.player.entityName();
          String otherName = stream.player.entityName();
          if(stream.player.entityName() != null && currentStream.player.entityName() != null && currentName.equals(otherName)) {
@@ -229,7 +229,7 @@ public class ClientStreamManager {
          VoiceChatClient.getLogger().info("Reloading SoundManager, removing all active streams.");
 
          for(int i = 0; i < this.currentStreams.size(); ++i) {
-            ClientStream stream = (ClientStream)this.currentStreams.get(i);
+            ClientStream stream = this.currentStreams.get(i);
             this.killStream(stream);
          }
       }

@@ -21,7 +21,7 @@ public class EntityHandler {
    public void connected(EntityPlayerMP speaker) {}
 
    public void disconnected(int id) {
-      ServerStream stream = (ServerStream)this.dataManager.streaming.get(id);
+      ServerStream stream = this.dataManager.streaming.get(id);
       if(stream != null) {
          this.dataManager.killStream(stream);
       }
