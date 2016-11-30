@@ -1,0 +1,29 @@
+package net.gliby.voicechat.common.networking.voiceservers.udp;
+
+import com.google.common.io.ByteArrayDataOutput;
+import java.io.UnsupportedEncodingException;
+import net.gliby.voicechat.common.networking.voiceservers.udp.UDPByteUtilities;
+import net.gliby.voicechat.common.networking.voiceservers.udp.UDPPacket;
+
+public class UDPClientAuthenticationPacket extends UDPPacket {
+
+   String hash;
+
+
+   public UDPClientAuthenticationPacket(String hash) {
+      this.hash = hash;
+   }
+
+   public byte id() {
+      return (byte)0;
+   }
+
+   public void write(ByteArrayDataOutput out) {
+      try {
+         UDPByteUtilities.writeBytes(this.hash.getBytes("UTF-8"), out);
+      } catch (UnsupportedEncodingException var3) {
+         var3.printStackTrace();
+      }
+
+   }
+}
