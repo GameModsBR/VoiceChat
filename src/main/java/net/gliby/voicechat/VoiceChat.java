@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
         modid = VoiceChat.MOD_ID,
         name = "Gliby\'s Voice Chat Mod",
         version = "@VERSION@",
-        acceptedMinecraftVersions = "[1.9,)"
+        acceptedMinecraftVersions = "[1.11.2,)"
 )
 public class VoiceChat {
 
