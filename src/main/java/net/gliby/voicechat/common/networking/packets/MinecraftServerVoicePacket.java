@@ -31,7 +31,7 @@ public class MinecraftServerVoicePacket extends MinecraftPacket implements IMess
 
     @Override
     public IMessage onMessage(final MinecraftServerVoicePacket packet, final MessageContext ctx) {
-        Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+        ctx.getServerHandler().playerEntity.getServerWorld().addScheduledTask(new Runnable() {
             @Override
             public void run() {
                 VoiceChat.getServerInstance().getVoiceServer().handleVoiceData(ctx.getServerHandler().playerEntity, packet.data, packet.divider, ctx.getServerHandler().playerEntity.getEntityId(), false);
