@@ -55,7 +55,7 @@ public class GuiScreenLocalMute
         switch (button) {
             case 0: {
                 this.playerNotFound = false;
-                EntityPlayer entityPlayer = this.mc.world.getPlayerEntityByName(this.playerTextField.getText().trim().replaceAll(" ", ""));
+                EntityPlayer entityPlayer = this.mc.theWorld.getPlayerEntityByName(this.playerTextField.getText().trim().replaceAll(" ", ""));
                 if (entityPlayer != null) {
                     if (entityPlayer.isUser() || VoiceChatClient.getSoundManager().playersMuted.contains(entityPlayer.getEntityId()))
                         break;
@@ -119,7 +119,7 @@ public class GuiScreenLocalMute
                     break;
                 }
                 this.autoCompletionNames.clear();
-                for (Object obj : this.mc.world.playerEntities.toArray()) {
+                for (Object obj : this.mc.theWorld.playerEntities.toArray()) {
                     String s2;
                     if (!(obj instanceof EntityOtherPlayerMP) || !(s2 = ((EntityOtherPlayerMP) obj).getName()).toLowerCase().startsWith(this.playerTextField.getText().toLowerCase().trim().replaceAll(" ", "")))
                         continue;

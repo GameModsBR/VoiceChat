@@ -133,11 +133,11 @@ public class GuiInGameHandlerVoiceChat extends Gui {
                             this.drawTexturedModalRect(40, -3, 38, 47, 16, 49);
                     }
 
-                    this.mc.getTextureManager().bindTexture(this.mc.player.getLocationSkin());
+                    this.mc.getTextureManager().bindTexture(this.mc.thePlayer.getLocationSkin());
                     GL11.glTranslatef(0.0F, 14.0F, 0.0F);
                     GL11.glScalef(2.4F, 2.4F, 0.0F);
                     Gui.drawScaledCustomSizeModalRect(0, 0, 8.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
-                    if (this.mc.player != null && this.mc.player.isWearing(EnumPlayerModelParts.HAT)) {
+                    if (this.mc.thePlayer != null && this.mc.thePlayer.isWearing(EnumPlayerModelParts.HAT)) {
                         Gui.drawScaledCustomSizeModalRect(0, 0, 40.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
                     }
 
@@ -185,7 +185,7 @@ public class GuiInGameHandlerVoiceChat extends Gui {
                         GL11.glTranslatef(3.25F, 3.25F, 0.0F);
                         GL11.glScalef(2.0F, 2.0F, 0.0F);
                         Gui.drawScaledCustomSizeModalRect(0, 0, 8.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
-                        if (this.mc.player != null && this.mc.player.isWearing(EnumPlayerModelParts.HAT)) {
+                        if (this.mc.thePlayer != null && this.mc.thePlayer.isWearing(EnumPlayerModelParts.HAT)) {
                             Gui.drawScaledCustomSizeModalRect(0, 0, 40.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
                         }
 

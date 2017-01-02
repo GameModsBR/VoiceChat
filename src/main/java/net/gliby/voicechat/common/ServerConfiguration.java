@@ -47,7 +47,7 @@ public class ServerConfiguration {
                 this.settings.setDefaultChatMode(this.init.ReadInteger("Game", "DefaultChatMode", 0));
                 this.settings.setCanShowVoiceIcons(this.init.ReadBool("Game", "ShowPlayerIcons", true));
                 this.settings.setCanShowVoicePlates(this.init.ReadBool("Game", "ShowVoicePlates", true));
-                this.settings.setAdvancedNetworkType(this.init.ReadInteger("Network", "NetworkType", 1));
+                this.settings.setAdvancedNetworkType(this.init.ReadInteger("Network", "NetworkType", 0));
                 this.settings.setUDPPort(this.init.ReadInteger("Network", "UDPPort", this.settings.getUDPPort()));
                 this.settings.setQuality(this.init.ReadInteger("Network", "MinimumQuality", this.settings.getMinimumSoundQuality()), this.init.ReadInteger("Network", "MaximumQuality", this.settings.getMaximumSoundQuality()));
                 this.settings.setBufferSize(this.init.ReadInteger("Network", "BufferSize", this.settings.getBufferSize()));

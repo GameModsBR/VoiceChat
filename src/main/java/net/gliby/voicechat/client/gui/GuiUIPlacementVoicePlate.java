@@ -51,7 +51,7 @@ public class GuiUIPlacementVoicePlate extends GuiPlaceableInterface {
             GL11.glTranslatef(3.25F, 3.25F, 0.0F);
             GL11.glScalef(2.0F, 2.0F, 0.0F);
             Gui.drawScaledCustomSizeModalRect(0, 0, 8.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
-            if (mc.player != null && mc.player.isWearing(EnumPlayerModelParts.HAT)) {
+            if (mc.thePlayer != null && mc.thePlayer.isWearing(EnumPlayerModelParts.HAT)) {
                 Gui.drawScaledCustomSizeModalRect(0, 0, 40.0F, 8.0F, 8, 8, 8, 8, 64.0F, 64.0F);
             }
 

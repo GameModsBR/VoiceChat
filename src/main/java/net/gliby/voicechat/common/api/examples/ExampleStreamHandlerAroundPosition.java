@@ -16,7 +16,7 @@ public class ExampleStreamHandlerAroundPosition {
     @SubscribeEvent
     public void feedStream(ServerStreamEvent.StreamFeed event) {
         event.stream.player.mcServer.getPlayerList();
-        this.feedStreamPositionWithRadius(event.streamManager, event.stream, event.voiceLet, event.stream.player.world, 0.0D, 128.0D, 0.0D, VoiceChat.getServerInstance().getServerSettings().getSoundDistance());
+        this.feedStreamPositionWithRadius(event.streamManager, event.stream, event.voiceLet, event.stream.player.getServerWorld(), 0.0D, 128.0D, 0.0D, VoiceChat.getServerInstance().getServerSettings().getSoundDistance());
     }
 
     public void feedStreamPositionWithRadius(ServerStreamManager streamManager, ServerStream stream, ServerDatalet voiceData, World world, double x, double y, double z, int distance) {

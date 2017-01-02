@@ -17,7 +17,7 @@ import java.util.List;
 public class CommandChatMode extends CommandBase {
 
     @Override
-    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
+    public List<String> getTabCompletionOptions(MinecraftServer server, ICommandSender sender, String[] par2ArrayOfStr, BlockPos pos) {
         return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, "distance", "global", "world") : (par2ArrayOfStr.length == 2 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, this.getListOfPlayerUsernames(server)) : null);
     }
 
@@ -29,18 +29,9 @@ public class CommandChatMode extends CommandBase {
         return !par2Str.equalsIgnoreCase("distance") && !par2Str.startsWith("d") && !par2Str.equalsIgnoreCase("0") ? (!par2Str.equalsIgnoreCase("world") && !par2Str.startsWith("w") && !par2Str.equalsIgnoreCase("1") ? (!par2Str.equalsIgnoreCase("global") && !par2Str.startsWith("g") && !par2Str.equalsIgnoreCase("2") ? 0 : 2) : 1) : 0;
     }
 
-    @Override
-    public String getName() {
-        return "vchatmode";
-    }
-
-    @Override
-    public String getUsage(ICommandSender par1ICommandSender) {
-        return "/vchatmode <mode> or /vchatmode <mode> [player]";
-    }
 
     protected String[] getListOfPlayerUsernames(MinecraftServer server) {
-        return server.getOnlinePlayerNames();
+        return server.getAllUsernames();
     }
 
     @Override
@@ -51,6 +42,16 @@ public class CommandChatMode extends CommandBase {
     @Override
     public boolean isUsernameIndex(String[] par1ArrayOfStr, int par2) {
         return par2 == 1;
+    }
+
+    @Override
+    public String getCommandName() {
+        return "vchatmode";
+    }
+
+    @Override
+    public String getCommandUsage(ICommandSender par1ICommandSender) {
+        return "/vchatmode <mode> or /vchatmode <mode> [player]";
     }
 
     @Override
@@ -76,16 +77,16 @@ public class CommandChatMode extends CommandBase {
                 if (player != par1ICommandSender) {
                     notifyCommandListener(par1ICommandSender, this, player.getName() + " set chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")", par2ArrayOfStr[0]);
                 } else {
-                    player.sendMessage(new TextComponentString("Set own chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")"));
+                    player.addChatMessage(new TextComponentString("Set own chat mode to " + this.getChatMode(chatMode).toUpperCase() + " (" + chatMode + ")"));
                     switch (chatMode) {
                         case 0:
-                            player.sendMessage(new TextComponentString("Only players near you can hear you."));
+                            player.addChatMessage(new TextComponentString("Only players near you can hear you."));
                             break;
                         case 1:
-                            player.sendMessage(new TextComponentString("Every player in this world can hear you"));
+                            player.addChatMessage(new TextComponentString("Every player in this world can hear you"));
                             break;
                         case 2:
-                            player.sendMessage(new TextComponentString("Every player can hear you."));
+                            player.addChatMessage(new TextComponentString("Every player can hear you."));
                     }
                 }
             }

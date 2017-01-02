@@ -60,7 +60,7 @@ public class ServerStreamManager {
 
     public void feedStreamToAllPlayers(ServerStream stream, ServerDatalet voiceData) {
         EntityPlayerMP speaker = voiceData.player;
-        List<EntityPlayerMP> players = voiceChat.getMinecraftServer().getPlayerList().getPlayers();
+        List<EntityPlayerMP> players = voiceChat.getMinecraftServer().getPlayerList().getPlayerList();
         int i;
         EntityPlayerMP target;
         if (voiceData.end) {
@@ -97,7 +97,7 @@ public class ServerStreamManager {
 
     public void feedStreamToWorld(ServerStream stream, ServerDatalet voiceData) {
         EntityPlayerMP speaker = voiceData.player;
-        List players = speaker.world.playerEntities;
+        List players = speaker.worldObj.playerEntities;
         int i;
         EntityPlayerMP target;
         if (voiceData.end) {
@@ -121,7 +121,7 @@ public class ServerStreamManager {
 
     public void feedWithinEntityWithRadius(ServerStream stream, ServerDatalet voiceData, int distance) {
         EntityPlayerMP speaker = stream.player;
-        List players = speaker.world.playerEntities;
+        List players = speaker.worldObj.playerEntities;
         int i;
         EntityPlayerMP target;
         double d4;

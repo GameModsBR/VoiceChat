@@ -35,7 +35,7 @@ public class ThreadUpdateStream implements Runnable {
                 for (int e1 = 0; e1 < VoiceChatClient.getSoundManager().currentStreams.size(); ++e1) {
                     ClientStream stream = VoiceChatClient.getSoundManager().currentStreams.get(e1);
                     String source = stream.generateSource();
-                    if ((stream.needsEnd || stream.getLastTimeUpdatedMS() > 400) && !this.voiceChat.sndSystem.playing(source)) {
+                    if ((stream.needsEnd || stream.getLastTimeUpdatedMS() > ARBITRARY_TIMEOUT) && !this.voiceChat.sndSystem.playing(source)) {
                         this.manager.killStream(stream);
                     }
 
@@ -50,10 +50,10 @@ public class ThreadUpdateStream implements Runnable {
                         Vector3f vector = stream.player.position();
                         this.voiceChat.sndSystem.setPosition(source, vector.x, vector.y, vector.z);
                     } else {
-                        this.voiceChat.sndSystem.setPosition(source, (float) this.mc.player.posX, (float) this.mc.player.posY, (float) this.mc.player.posZ);
+                        this.voiceChat.sndSystem.setPosition(source, (float) this.mc.thePlayer.posX, (float) this.mc.thePlayer.posY, (float) this.mc.thePlayer.posZ);
                     }
 
-                    stream.player.update(this.mc.world);
+                    stream.player.update(this.mc.theWorld);
                 }
 
                 try {

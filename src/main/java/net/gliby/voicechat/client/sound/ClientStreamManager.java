@@ -129,7 +129,7 @@ public class ClientStreamManager {
             Vector3f position = player.position();
             this.voiceChat.sndSystem.rawDataStream(universalAudioFormat, true, identifier, position.x, position.y, position.z, 2, (float) this.voiceChat.getSettings().getSoundDistance());
         } else {
-            this.voiceChat.sndSystem.rawDataStream(universalAudioFormat, true, identifier, (float) this.mc.player.posX, (float) this.mc.player.posY, (float) this.mc.player.posZ, 2, (float) this.voiceChat.getSettings().getSoundDistance());
+            this.voiceChat.sndSystem.rawDataStream(universalAudioFormat, true, identifier, (float) this.mc.thePlayer.posX, (float) this.mc.thePlayer.posY, (float) this.mc.thePlayer.posZ, 2, (float) this.voiceChat.getSettings().getSoundDistance());
         }
 
         this.voiceChat.sndSystem.setPitch(identifier, 1.0F);
@@ -144,7 +144,7 @@ public class ClientStreamManager {
 
     private PlayerProxy getPlayerData(int entityId) {
         PlayerProxy proxy = this.playerData.get(entityId);
-        EntityPlayer entity = (EntityPlayer) this.mc.world.getEntityByID(entityId);
+        EntityPlayer entity = (EntityPlayer) this.mc.theWorld.getEntityByID(entityId);
         if (proxy == null) {
             if (entity != null) {
                 proxy = new PlayerProxy(entity, entity.getEntityId(), entity.getName(), entity.posX, entity.posY, entity.posZ);

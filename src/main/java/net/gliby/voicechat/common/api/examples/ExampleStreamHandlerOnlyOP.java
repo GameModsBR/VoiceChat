@@ -17,14 +17,14 @@ public class ExampleStreamHandlerOnlyOP {
     @SubscribeEvent
     public void createStream(ServerStreamEvent.StreamCreated event) {
         if (!this.isOP(event.stream.player)) {
-            event.stream.player.sendMessage(new TextComponentString("Only OP\'s are allowed to talk!"));
+            event.stream.player.addChatMessage(new TextComponentString("Only OP\'s are allowed to talk!"));
         }
 
     }
 
     @SubscribeEvent
     public void feedStream(ServerStreamEvent.StreamFeed event) {
-        List<EntityPlayerMP> players = event.stream.player.mcServer.getPlayerList().getPlayers();
+        List<EntityPlayerMP> players = event.stream.player.mcServer.getPlayerList().getPlayerList();
         EntityPlayerMP speaker = event.stream.player;
         if (this.isOP(speaker)) {
             for (int i = 0; i < players.size(); ++i) {

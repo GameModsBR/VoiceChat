@@ -12,7 +12,7 @@ public class ServerSettings {
     private int soundDist = 64;
     private int udpPort = 0;
     private int bufferSize = 128;
-    private int advancedNetworkType = 1;
+    private int advancedNetworkType = 0;
     private int defaultChatMode = 0;
     private int minimumQuality = 0;
     private int maximumQuality = 9;
