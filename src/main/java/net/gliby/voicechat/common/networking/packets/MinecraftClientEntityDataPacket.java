@@ -3,6 +3,7 @@ package net.gliby.voicechat.common.networking.packets;
 import io.netty.buffer.ByteBuf;
 import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.common.networking.MinecraftPacket;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -38,10 +39,15 @@ public class MinecraftClientEntityDataPacket extends MinecraftPacket implements 
     }
 
     @Override
-    public IMessage onMessage(MinecraftClientEntityDataPacket packet, MessageContext ctx) {
-        if (VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
-            VoiceChat.getProxyInstance().getClientNetwork().handleEntityData(packet.entityID, packet.username, packet.x, packet.y, packet.z);
-        }
+    public IMessage onMessage(final MinecraftClientEntityDataPacket packet, final MessageContext ctx) {
+        Minecraft.getMinecraft().addScheduledTask(new Runnable() {
+            @Override
+            public void run() {
+                if (VoiceChat.getProxyInstance().getClientNetwork().isConnected()) {
+                    VoiceChat.getProxyInstance().getClientNetwork().handleEntityData(packet.entityID, packet.username, packet.x, packet.y, packet.z);
+                }
+            }
+        });
 
         return null;
     }

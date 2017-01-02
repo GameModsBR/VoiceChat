@@ -10,6 +10,7 @@ import net.minecraft.client.gui.GuiScreenOptionsSounds;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.SoundCategory;
 import org.lwjgl.util.vector.Vector3f;
+import paulscode.sound.SoundSystem;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioFormat.Encoding;
