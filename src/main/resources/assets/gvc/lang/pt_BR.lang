@@ -45,3 +45,5 @@ menu.gman.donate=Doar
 menu.gman.supportGliby=Doe para Gliby
 menu.gman.supportGliby.description=Ajude o criador do mod, Gliby, doando qualquer valor. Doações encorajam e ajudam diretamente os desenvolvedores, considere doar se você gosta dos mods e deseja ajudar os criadores!
 menu.gman.supportGliby.contact=Você pode contatar §a@theGliby§f no twitter, ou por email, §bcontact@gliby.net§f.
+menu.serverNotSupported=Servidor não suporta chat de voz.
+menu.noInputDevicesFound=Nenhum dispositivo de entrada encontrado, adicione algum e reinicie o Minecraft.
