@@ -154,7 +154,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         super.initGui();
         this.warningMessages = new ArrayList<String>();
         if (this.voiceChat.getSettings().getDeviceHandler().isEmpty()) {
-            this.warningMessages.add(ChatFormatting.DARK_RED + "No input devices found, add input device and restart Minecraft.");
+            this.warningMessages.add(ChatFormatting.DARK_RED + "menu.noInputDevicesFound");
         }
 
         if (this.voiceChat.getModInfo().updateNeeded()) {
@@ -167,7 +167,7 @@ public class GuiScreenVoiceChatOptions extends GuiScreen {
         }
 
         if (!this.voiceChat.getClientNetwork().isConnected() && !this.mc.isSingleplayer()) {
-            this.warningMessages.add(ChatFormatting.RED + I18n.format("Server doesn\'t support voice chat."));
+            this.warningMessages.add(ChatFormatting.RED + I18n.format("menu.serverNotSupported"));
         }
 
     }
