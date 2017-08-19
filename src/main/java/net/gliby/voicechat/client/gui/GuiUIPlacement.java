@@ -4,8 +4,8 @@ import net.gliby.voicechat.VoiceChat;
 import net.gliby.voicechat.client.Settings;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.input.Mouse;
@@ -56,7 +56,7 @@ public class GuiUIPlacement extends GuiScreen {
         GL11.glBlendFunc(770, 771);
         GL11.glColor4f(f1, f2, f3, f);
         Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer renderer = tessellator.getBuffer();
+        BufferBuilder renderer = tessellator.getBuffer();
         renderer.begin(GL11.GL_LINE_LOOP, DefaultVertexFormats.POSITION);
         renderer.pos((double) par0, (double) par3, 0.0D).endVertex();
         renderer.pos((double) par2, (double) par3, 0.0D).endVertex();
@@ -96,7 +96,7 @@ public class GuiUIPlacement extends GuiScreen {
     @Override
     public void drawScreen(int x, int y, float tick) {
         this.drawDefaultBackground();
-        this.drawCenteredString(this.fontRendererObj, I18n.format("menu.pressESCtoReturn"), this.width / 2, 2, -1);
+        this.drawCenteredString(this.fontRenderer, I18n.format("menu.pressESCtoReturn"), this.width / 2, 2, -1);
         if (this.selectedUIPlaceable != null) {
             this.selectedUIPlaceable.x = (float) (x - this.offsetX);
             this.selectedUIPlaceable.y = (float) (y - this.offsetY);
@@ -111,16 +111,16 @@ public class GuiUIPlacement extends GuiScreen {
             boolean i = this.inBounds(this.lastSelected.x + (float) this.lastSelected.width + 151.0F, this.lastSelected.y + 42.0F, (float) this.width, 0.0F, (float) this.width, (float) (this.height * 2));
             boolean placeable = this.inBounds(this.lastSelected.x + (float) this.lastSelected.width - 75.0F, this.lastSelected.y, (float) (-this.width), (float) (-this.height), (float) (this.width * 2), (float) this.height);
             boolean bottomSide = this.inBounds(this.lastSelected.x + (float) this.lastSelected.width, this.lastSelected.y + 66.0F, 0.0F, (float) this.height, (float) (this.width * 2), (float) this.height);
-            this.positionTypeButton.xPosition = (int) (this.lastSelected.x + (float) (i ? -100 : this.lastSelected.width + 2));
-            this.positionTypeButton.yPosition = (int) (this.lastSelected.y - (bottomSide ? this.lastSelected.y + 66.0F - (float) this.height : (placeable ? this.lastSelected.y - 0.0F : 0.0F)));
-            this.scaleSlider.xPosition = (int) (this.lastSelected.x + (float) (i ? -154 : this.lastSelected.width + 2));
-            this.scaleSlider.yPosition = (int) (this.lastSelected.y + 22.0F - (bottomSide ? this.lastSelected.y + 66.0F - (float) this.height : (placeable ? this.lastSelected.y - 0.0F : 0.0F)));
-            this.resetButton.xPosition = (int) (this.lastSelected.x + (float) (i ? -100 : this.lastSelected.width + 2));
-            this.resetButton.yPosition = (int) (this.lastSelected.y + 44.0F - (bottomSide ? this.lastSelected.y + 66.0F - (float) this.height : (placeable ? this.lastSelected.y - 0.0F : 0.0F)));
+            this.positionTypeButton.x = (int) (this.lastSelected.x + (float) (i ? -100 : this.lastSelected.width + 2));
+            this.positionTypeButton.y = (int) (this.lastSelected.y - (bottomSide ? this.lastSelected.y + 66.0F - (float) this.height : (placeable ? this.lastSelected.y - 0.0F : 0.0F)));
+            this.scaleSlider.x = (int) (this.lastSelected.x + (float) (i ? -154 : this.lastSelected.width + 2));
+            this.scaleSlider.y = (int) (this.lastSelected.y + 22.0F - (bottomSide ? this.lastSelected.y + 66.0F - (float) this.height : (placeable ? this.lastSelected.y - 0.0F : 0.0F)));
+            this.resetButton.x = (int) (this.lastSelected.x + (float) (i ? -100 : this.lastSelected.width + 2));
+            this.resetButton.y = (int) (this.lastSelected.y + 44.0F - (bottomSide ? this.lastSelected.y + 66.0F - (float) this.height : (placeable ? this.lastSelected.y - 0.0F : 0.0F)));
             this.positionTypeButton.displayString = I18n.format("menu.position") + ": " + this.positionTypes[this.lastSelected.positionType];
-            this.positionTypeButton.drawButton(this.mc, x, y);
-            this.resetButton.drawButton(this.mc, x, y);
-            this.scaleSlider.drawButton(this.mc, x, y);
+            this.positionTypeButton.drawButton(this.mc, x, y, 0);
+            this.resetButton.drawButton(this.mc, x, y, 0);
+            this.scaleSlider.drawButton(this.mc, x, y, 0);
             this.lastSelected.scale = this.scaleSlider.sliderValue;
         }
 

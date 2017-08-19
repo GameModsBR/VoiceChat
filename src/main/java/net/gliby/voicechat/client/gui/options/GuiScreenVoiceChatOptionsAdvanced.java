@@ -69,16 +69,16 @@ public class GuiScreenVoiceChatOptionsAdvanced extends GuiScreen {
     public void drawScreen(int x, int y, float time) {
         this.drawDefaultBackground();
         GL11.glPushMatrix();
-        GL11.glTranslatef((float) (this.width / 2) - (float) (this.fontRendererObj.getStringWidth("Gliby\'s Voice Chat Options") / 2) * 1.5F, 0.0F, 0.0F);
+        GL11.glTranslatef((float) (this.width / 2) - (float) (this.fontRenderer.getStringWidth("Gliby\'s Voice Chat Options") / 2) * 1.5F, 0.0F, 0.0F);
         GL11.glScalef(1.5F, 1.5F, 0.0F);
-        this.drawString(this.mc.fontRendererObj, "Gliby\'s Voice Chat Options", 0, 6, -1);
+        this.drawString(this.mc.fontRenderer, "Gliby\'s Voice Chat Options", 0, 6, -1);
         GL11.glPopMatrix();
         GL11.glPushMatrix();
-        GL11.glTranslatef((float) (this.width / 2 - this.fontRendererObj.getStringWidth(I18n.format("menu.advancedOptions")) / 2), 12.0F, 0.0F);
-        this.drawString(this.mc.fontRendererObj, I18n.format("menu.advancedOptions"), 0, 12, -1);
+        GL11.glTranslatef((float) (this.width / 2 - this.fontRenderer.getStringWidth(I18n.format("menu.advancedOptions")) / 2), 12.0F, 0.0F);
+        this.drawString(this.mc.fontRenderer, I18n.format("menu.advancedOptions"), 0, 12, -1);
         GL11.glPopMatrix();
         if ((int) (this.voiceChat.getSettings().getEncodingQuality() * 10.0F) <= 2) {
-            this.drawCenteredString(this.mc.fontRendererObj, I18n.format("menu.encodingMessage"), this.width / 2, this.height - 50, -255);
+            this.drawCenteredString(this.mc.fontRenderer, I18n.format("menu.encodingMessage"), this.width / 2, this.height - 50, -255);
         }
 
         super.drawScreen(x, y, time);

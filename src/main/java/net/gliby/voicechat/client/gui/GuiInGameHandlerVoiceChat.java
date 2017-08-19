@@ -159,7 +159,7 @@ public class GuiInGameHandlerVoiceChat extends Gui {
                     if (stream != null) {
                         String s = stream.player.entityName();
                         boolean playerExists = stream.player.getPlayer() != null;
-                        int length = this.mc.fontRendererObj.getStringWidth(s);
+                        int length = this.mc.fontRenderer.getStringWidth(s);
                         scale = 0.75F * this.positionUI.scale;
                         GL11.glPushMatrix();
                         GL11.glTranslatef(this.position.x + (float) this.positionUI.info.offsetX, this.position.y + (float) this.positionUI.info.offsetY + (float) (i * 23) * scale, 0.0F);
@@ -170,9 +170,9 @@ public class GuiInGameHandlerVoiceChat extends Gui {
                         this.drawTexturedModalRect(0, 0, 56, stream.special * 22, 109, 22);
                         GL11.glPushMatrix();
                         scale = MathUtility.clamp(50.5F / (float) length, 0.0F, 1.25F);
-                        GL11.glTranslatef(25.0F + scale / 2.0F, 11.0F - (float) (this.mc.fontRendererObj.FONT_HEIGHT - 1) * scale / 2.0F, 0.0F);
+                        GL11.glTranslatef(25.0F + scale / 2.0F, 11.0F - (float) (this.mc.fontRenderer.FONT_HEIGHT - 1) * scale / 2.0F, 0.0F);
                         GL11.glScalef(scale, scale, 0.0F);
-                        this.drawString(this.mc.fontRendererObj, s, 0, 0, -1);
+                        this.drawString(this.mc.fontRenderer, s, 0, 0, -1);
                         GL11.glPopMatrix();
                         GL11.glPushMatrix();
                         if (playerExists) {

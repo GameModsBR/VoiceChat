@@ -33,7 +33,7 @@ public class GuiDropDownMenu extends GuiButton {
     }
 
     @Override
-    public void drawButton(Minecraft par1Minecraft, int x, int y) {
+    public void drawButton(Minecraft par1Minecraft, int x, int y, float partialTicks) {
         if (this.visible) {
             if (this.dropDownMenu && this.array.length != 0) {
                 this.height = this.prevHeight * (this.amountOfItems + 1);
@@ -41,14 +41,14 @@ public class GuiDropDownMenu extends GuiButton {
                 this.height = this.prevHeight;
             }
 
-            FontRenderer fontrenderer = par1Minecraft.fontRendererObj;
+            FontRenderer fontrenderer = par1Minecraft.fontRenderer;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            this.hovered = x >= this.xPosition && y >= this.yPosition && x < this.xPosition + this.width && y < this.yPosition + this.height;
+            this.hovered = x >= this.x && y >= this.y && x < this.x + this.width && y < this.y + this.height;
             this.getHoverState(this.hovered);
             int l = 14737632;
-            drawRect(this.xPosition - 1, this.yPosition - 1, this.xPosition + this.width + 1, this.yPosition + this.height + 1, -6250336);
-            drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, -16777216);
-            drawRect(this.xPosition - 1, this.yPosition + this.prevHeight, this.xPosition + this.width + 1, this.yPosition + this.prevHeight + 1, -6250336);
+            drawRect(this.x - 1, this.y - 1, this.x + this.width + 1, this.y + this.height + 1, -6250336);
+            drawRect(this.x, this.y, this.x + this.width, this.y + this.height, -16777216);
+            drawRect(this.x - 1, this.y + this.prevHeight, this.x + this.width + 1, this.y + this.prevHeight + 1, -6250336);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             boolean u = true;
             short var9;
@@ -62,20 +62,20 @@ public class GuiDropDownMenu extends GuiButton {
                 l = -6250336;
             }
 
-            this.drawCenteredString(fontrenderer, this.displayString.substring(0, Math.min(this.displayString.length(), 22)), this.xPosition + this.width / 2, this.yPosition + (this.prevHeight - 8) / 2, l);
+            this.drawCenteredString(fontrenderer, this.displayString.substring(0, Math.min(this.displayString.length(), 22)), this.x + this.width / 2, this.y + (this.prevHeight - 8) / 2, l);
             GL11.glPushMatrix();
             if (this.dropDownMenu && this.array.length != 0) {
                 for (int i = 0; i < this.amountOfItems; ++i) {
-                    this.mouseOn[i] = this.inBounds(x, y, this.xPosition, this.yPosition + this.prevHeight * (i + 1), this.width, this.prevHeight);
+                    this.mouseOn[i] = this.inBounds(x, y, this.x, this.y + this.prevHeight * (i + 1), this.width, this.prevHeight);
                     String s = this.array[i].substring(0, Math.min(this.array[i].length(), 26)) + "..";
-                    this.drawCenteredString(fontrenderer, s, this.xPosition + this.width / 2, this.yPosition + this.prevHeight * (i + 1) + 7, this.mouseOn[i] ? 16777120 : 14737632);
+                    this.drawCenteredString(fontrenderer, s, this.x + this.width / 2, this.y + this.prevHeight * (i + 1) + 7, this.mouseOn[i] ? 16777120 : 14737632);
                 }
             }
 
             GL11.glPopMatrix();
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             IndependentGUITexture.TEXTURES.bindTexture(Minecraft.getMinecraft());
-            this.drawTexturedModalRect(this.xPosition + this.width - 15, this.yPosition + 2, var9, 0, 14, 14);
+            this.drawTexturedModalRect(this.x + this.width - 15, this.y + 2, var9, 0, 14, 14);
         }
 
     }

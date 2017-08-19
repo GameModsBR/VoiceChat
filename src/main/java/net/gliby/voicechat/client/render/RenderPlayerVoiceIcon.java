@@ -26,7 +26,7 @@ public class RenderPlayerVoiceIcon extends Gui {
     }
 
     private void enableEntityLighting(Entity entity, float partialTicks) {
-        int i1 = entity.getBrightnessForRender(partialTicks);
+        int i1 = entity.getBrightnessForRender();
         if (entity.isBurning()) {
             i1 = 15728880;
         }
