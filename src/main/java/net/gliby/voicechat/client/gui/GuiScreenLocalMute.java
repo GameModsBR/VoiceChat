@@ -76,9 +76,9 @@ public class GuiScreenLocalMute
     @Override
     public void drawScreen(int par1, int par2, float par3) {
         this.listPlayers.drawScreen(par1, par2, par3);
-        this.drawCenteredString(this.fontRendererObj, I18n.format("menu.mutedPlayers", (Object[]) new Object[0]), this.width / 2, 16, -1);
+        this.drawCenteredString(this.fontRenderer, I18n.format("menu.mutedPlayers", (Object[]) new Object[0]), this.width / 2, 16, -1);
         if (this.playerNotFound) {
-            this.drawCenteredString(this.fontRendererObj, "\u00a7c" + I18n.format("commands.generic.player.notFound", (Object[]) new Object[0]), this.width / 2, this.height - 59, -1);
+            this.drawCenteredString(this.fontRenderer, "\u00a7c" + I18n.format("commands.generic.player.notFound", (Object[]) new Object[0]), this.width / 2, this.height - 59, -1);
         }
         this.playerTextField.drawTextBox();
         super.drawScreen(par1, par2, par3);
@@ -89,9 +89,9 @@ public class GuiScreenLocalMute
         Keyboard.enableRepeatEvents(true);
         this.autoCompletionNames = new ArrayList<String>();
         int heightOffset = -9;
-        this.playerTextField = new GuiTextField(0, this.fontRendererObj, this.width / 2 - 100, this.height - 57 - -9, 130, 20);
+        this.playerTextField = new GuiTextField(0, this.fontRenderer, this.width / 2 - 100, this.height - 57 - -9, 130, 20);
         this.playerTextField.setFocused(true);
-        this.doneButton = new GuiOptionButton(0, this.width / 2 + 32, this.height - 57 - -9, 98, 20, I18n.format("menu.add", (Object[]) new Object[0]));
+        this.doneButton = new GuiOptionButton(0, this.width / 2 + 32, this.height - 57 - -9, I18n.format("menu.add", (Object[]) new Object[0]));
         buttonList.add(this.doneButton);
         this.doneButton = new GuiOptionButton(1, this.width / 2 - 75, this.height - 32 - -9, I18n.format("gui.done", (Object[]) new Object[0]));
         buttonList.add(this.doneButton);
@@ -176,10 +176,10 @@ public class GuiScreenLocalMute
         }
 
         @Override
-        protected void drawSlot(int entryID, int p_180791_2_, int par2, int p_180791_4_, int p_180791_5_, int p_180791_6_) {
+        protected void drawSlot(int entryID, int p_180791_2_, int par2, int p_180791_4_, int p_180791_5_, int p_180791_6_, float hz) {
             VoiceChatClient.getSoundManager();
-            GuiScreenLocalMute.this.drawCenteredString(GuiScreenLocalMute.this.fontRendererObj, ClientStreamManager.playerMutedData.get(VoiceChatClient.getSoundManager().playersMuted.get(entryID)), this.width / 2, par2 + 1, 16777215);
-            GuiScreenLocalMute.this.drawCenteredString(GuiScreenLocalMute.this.fontRendererObj, "\u00a7lX", this.width / 2 + 88, par2 + 3, 16711680);
+            GuiScreenLocalMute.this.drawCenteredString(GuiScreenLocalMute.this.fontRenderer, ClientStreamManager.playerMutedData.get(VoiceChatClient.getSoundManager().playersMuted.get(entryID)), this.width / 2, par2 + 1, 16777215);
+            GuiScreenLocalMute.this.drawCenteredString(GuiScreenLocalMute.this.fontRenderer, "\u00a7lX", this.width / 2 + 88, par2 + 3, 16711680);
         }
 
         @Override

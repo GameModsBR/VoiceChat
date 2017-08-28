@@ -3,8 +3,8 @@ package net.gliby.voicechat.client.gui;
 import net.gliby.gman.ModInfo;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -58,9 +58,9 @@ public class GuiScreenDonate extends GuiScreen {
         this.renderModLogo(this.info.modId, this.modMetadata, true);
         GL11.glPopMatrix();
         String s = I18n.format("menu.gman.supportGliby.description");
-        this.fontRendererObj.drawSplitString(s, this.width / 2 - 150, this.height / 2 - 50, 300, -1);
+        this.fontRenderer.drawSplitString(s, this.width / 2 - 150, this.height / 2 - 50, 300, -1);
         String s1 = I18n.format("menu.gman.supportGliby.contact");
-        this.fontRendererObj.drawSplitString(s1, this.width / 2 - 150, this.height / 2 + 35, 300, -1);
+        this.fontRenderer.drawSplitString(s1, this.width / 2 - 150, this.height / 2 + 35, 300, -1);
         super.drawScreen(x, y, tick);
     }
 
@@ -118,7 +118,7 @@ public class GuiScreenDonate extends GuiScreen {
                     this.cachedLogoDimensions.width = (int) ((double) this.cachedLogoDimensions.width * scale);
                     this.cachedLogoDimensions.height = (int) ((double) this.cachedLogoDimensions.height * scale);
                     Tessellator tessellator = Tessellator.getInstance();
-                    VertexBuffer renderer = tessellator.getBuffer();
+                    BufferBuilder renderer = tessellator.getBuffer();
                     renderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
                     renderer.pos(0.0D, (double) this.cachedLogoDimensions.height, (double) this.zLevel).tex(0.0D, 1.0D).endVertex();
                     renderer.pos((double) (this.cachedLogoDimensions.width), (double) (this.cachedLogoDimensions.height), (double) this.zLevel).tex(1.0D, 1.0D).endVertex();

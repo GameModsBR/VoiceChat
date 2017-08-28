@@ -11,8 +11,8 @@ import net.gliby.voicechat.client.sound.MicrophoneTester;
 import net.gliby.voicechat.client.textures.IndependentGUITexture;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.opengl.GL11;
@@ -96,7 +96,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
                 break;
             case 2:
                 this.title = I18n.format("menu.selectInputDevice");
-                this.dropDown.drawButton(this.mc, x, y);
+                this.dropDown.drawButton(this.mc, x, y, 0);
                 break;
             case 3:
                 if (this.lastPage != this.currentPage) {
@@ -121,7 +121,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
                 GL11.glEnable(3008);
                 GL11.glPopMatrix();
                 String ratingText = I18n.format("menu.boostVoiceVolume");
-                this.drawCenteredString(this.fontRendererObj, ratingText, this.width / 2, this.height / 2 - 26, -1);
+                this.drawCenteredString(this.fontRenderer, ratingText, this.width / 2, this.height / 2 - 26, -1);
                 break;
             case 4:
                 this.title = I18n.format("menu.finishWizard");
@@ -139,20 +139,20 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         GL11.glScalef(1.5F, 1.5F, 0.0F);
         this.drawTexturedModalRect(0, 0, 0, 0, 190, 127);
         GL11.glPopMatrix();
-        this.drawString(this.mc.fontRendererObj, this.currentPage + "/" + 4, this.width / 2 + 108, this.height / 2 + 67, -1);
+        this.drawString(this.mc.fontRenderer, this.currentPage + "/" + 4, this.width / 2 + 108, this.height / 2 + 67, -1);
         if (this.title != null) {
-            this.drawString(this.mc.fontRendererObj, ChatFormatting.BOLD + this.title, this.width / 2 - this.mc.fontRendererObj.getStringWidth(this.title) / 2 - 12, this.height / 2 - 80, -1);
+            this.drawString(this.mc.fontRenderer, ChatFormatting.BOLD + this.title, this.width / 2 - this.mc.fontRenderer.getStringWidth(this.title) / 2 - 12, this.height / 2 - 80, -1);
         }
 
         if (this.text != null) {
-            this.fontRendererObj.drawSplitString(ChatFormatting.stripFormatting(this.text), this.width / 2 - 107 - 1 + 1, this.height / 2 - 65 + 1, 230, 0);
-            this.fontRendererObj.drawSplitString(this.text, this.width / 2 - 107 - 1, this.height / 2 - 65, 230, -1);
+            this.fontRenderer.drawSplitString(ChatFormatting.stripFormatting(this.text), this.width / 2 - 107 - 1 + 1, this.height / 2 - 65 + 1, 230, 0);
+            this.fontRenderer.drawSplitString(this.text, this.width / 2 - 107 - 1, this.height / 2 - 65, 230, -1);
         }
 
         for (int k = 0; k < this.buttonList.size(); ++k) {
             GuiButton guibutton = this.buttonList.get(k);
             if (guibutton == this.nextButton || guibutton == this.previousButton || guibutton == this.doneButton || this.buttonMap.get(guibutton) != null && this.buttonMap.get(guibutton) == this.currentPage) {
-                guibutton.drawButton(this.mc, x, y);
+                guibutton.drawButton(this.mc, x, y, 0);
             }
         }
 
@@ -163,7 +163,7 @@ public class GuiScreenOptionsWizard extends GuiScreen {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer renderer = tessellator.getBuffer();
+        BufferBuilder renderer = tessellator.getBuffer();
         renderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
         renderer.pos((double) (par1 + 0.0F), (double) (par2 + par6), (double) this.zLevel).tex((double) ((par3 + 0.0F) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F)).endVertex();
         renderer.pos((double) (par1 + par5), (double) (par2 + par6), (double) this.zLevel).tex((double) ((par3 + par5) * 0.00390625F), (double) ((par4 + par6) * 0.00390625F)).endVertex();
@@ -243,38 +243,38 @@ public class GuiScreenOptionsWizard extends GuiScreen {
             if (this.currentPage == 1) {
                 this.previousButton.visible = false;
                 this.doneButton.visible = false;
-                this.nextButton.xPosition = this.width / 2 - 90;
-                this.nextButton.yPosition = this.height / 2 + 60;
+                this.nextButton.x = this.width / 2 - 90;
+                this.nextButton.y = this.height / 2 + 60;
                 this.nextButton.setWidth(180);
                 this.nextButton.setHeight(20);
             } else if (this.currentPage == 2) {
                 this.previousButton.visible = false;
                 this.doneButton.visible = false;
-                this.nextButton.xPosition = this.width / 2 - 90;
-                this.nextButton.yPosition = this.height / 2 + 60;
+                this.nextButton.x = this.width / 2 - 90;
+                this.nextButton.y = this.height / 2 + 60;
                 this.nextButton.setWidth(180);
                 this.nextButton.setHeight(20);
             } else if (this.currentPage == 4) {
                 this.nextButton.visible = false;
                 this.doneButton.visible = true;
-                this.doneButton.xPosition = this.width / 2;
-                this.doneButton.yPosition = this.height / 2 + 60;
+                this.doneButton.x = this.width / 2;
+                this.doneButton.y = this.height / 2 + 60;
                 this.doneButton.setWidth(95);
                 this.doneButton.setHeight(20);
-                this.previousButton.xPosition = this.width / 2 - 95;
-                this.previousButton.yPosition = this.height / 2 + 60;
+                this.previousButton.x = this.width / 2 - 95;
+                this.previousButton.y = this.height / 2 + 60;
                 this.previousButton.setWidth(95);
                 this.previousButton.setHeight(20);
             } else {
                 this.previousButton.visible = true;
                 this.nextButton.visible = true;
                 this.doneButton.visible = false;
-                this.nextButton.xPosition = this.width / 2;
-                this.nextButton.yPosition = this.height / 2 + 60;
+                this.nextButton.x = this.width / 2;
+                this.nextButton.y = this.height / 2 + 60;
                 this.nextButton.setWidth(95);
                 this.nextButton.setHeight(20);
-                this.previousButton.xPosition = this.width / 2 - 95;
-                this.previousButton.yPosition = this.height / 2 + 60;
+                this.previousButton.x = this.width / 2 - 95;
+                this.previousButton.y = this.height / 2 + 60;
                 this.previousButton.setWidth(95);
                 this.previousButton.setHeight(20);
             }

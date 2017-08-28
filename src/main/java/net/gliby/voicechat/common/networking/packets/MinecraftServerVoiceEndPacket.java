@@ -15,7 +15,7 @@ public class MinecraftServerVoiceEndPacket extends MinecraftPacket implements IM
 
     @Override
     public IMessage onMessage(MinecraftServerVoiceEndPacket packet, MessageContext ctx) {
-        VoiceChat.getServerInstance().getVoiceServer().handleVoiceData(ctx.getServerHandler().playerEntity, null, (byte) 0, ctx.getServerHandler().playerEntity.getEntityId(), true);
+        VoiceChat.getServerInstance().getVoiceServer().handleVoiceData(ctx.getServerHandler().player, null, (byte) 0, ctx.getServerHandler().player.getEntityId(), true);
         return null;
     }
 
