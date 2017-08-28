@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "logoFile": "gvclogo.png",
-  "url": "http://gliby.net/",
+  "url": "http://twitter.com/theGliby",
   "updateUrl": "http://mods.gliby.net/gliby_vc",
   "authors": ["@theGliby aka theGliby"],
   "credits": "Made by @theGliby, updated to 1.12 by @utkabobr",
