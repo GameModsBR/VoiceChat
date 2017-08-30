@@ -4,7 +4,7 @@ buildscript {
         maven { url = "http://files.minecraftforge.net/maven" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -13,9 +13,9 @@ version = "0.6.1"
 group= "net.gliby"
 
 minecraft {
-    version = "1.11-13.19.0.2168"
+    version = "1.12-14.21.1.2443"
     runDir = "run"
-    mappings = 'snapshot_20161130'
+    mappings = 'snapshot_20170624'
 
     replace "@VERSION@", project.version
     replace "@MC_VERSION@", project.minecraft.version
@@ -45,3 +45,4 @@ processResources
         exclude 'mcmod.info'
     }
 }
+idea { module { inheritOutputDirs = true } }
