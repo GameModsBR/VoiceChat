@@ -97,7 +97,6 @@ public class VoiceChatClient extends VoiceChatServer {
     @Override
     public void initMod(VoiceChat voiceChat, FMLInitializationEvent event) {
         Minecraft mc = Minecraft.getMinecraft();
-        (new UpdatedSoundManager(this, this.getMinecraftSoundManager(mc))).init(event);
         this.voiceChat = voiceChat;
         this.recorder = new Recorder(this);
         this.keyManager.init();
@@ -130,6 +129,8 @@ public class VoiceChatClient extends VoiceChatServer {
 
     @Override
     public void preInitClient(FMLPreInitializationEvent event) {
+        Minecraft mc = Minecraft.getMinecraft();
+        (new UpdatedSoundManager(this, this.getMinecraftSoundManager(mc))).init(event);
         modMetadata = event.getModMetadata();
         this.configurationDirectory = new File(event.getModConfigurationDirectory(), "gliby_vc");
         if (!this.configurationDirectory.exists()) {
