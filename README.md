@@ -1,5 +1,3 @@
-# ! This repo has been archived in favor of https://github.com/Gliby/VoiceChat
-
 Voice Chat License
 Copyright [2017] [@theGliby]
 
